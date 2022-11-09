@@ -28,7 +28,7 @@ public class UsuarioController {
         return usuarioService.getUsuarioModel(id);
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioModel save(@RequestBody UsuarioModel usuarioModel){
         return usuarioService.save(usuarioModel);
