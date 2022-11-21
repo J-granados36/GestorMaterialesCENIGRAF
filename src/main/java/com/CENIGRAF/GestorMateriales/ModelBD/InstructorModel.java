@@ -14,7 +14,8 @@ public class InstructorModel implements Serializable {
     private Integer idInstructor;
     private String nombre;
     private Integer cedula;
-    private Integer celular;
+
+    private String celular;
 
     public Integer getIdInstructor() {
         return idInstructor;
@@ -40,11 +41,11 @@ public class InstructorModel implements Serializable {
         this.cedula = cedula;
     }
 
-    public Integer getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 }
