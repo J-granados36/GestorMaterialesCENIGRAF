@@ -1,8 +1,11 @@
 package com.CENIGRAF.GestorMateriales.ModelBD;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Maquina")
@@ -15,6 +18,18 @@ public class MaquinaModel implements Serializable {
     private String nombre;
     private Integer placa;
     private Date adquisicion;
+
+
+    //MAQUINA M-M MTCORRECTIVO
+    @ManyToMany
+    @JsonIgnoreProperties({"Maquina"})
+    public List<MtCorrectivoModel>mtCorrectivoModels;
+
+
+    //MAQUINA M-M MTPREVENTIVO
+    @ManyToMany
+    @JsonIgnoreProperties({"Maquina"})
+    public List<MtPreventivoModel>mtPreventivoModels;
 
     public Integer getIdMaquina() {
         return idMaquina;
@@ -46,5 +61,21 @@ public class MaquinaModel implements Serializable {
 
     public void setAdquisicion(Date adquisicion) {
         this.adquisicion = adquisicion;
+    }
+
+    public List<MtCorrectivoModel> getMtCorrectivoModels() {
+        return mtCorrectivoModels;
+    }
+
+    public void setMtCorrectivoModels(List<MtCorrectivoModel> mtCorrectivoModels) {
+        this.mtCorrectivoModels = mtCorrectivoModels;
+    }
+
+    public List<MtPreventivoModel> getMtPreventivoModels() {
+        return mtPreventivoModels;
+    }
+
+    public void setMtPreventivoModels(List<MtPreventivoModel> mtPreventivoModels) {
+        this.mtPreventivoModels = mtPreventivoModels;
     }
 }

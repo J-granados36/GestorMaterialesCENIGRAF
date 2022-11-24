@@ -1,6 +1,8 @@
 package com.CENIGRAF.GestorMateriales.ModelBD;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,6 +18,14 @@ public class InstructorModel implements Serializable {
     private Integer cedula;
 
     private String celular;
+
+
+    //INSTRUCTOR M-O PROGRAMA
+    @ManyToOne
+    @JoinColumn(name = "idPrograma")
+    @JsonIgnoreProperties({"Instructor"})
+    private ProgramaModel programaModel;
+    //INTRUCTOR M-M AMBIENTE
 
     public Integer getIdInstructor() {
         return idInstructor;
@@ -47,5 +57,13 @@ public class InstructorModel implements Serializable {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public ProgramaModel getProgramaModel() {
+        return programaModel;
+    }
+
+    public void setProgramaModel(ProgramaModel programaModel) {
+        this.programaModel = programaModel;
     }
 }
