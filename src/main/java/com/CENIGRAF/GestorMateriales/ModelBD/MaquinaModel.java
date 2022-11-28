@@ -19,6 +19,10 @@ public class MaquinaModel implements Serializable {
     private Integer placa;
     private Date adquisicion;
 
+    //ambiente m-o maquina
+    @ManyToOne
+    @JoinColumn(name = "idAmbiente")
+    private AmbienteModel ambienteModel;
 
     //MAQUINA M-M MTCORRECTIVO
     @ManyToMany
@@ -30,6 +34,14 @@ public class MaquinaModel implements Serializable {
     @ManyToMany
     @JsonIgnoreProperties({"Maquina"})
     public List<MtPreventivoModel>mtPreventivoModels;
+
+    public AmbienteModel getAmbienteModel() {
+        return ambienteModel;
+    }
+
+    public void setAmbienteModel(AmbienteModel ambienteModel) {
+        this.ambienteModel = ambienteModel;
+    }
 
     public Integer getIdMaquina() {
         return idMaquina;

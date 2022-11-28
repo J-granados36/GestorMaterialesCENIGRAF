@@ -23,6 +23,7 @@ public class ProgramaModel implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JsonIgnoreProperties({"programa"})
     public List<FichaModel>fichaModel;
+
     //PROGRAMA M-O ALMACEN
 
     @ManyToOne
@@ -34,6 +35,10 @@ public class ProgramaModel implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JsonIgnoreProperties({"programa"})
     public List<InstructorModel>instructorModels;
+
+    public void setFichaModel(List<FichaModel> fichaModel) {
+        this.fichaModel = fichaModel;
+    }
 
     public Integer getIdPrograma() {
         return idPrograma;

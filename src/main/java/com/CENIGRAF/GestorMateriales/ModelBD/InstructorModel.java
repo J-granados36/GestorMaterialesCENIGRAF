@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "Instructor")
@@ -26,6 +27,17 @@ public class InstructorModel implements Serializable {
     @JsonIgnoreProperties({"Instructor"})
     private ProgramaModel programaModel;
     //INTRUCTOR M-M AMBIENTE
+
+    @ManyToMany(mappedBy = "instructores")
+    public List<AmbienteModel> Ambientes;
+
+    public List<AmbienteModel> getAmbientes() {
+        return Ambientes;
+    }
+
+    public void setAmbientes(List<AmbienteModel> ambientes) {
+        Ambientes = ambientes;
+    }
 
     public Integer getIdInstructor() {
         return idInstructor;

@@ -2,6 +2,8 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "MtCorrectivo")
@@ -13,6 +15,22 @@ public class MtCorrectivoModel implements Serializable {
     private Integer idMtCorrectivo;
     private String nombre;
     private String descripcion;
+
+
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "maquinacorrectivo",
+            joinColumns = {@JoinColumn(name = "idMaquina")},
+            inverseJoinColumns = {@JoinColumn(name = "idMtCorrectivo")}
+    )
+    private List<MaquinaModel> maquinas= new ArrayList<>();
+
+    public List<MaquinaModel> getMaquinas() {
+        return maquinas;
+    }
+
+    public void setMaquinas(List<MaquinaModel> maquinas) {
+        this.maquinas = maquinas;
+    }
 
     public Integer getIdMtCorrectivo() {
         return idMtCorrectivo;

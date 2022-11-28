@@ -20,6 +20,19 @@ public class AlmacenModel implements Serializable {
     @JsonIgnoreProperties({"almacen"})
     public List<ElementoModel>elementoModel;
 
+    //almacen o-m programa
+    @OneToMany(cascade = {CascadeType.PERSIST})
+    @JsonIgnoreProperties({"almacen"})
+    public List<ProgramaModel>programaModels;
+
+
+    public List<ProgramaModel> getProgramaModels() {
+        return programaModels;
+    }
+
+    public void setProgramaModels(List<ProgramaModel> programaModels) {
+        this.programaModels = programaModels;
+    }
 
     public Integer getIdAlmacen() {
         return idAlmacen;

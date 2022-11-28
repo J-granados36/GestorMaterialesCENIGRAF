@@ -14,6 +14,19 @@ public class FichaModel implements Serializable {
 
     private Integer numero;
 
+    //fichas m-o programa
+    @ManyToOne
+    @JoinColumn(name = "idPrograma")
+    private ProgramaModel programaModel;
+
+    public ProgramaModel getProgramaModel() {
+        return programaModel;
+    }
+
+    public void setProgramaModel(ProgramaModel programaModel) {
+        this.programaModel = programaModel;
+    }
+
     public Integer getIdFicha() {
         return idFicha;
     }

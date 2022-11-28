@@ -25,6 +25,8 @@ public class ElementoModel implements Serializable {
     @JsonIgnoreProperties({"Elemento"})
     private AlmacenModel almacenModel;
 
+
+
     public Integer getIdElemento() {
         return idElemento;
     }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,21 @@ public class AmbienteModel implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JsonIgnoreProperties({"Ambiente"})
     public List<MaquinaModel>maquinaModels;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(name = "instructorambiente",
+            joinColumns = {@JoinColumn(name = "idAmbiente")},
+            inverseJoinColumns = {@JoinColumn(name = "idInstructor")}
+    )
+    private List<InstructorModel>instructores= new ArrayList<>();
+
+    public List<InstructorModel> getInstructores() {
+        return instructores;
+    }
+
+    public void setInstructores(List<InstructorModel> instructores) {
+        this.instructores = instructores;
+    }
 
     public Integer getIdAmbiente() {
         return idAmbiente;
