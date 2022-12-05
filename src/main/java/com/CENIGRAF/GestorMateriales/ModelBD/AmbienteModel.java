@@ -22,7 +22,7 @@ public class AmbienteModel implements Serializable {
     //AMBIENTE O-M MAQUINA
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JsonIgnoreProperties({"Ambiente"})
-    public List<MaquinaModel>maquinaModels;
+    public List<MaquinaModel> maquinaModel;
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(name = "instructorambiente",
@@ -63,11 +63,11 @@ public class AmbienteModel implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<MaquinaModel> getMaquinaModels() {
-        return maquinaModels;
+    public List<MaquinaModel> getMaquinaModel() {
+        return maquinaModel;
     }
 
-    public void setMaquinaModels(List<MaquinaModel> maquinaModels) {
-        this.maquinaModels = maquinaModels;
+    public void setMaquinaModel(List<MaquinaModel> maquinaModel) {
+        this.maquinaModel = maquinaModel;
     }
 }

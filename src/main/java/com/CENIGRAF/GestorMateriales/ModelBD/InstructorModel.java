@@ -20,12 +20,8 @@ public class InstructorModel implements Serializable {
 
     private String celular;
 
-
+    //Relacion en BD
     //INSTRUCTOR M-O PROGRAMA
-    @ManyToOne
-    @JoinColumn(name = "idPrograma")
-    @JsonIgnoreProperties({"Instructor"})
-    private ProgramaModel programaModel;
     //INTRUCTOR M-M AMBIENTE
 
     @ManyToMany(mappedBy = "instructores")
@@ -71,11 +67,4 @@ public class InstructorModel implements Serializable {
         this.celular = celular;
     }
 
-    public ProgramaModel getProgramaModel() {
-        return programaModel;
-    }
-
-    public void setProgramaModel(ProgramaModel programaModel) {
-        this.programaModel = programaModel;
-    }
 }

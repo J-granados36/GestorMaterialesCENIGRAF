@@ -26,10 +26,7 @@ public class ProgramaModel implements Serializable {
 
     //PROGRAMA M-O ALMACEN
 
-    @ManyToOne
-    @JoinColumn(name = "idAlmacen")
-    @JsonIgnoreProperties({"programa"})
-    private AlmacenModel almacenModel;
+
 
     //programa o-m instructor
     @OneToMany(cascade = {CascadeType.PERSIST})
@@ -64,13 +61,6 @@ public class ProgramaModel implements Serializable {
         this.fichaModel = fichaModels;
     }
 
-    public AlmacenModel getAlmacenModel() {
-        return almacenModel;
-    }
-
-    public void setAlmacenModel(AlmacenModel almacenModel) {
-        this.almacenModel = almacenModel;
-    }
 
     public List<InstructorModel> getInstructorModels() {
         return instructorModels;

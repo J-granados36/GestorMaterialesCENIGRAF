@@ -1,6 +1,6 @@
 package com.CENIGRAF.GestorMateriales.ModelBD;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.lowagie.text.pdf.PdfPCell;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,14 +18,8 @@ public class ElementoModel implements Serializable {
     private String UndMedida;
     private Integer cantidad;
 
-
-    //Elementos m-o Almacen
-    @ManyToOne
-    @JoinColumn(name = "idAlmacen")
-    @JsonIgnoreProperties({"Elemento"})
-    private AlmacenModel almacenModel;
-
-
+    //Relacion en BD
+    // Elementos m-o Almacen
 
     public Integer getIdElemento() {
         return idElemento;
@@ -59,6 +53,7 @@ public class ElementoModel implements Serializable {
         UndMedida = undMedida;
     }
 
+
     public Integer getCantidad() {
         return cantidad;
     }
@@ -67,11 +62,4 @@ public class ElementoModel implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public AlmacenModel getAlmacenModel() {
-        return almacenModel;
     }
-
-    public void setAlmacenModel(AlmacenModel almacenModel) {
-        this.almacenModel = almacenModel;
-    }
-}
