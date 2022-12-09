@@ -1,0 +1,22 @@
+#btn-nav{
+    font-family: sans-serif;
+}
+header{
+    background-color:  rgb(57, 169, 0);;
+}
+.dropdown-item{
+    font-size: 15px;
+}
+#info{
+    padding: 5%;
+}
+h1{
+    font-family: sans-serif;
+}
+th,td{
+    font-family: sans-serif;
+}
+h3, #recam{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

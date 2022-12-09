@@ -20,6 +20,8 @@ public class InstructorModel implements Serializable {
 
     private String celular;
 
+    private String correo;
+
     //Relacion en BD
     //INSTRUCTOR M-O PROGRAMA
     //INTRUCTOR M-M AMBIENTE
@@ -67,4 +69,11 @@ public class InstructorModel implements Serializable {
         this.celular = celular;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 }

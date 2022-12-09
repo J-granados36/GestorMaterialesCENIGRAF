@@ -52,6 +52,9 @@ public class InstructorService {
                 if (instructorModel.getCelular()!= null){
                     In.get().setCelular(instructorModel.getCelular());
                 }
+                if (instructorModel.getCorreo()!=null){
+                    In.get().setCorreo(instructorModel.getCorreo());
+                }
                 instructorRepository.save(In.get());
                 return In.get();
             }else {
