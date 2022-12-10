@@ -2,16 +2,22 @@ var app= {
     backend: "https://jsonplaceholder.typicode.com/users",
     leer_prog: function(){      
         $("#tabla_prog").DataTable({
+            "ordering": false,
+            "info": false,
+            "processing": true,
+            "paging": false,
             ajax: {
                 url: app.backend,
                 dataSrc:function(JSON){
                     return JSON;
-                } 
+                }    
             },
             columns:[
                 {data: "id"},
                 {data: "name"},
-                {data: "username"}
+                {data: "username"},
+                {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp'>Editar <i class='bi bi-pencil'></i></button>"},
+                {defaultContent: "<button type='button' class='btn btn-danger' >Eliminar <i class='bi bi-trash3'></i></button>"}
             ]
         })
     },
