@@ -43,8 +43,8 @@ public class ElementoService {
                 if (elementoModel.getIdElemento()!=null){
                     El.get().setIdElemento(elementoModel.getIdElemento());
                 }
-                if (elementoModel.getNombre()!=null){
-                    El.get().setNombre(elementoModel.getNombre());
+                if (elementoModel.getNombreElemento()!=null){
+                    El.get().setNombreElemento(elementoModel.getNombreElemento());
                 }
                 if (elementoModel.getDescripcion()!=null){
                     El.get().setDescripcion(elementoModel.getDescripcion());

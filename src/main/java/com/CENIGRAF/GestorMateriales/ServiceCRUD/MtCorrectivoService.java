@@ -43,8 +43,8 @@ public class MtCorrectivoService {
                 if (mtCorrectivoModel.getIdMtCorrectivo()!=null){
                     Mtc.get().setIdMtCorrectivo(mtCorrectivoModel.getIdMtCorrectivo());
                 }
-                if (mtCorrectivoModel.getNombre()!=null){
-                    Mtc.get().setNombre(mtCorrectivoModel.getNombre());
+                if (mtCorrectivoModel.getNombreMtCorr()!=null){
+                    Mtc.get().setNombreMtCorr(mtCorrectivoModel.getNombreMtCorr());
                 }
                 if (mtCorrectivoModel.getDescripcion()!=null){
                     Mtc.get().setDescripcion(mtCorrectivoModel.getDescripcion());

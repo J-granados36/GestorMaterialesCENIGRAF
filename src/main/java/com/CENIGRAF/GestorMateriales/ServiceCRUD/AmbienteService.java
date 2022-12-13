@@ -43,8 +43,8 @@ public class AmbienteService {
                 if (ambienteModel.getIdAmbiente()!= null){
                     Am.get().setIdAmbiente(ambienteModel.getIdAmbiente());
                 }
-                if (ambienteModel.getNombre()!= null){
-                    Am.get().setNombre(ambienteModel.getNombre());
+                if (ambienteModel.getNombreAmbiente()!= null){
+                    Am.get().setNombreAmbiente(ambienteModel.getNombreAmbiente());
                 }
                 if (ambienteModel.getDescripcion()!= null){
                     Am.get().setDescripcion(ambienteModel.getDescripcion());

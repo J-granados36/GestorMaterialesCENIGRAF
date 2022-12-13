@@ -15,28 +15,18 @@ public class InstructorModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idInstructor;
-    private String nombre;
+    private String nombreInstructor;
     private Integer cedula;
 
     private String celular;
 
     private String correo;
 
-    //Relacion en BD
-    //INSTRUCTOR M-O PROGRAMA
-    //INTRUCTOR M-M AMBIENTE
+    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ProgramaModel> programaModels;
 
-    @ManyToMany(mappedBy = "instructores")
-    public List<AmbienteModel> Ambientes;
-
-    public List<AmbienteModel> getAmbientes() {
-        return Ambientes;
-    }
-
-    public void setAmbientes(List<AmbienteModel> ambientes) {
-        Ambientes = ambientes;
-    }
-
+    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<AmbienteModel> ambienteModels;
     public Integer getIdInstructor() {
         return idInstructor;
     }
@@ -45,12 +35,12 @@ public class InstructorModel implements Serializable {
         this.idInstructor = idInstructor;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreInstructor() {
+        return nombreInstructor;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreInstructor(String nombreInstructor) {
+        this.nombreInstructor = nombreInstructor;
     }
 
     public Integer getCedula() {

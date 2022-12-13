@@ -12,10 +12,11 @@ public class FichaModel implements Serializable {
 
     private Integer idFicha;
 
-    private Integer numero;
+    private Integer numeroFicha;
 
-    //Relacion en BD
-    //fichas m-o programa
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPrograma",nullable = false)
+    private ProgramaModel programaModel;
 
     public Integer getIdFicha() {
         return idFicha;
@@ -25,11 +26,11 @@ public class FichaModel implements Serializable {
         this.idFicha = idFicha;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Integer getNumeroFicha() {
+        return numeroFicha;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setNumeroFicha(Integer numeroFicha) {
+        this.numeroFicha = numeroFicha;
     }
 }

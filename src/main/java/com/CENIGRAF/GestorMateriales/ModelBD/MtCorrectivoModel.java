@@ -13,24 +13,12 @@ public class MtCorrectivoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idMtCorrectivo;
-    private String nombre;
+    private String nombreMtCorr;
     private String descripcion;
 
-
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    @JoinTable(name = "maquinacorrectivo",
-            joinColumns = {@JoinColumn(name = "idMaquina")},
-            inverseJoinColumns = {@JoinColumn(name = "idMtCorrectivo")}
-    )
-    private List<MaquinaModel> maquinas= new ArrayList<>();
-
-    public List<MaquinaModel> getMaquinas() {
-        return maquinas;
-    }
-
-    public void setMaquinas(List<MaquinaModel> maquinas) {
-        this.maquinas = maquinas;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idMaquina")
+    private MaquinaModel maquinaModel;
 
     public Integer getIdMtCorrectivo() {
         return idMtCorrectivo;
@@ -40,12 +28,12 @@ public class MtCorrectivoModel implements Serializable {
         this.idMtCorrectivo = idMtCorrectivo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreMtCorr() {
+        return nombreMtCorr;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreMtCorr(String nombreMtCorr) {
+        this.nombreMtCorr = nombreMtCorr;
     }
 
     public String getDescripcion() {

@@ -16,26 +16,14 @@ public class ProgramaModel implements Serializable {
 
     private Integer idPrograma;
 
-    private String nombre;
+    private String nombrePrograma;
 
+    @OneToMany(mappedBy = "programaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<FichaModel> fichaModels;
 
-    //PROGRAMA O-M FICHAS
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JsonIgnoreProperties({"programa"})
-    public List<FichaModel>fichaModel;
-
-    //PROGRAMA M-O ALMACEN
-
-
-
-    //programa o-m instructor
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JsonIgnoreProperties({"programa"})
-    public List<InstructorModel>instructorModels;
-
-    public void setFichaModel(List<FichaModel> fichaModel) {
-        this.fichaModel = fichaModel;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idInstructor",nullable = false)
+    private InstructorModel instructorModel;
 
     public Integer getIdPrograma() {
         return idPrograma;
@@ -45,28 +33,11 @@ public class ProgramaModel implements Serializable {
         this.idPrograma = idPrograma;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombrePrograma() {
+        return nombrePrograma;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public List<FichaModel> getFichaModel() {
-        return fichaModel;
-    }
-
-    public void setFichaModels(List<FichaModel> fichaModels) {
-        this.fichaModel = fichaModels;
-    }
-
-
-    public List<InstructorModel> getInstructorModels() {
-        return instructorModels;
-    }
-
-    public void setInstructorModels(List<InstructorModel> instructorModels) {
-        this.instructorModels = instructorModels;
+    public void setNombrePrograma(String nombrePrograma) {
+        this.nombrePrograma = nombrePrograma;
     }
 }

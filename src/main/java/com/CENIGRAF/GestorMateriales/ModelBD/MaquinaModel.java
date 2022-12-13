@@ -14,22 +14,19 @@ public class MaquinaModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idMaquina;
-    private String nombre;
+    private String nombreMaquina;
     private Integer placa;
     private Date adquisicion;
 
-    //ambiente m-o maquina
-    //MAQUINA M-M MTCORRECTIVO
-    @ManyToMany
-    @JsonIgnoreProperties({"Maquina"})
-    public List<MtCorrectivoModel>mtCorrectivoModels;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAmbiente",nullable = false)
+    private AmbienteModel ambienteModel;
 
+    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<MtPreventivoModel> mtPreventivoModels;
 
-    //MAQUINA M-M MTPREVENTIVO
-    @ManyToMany
-    @JsonIgnoreProperties({"Maquina"})
-    public List<MtPreventivoModel>mtPreventivoModels;
-
+    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<MtCorrectivoModel> mtCorrectivoModels;
     public Integer getIdMaquina() {
         return idMaquina;
     }
@@ -38,12 +35,12 @@ public class MaquinaModel implements Serializable {
         this.idMaquina = idMaquina;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreMaquina() {
+        return nombreMaquina;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreMaquina(String nombreMaquina) {
+        this.nombreMaquina = nombreMaquina;
     }
 
     public Integer getPlaca() {
@@ -62,19 +59,4 @@ public class MaquinaModel implements Serializable {
         this.adquisicion = adquisicion;
     }
 
-    public List<MtCorrectivoModel> getMtCorrectivoModels() {
-        return mtCorrectivoModels;
-    }
-
-    public void setMtCorrectivoModels(List<MtCorrectivoModel> mtCorrectivoModels) {
-        this.mtCorrectivoModels = mtCorrectivoModels;
-    }
-
-    public List<MtPreventivoModel> getMtPreventivoModels() {
-        return mtPreventivoModels;
-    }
-
-    public void setMtPreventivoModels(List<MtPreventivoModel> mtPreventivoModels) {
-        this.mtPreventivoModels = mtPreventivoModels;
-    }
 }

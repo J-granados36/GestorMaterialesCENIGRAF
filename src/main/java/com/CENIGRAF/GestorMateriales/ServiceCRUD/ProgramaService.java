@@ -42,8 +42,8 @@ public class ProgramaService {
                 if (programaModel.getIdPrograma()!=null){
                     Pr.get().setIdPrograma(programaModel.getIdPrograma());
                 }
-                if (programaModel.getNombre()!=null){
-                    Pr.get().setNombre(programaModel.getNombre());
+                if (programaModel.getNombrePrograma()!=null){
+                    Pr.get().setNombrePrograma(programaModel.getNombrePrograma());
                 }
                 programaRepository.save(Pr.get());
                 return Pr.get();

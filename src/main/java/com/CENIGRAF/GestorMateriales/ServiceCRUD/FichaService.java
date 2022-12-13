@@ -42,8 +42,8 @@ public class FichaService {
                 if (fichaModel.getIdFicha()!=null){
                     Fi.get().setIdFicha(fichaModel.getIdFicha());
                 }
-                if (fichaModel.getNumero()!=null){
-                    Fi.get().setNumero(fichaModel.getNumero());
+                if (fichaModel.getNumeroFicha()!=null){
+                    Fi.get().setNumeroFicha(fichaModel.getNumeroFicha());
                 }
                 fichaRepository.save(Fi.get());
                 return Fi.get();

@@ -13,13 +13,10 @@ public class ElementoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idElemento;
-    private String nombre;
+    private String nombreElemento;
     private String descripcion;
     private String UndMedida;
     private Integer cantidad;
-
-    //Relacion en BD
-    // Elementos m-o Almacen
 
     public Integer getIdElemento() {
         return idElemento;
@@ -29,12 +26,12 @@ public class ElementoModel implements Serializable {
         this.idElemento = idElemento;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreElemento() {
+        return nombreElemento;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreElemento(String nombreElemento) {
+        this.nombreElemento = nombreElemento;
     }
 
     public String getDescripcion() {
