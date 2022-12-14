@@ -4,6 +4,7 @@ import com.lowagie.text.pdf.PdfPCell;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "Elemento")
@@ -17,6 +18,9 @@ public class ElementoModel implements Serializable {
     private String descripcion;
     private String UndMedida;
     private Integer cantidad;
+
+    @OneToMany(mappedBy = "elementoModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public Integer getIdElemento() {
         return idElemento;
@@ -59,4 +63,11 @@ public class ElementoModel implements Serializable {
         this.cantidad = cantidad;
     }
 
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
     }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
+    }
+}

@@ -19,7 +19,7 @@ public class MaquinaModel implements Serializable {
     private Date adquisicion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAmbiente",nullable = false)
+    @JoinColumn(name = "idAmbiente")
     private AmbienteModel ambienteModel;
 
     @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
@@ -27,6 +27,9 @@ public class MaquinaModel implements Serializable {
 
     @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<MtCorrectivoModel> mtCorrectivoModels;
+
+    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
     public Integer getIdMaquina() {
         return idMaquina;
     }
@@ -59,4 +62,35 @@ public class MaquinaModel implements Serializable {
         this.adquisicion = adquisicion;
     }
 
+    public AmbienteModel getAmbienteModel() {
+        return ambienteModel;
+    }
+
+    public void setAmbienteModel(AmbienteModel ambienteModel) {
+        this.ambienteModel = ambienteModel;
+    }
+
+    public List<MtPreventivoModel> getMtPreventivoModels() {
+        return mtPreventivoModels;
+    }
+
+    public void setMtPreventivoModels(List<MtPreventivoModel> mtPreventivoModels) {
+        this.mtPreventivoModels = mtPreventivoModels;
+    }
+
+    public List<MtCorrectivoModel> getMtCorrectivoModels() {
+        return mtCorrectivoModels;
+    }
+
+    public void setMtCorrectivoModels(List<MtCorrectivoModel> mtCorrectivoModels) {
+        this.mtCorrectivoModels = mtCorrectivoModels;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
+    }
 }

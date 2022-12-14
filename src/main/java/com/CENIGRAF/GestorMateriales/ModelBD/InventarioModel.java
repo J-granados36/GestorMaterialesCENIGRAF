@@ -2,6 +2,7 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "inventario")
@@ -16,6 +17,9 @@ public class InventarioModel implements Serializable {
     private String undMedida;
     private Integer cantidadAlmacen;
     private Integer estado;
+
+    @OneToMany(mappedBy = "inventarioModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public Integer getIdInventario() {
         return idInventario;
@@ -62,5 +66,13 @@ public class InventarioModel implements Serializable {
 
     public void setEstado(Integer estado) {
         this.estado = estado;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 }

@@ -22,8 +22,11 @@ public class ProgramaModel implements Serializable {
     private List<FichaModel> fichaModels;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInstructor",nullable = false)
+    @JoinColumn(name = "idInstructor")
     private InstructorModel instructorModel;
+
+    @OneToMany(mappedBy = "programaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public Integer getIdPrograma() {
         return idPrograma;
@@ -39,5 +42,29 @@ public class ProgramaModel implements Serializable {
 
     public void setNombrePrograma(String nombrePrograma) {
         this.nombrePrograma = nombrePrograma;
+    }
+
+    public List<FichaModel> getFichaModels() {
+        return fichaModels;
+    }
+
+    public void setFichaModels(List<FichaModel> fichaModels) {
+        this.fichaModels = fichaModels;
+    }
+
+    public InstructorModel getInstructorModel() {
+        return instructorModel;
+    }
+
+    public void setInstructorModel(InstructorModel instructorModel) {
+        this.instructorModel = instructorModel;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 }

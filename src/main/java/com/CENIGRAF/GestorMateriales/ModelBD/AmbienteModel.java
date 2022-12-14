@@ -21,8 +21,11 @@ public class AmbienteModel implements Serializable {
     @OneToMany(mappedBy = "ambienteModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<MaquinaModel> maquinaModels;
 
+    @OneToMany(mappedBy = "ambienteModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInstructor",nullable = false)
+    @JoinColumn(name = "idInstructor")
     private InstructorModel instructorModel;
     public Integer getIdAmbiente() {
         return idAmbiente;
@@ -48,4 +51,27 @@ public class AmbienteModel implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public List<MaquinaModel> getMaquinaModels() {
+        return maquinaModels;
+    }
+
+    public void setMaquinaModels(List<MaquinaModel> maquinaModels) {
+        this.maquinaModels = maquinaModels;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
+    }
+
+    public InstructorModel getInstructorModel() {
+        return instructorModel;
+    }
+
+    public void setInstructorModel(InstructorModel instructorModel) {
+        this.instructorModel = instructorModel;
+    }
 }
