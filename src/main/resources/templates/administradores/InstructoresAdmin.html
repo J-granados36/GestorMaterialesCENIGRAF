@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <!--CSS-->
     <link rel="stylesheet" href="../CSS/style_programas_admin.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <!--Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- Extenciones Bootstrap-->
@@ -78,7 +80,7 @@
                 </div>
             </div>
         </div>
-        <table class="table table-hover">
+        <table class="row-border" id="tabla_inst"> 
             <thead>
             <tr>
                 <th>N° Documento</th>
@@ -90,15 +92,35 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1028801594</td>
-                <td>Johanna Cifuentes</td>
-                <td>3218946253</td>
-                <td>Johanna@gmail.com</td>
-                <td><a href=""><button class="btn btn-success">Editar <i class="bi bi-pencil"></i></button></a></td>
-                <td><a href=""><button class="btn btn-danger">Eliminar <i class="bi bi-trash3"></i></button></a></td>
-            </tr>
             </tbody>
         </table>
     </div>
+    <div id="editari" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal Programas-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Completar todos los campos</h3>
+                <div class="container">
+                    <label>Numero de ficha</label>
+                    <input type="number" class="form-control">
+                    <label for="">Programa de formacion</label>
+                    <input type="text" class="form-control">
+                    <label for="">Instructor</label>
+                    <input type="text" class="form-control">
+                    <input type="button" class="btn btn-success" value="Realizar cambios" id="recam">
+                </div>
+            </div>
+          </div>
+      
+        </div>
+    </div>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/Administrador_js.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
 </body>
+</html>
