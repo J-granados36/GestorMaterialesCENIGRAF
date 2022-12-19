@@ -107,12 +107,33 @@
                 <h3>Completar todos los campos</h3>
                 <div class="container">
                     <label>Numero de ficha</label>
-                    <input type="number" class="form-control">
+                    <input type="number" class="form-control" id="edit_ficha_prog">
                     <label for="">Programa de formacion</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="edit_prog_prog">
                     <label for="">Instructor</label>
-                    <input type="text" class="form-control">
-                    <input type="button" class="btn btn-success" value="Realizar cambios" id="recam">
+                    <select class="form-control" name="" id="edit_instru_prog">
+                    </select>
+                    <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
+                </div>
+            </div>
+          </div>
+      
+        </div>
+    </div>
+    <div id="eliminarp" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal Programas-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Eliminar Programa</h3>
+                <div class="container">
+                    <label>Se eliminará el programa del sistema</label>
+                    <input type="hidden" class="form-control" id="eliminar_prog_id">
+                    <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
                 </div>
             </div>
           </div>

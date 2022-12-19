@@ -17,8 +17,8 @@ var app_prog= {
                 {data: "id"},
                 {data: "name"},
                 {data: "username"},
-                {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp'>Editar <i class='bi bi-pencil'></i></button>"},
-                {defaultContent: "<button type='button' class='btn btn-danger' >Eliminar <i class='bi bi-trash3'></i></button>"}
+                {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp' id='editar_prog'>Editar <i class='bi bi-pencil'></i></button>"},
+                {defaultContent: "<button type='button' class='btn btn-danger' id='eliminar_prog'>Eliminar <i class='bi bi-trash3'></i></button>"}
             ]
         })
     },
@@ -42,16 +42,91 @@ var app_prog= {
             });
         });
         $("#reg_programa").click(function () { 
-            $("#reg_prog_ficha").val();
-            $("#reg_prog_prog").val();
-            $("#reg_instructores_prog").val();
+            var reg_prog_ficha=$("#reg_prog_ficha").val();
+            var reg_prog_prog=$("#reg_prog_prog").val();
+            var reg_instructores_prog=$("#reg_instructores_prog").val();
+            var obj_prog={
+                ficha: reg_prog_ficha,
+                programa:reg_prog_prog,
+                intructor:reg_instructores_prog
+            }
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: JSON.stringify(obj_prog),
+                contentType: "application/json",
+                success: function (response) {
+                    table.ajax.reload();
+                    table.draw();
+                }
+            }).fail(function($xhr){
+                var data=$xhr.responseJSON;
+            })
+
         });
     },
     actualizar_prog: function(){
+        $("#tabla_prog").on('click', '#editar_prog', function () {
 
+            var id_prog=table.row($(this).parents('<tr>')).id();
+
+            $.ajax({
+                url: backend, //+id_prog,
+                dataType: "json",
+                error: function () {
+                    alert("Error en la petición");
+                }
+            }).done(function(data){
+                $("edit_ficha_prog").empty().append(data.id);
+                $("edit_prog_prog").val(data.name);
+                $("edit_instru_prog").val(data.username);
+            })            
+        }),
+        $("guardar_edit_prog").click(function () { 
+            var edit_ficha_prog=$("#edit_ficha_prog").val();
+            var edit_prog_prog=$("#edit_prog_prog").val();
+            var edit_instru_prog=$("#edit_instru_prog").val();
+            var obj_prog={
+                ficha: edit_ficha_prog,
+                programa:edit_prog_prog,
+                intructor:edit_instru_prog
+            }
+            $.ajax({
+                type: "PUT",
+                url: "",
+                data: JSON.stringify(obj_prog),
+                contentType: "application/json",
+                success: function (response) {
+                    table.ajax.reload();
+                    table.draw();
+
+                    $("#editarp").modal('hide')
+                }
+            }).fail(function($xhr){
+                var data=$xhr.responseJSON;
+            })         
+        });
     },
     eliminar_prog: function(){
+        $("#tabla_prog").on('click', '#eliminar_prog', function () {
+            
+        }),
+        $("#guardar_eliminar_prog").click(function () { 
+            var eliminar_prog_id= $("#eliminar_prog_id").val();
+            $.ajax({
+                type: "DELETE",//+ eliminar_prog_id,
+                url: "url" ,
+                contentType: "application/json",
+                success: function (response) {
+                    table.ajax.reload();
+                    table.draw();
 
+                    $("#editarp").modal('hide')
+                }
+            }).fail(function($xhr){
+                var data=$xhr.responseJSON;
+            });
+        });
     }
 }
 app_inst={
