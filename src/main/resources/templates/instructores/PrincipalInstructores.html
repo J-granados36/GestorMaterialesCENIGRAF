@@ -77,16 +77,14 @@
                 <div class="modal-body">
                     <h3>Seleccionar solicitud</h3>
                     <div class="container">
-                        <center>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-6" id="btn_principales">
                                 <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" data-target="#solisemanal" id="solicitudmate"><i class="bi bi-calendar2-week-fill" id="icon-btn"></i><br>Solicitud Periodica</button>                
                             </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" data-target="#solianual" id="solicitudmate"><i class="bi bi-calendar3" id="icon-btn"></i><br>Solicitud Anual</button>                
+                            <div class="col-6" id="btn_principales">
+                                <button type="button" class="btn btn-light" data-dismiss="modal" data-toggle="modal" data-target="#solianual" id="solicitudmante"><i class="bi bi-calendar3" id="icon-btn"></i><br>Solicitud Anual</button>                
                             </div>
                         </div>
-                        </center>
                     </div>
                 </div>
               </div>
@@ -102,18 +100,43 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
+                    <h3>Solicitud de mantenimiento</h3>
                     <div class="container">
-                        <h3>Seleccionar ambiente</h3>
-                        <center>
                         <div class="row">
-                            <div class="col-8">
-                                <label for="">Seleccione el ambiente</label>
-                                <select name="" class="form-control" id="">
+                            <div class="col-12">
+                                <label>Seleccione el ambiente de formación:</label>
+                                <select name="" class="form-control col-10" id="">
                                     <option value="">Seleccionar</option>
                                 </select>
+                                <label>Seleccione la maquina o elemento para mantenimiento:</label>
+                                <select name="" class="form-control col-10" id="">
+                                    <option value="">Seleccionar</option>
+                                </select>
+                                <label>Seleccione el tipo de mantenimiento que desea:</label>
+                                <select name="" class="form-control col-10" id="">
+                                    <option value="" hidden>Seleccionar</option>
+                                    <option value="">Preventivo</option>
+                                </select>
+                                <label>Seleccione los elementos que necesita para el mantenimiento:<i class="fas fa-drum-steelpan    "></i>:</label>
+                                <table class="table table-bordered" id="tb_mante">
+                                    <thead>
+                                        <td class="col-2">Item</td>
+                                        <td class="col-10">Nombre</td>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input class="form-control" type="number" value="1" readonly></td>
+
+                                            <td>
+                                                <input type="search" class="form-control" placeholder="Buscar elemento" list="lista_elementos">
+                                            </td>
+                                        </tr>      
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-secondary" onClick="suma_elementom()" id="sumitem">Añadir Item</button><br>
+                                <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
-                        </center>
                     </div>
                 </div>
               </div>
@@ -200,15 +223,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <label for="" >Seleccione el programa de formacion:</label>
+                                <label for="" >Seleccione la especialización para solicitar materiales:</label>
                                 <select name="" class="form-control" id="progra">
                                     <option value="">Seleccionar</option>
                                 </select>
-                                <table class="table table-bordered" id="tb_elementos">
+                                <table class="table table-bordered" id="tb_elementop">
                                     <thead>
                                       <tr>
                                         <th class="col-1">Item</th>
-                                        <th class="col-5">Nombre del elemento</th>
+                                        <th class="col-4">Nombre del elemento</th>
                                         <th class="col-2">Cantidad</th>
                                         <th class="col-1">U/Medida</th>
                                         <th class="col-4">Descripción</th>
@@ -242,12 +265,11 @@
                                             </select>
                                         </td>
                                         <td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>
-                                    </tr>
-                                           
+                                    </tr>       
                                 </tbody>                                      
                                 </table>
-                                  <button class="btn btn-secondary" id="sumitem">Añadir Item</button><br>
-                                  <button class="btn btn-success">Enviar Informe</button>
+                                <button class="btn btn-secondary" onClick="suma_elementop()" id="sumitem">Añadir Item</button><br>
+                                <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
                     </div>

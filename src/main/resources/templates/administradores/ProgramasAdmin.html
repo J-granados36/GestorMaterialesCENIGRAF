@@ -65,17 +65,18 @@
 <body>
     <div class="container" id="info">
         <h1>Lista de programas</h1>
-        <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#programa">Agregar Programa <i class="bi bi-bookmark-plus"></i></button>
+        <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#programa" id="add_programa">Agregar Programa <i class="bi bi-bookmark-plus"></i></button>
         <div id="programa" class="collapse">
             <div class="row">
                 <div class="col-md-6">
                     <h4>Complete todos los campos</h4>
                     <label>Número de ficha:</label>
-                    <input type="number" class="form-control" placeholder="Ingresar número">
+                    <input type="number" class="form-control" id="reg_prog_ficha" placeholder="Ingresar número">
                     <label>Programa:</label>
-                    <input type="text" class="form-control" placeholder="Ingresar nombre">
+                    <input type="text" class="form-control" id="reg_prog_prog" placeholder="Ingresar nombre">
                     <label>Instructor:</label>
-                    <input type="text" class="form-control" placeholder="Ingresar nombre">
+                    <select class="form-control" name="" id="reg_instructores_prog">
+                    </select>
                     <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_programa" value="Registrar">
                 </div>
             </div>
@@ -91,7 +92,6 @@
             </tr>
             </thead>
             <tbody>
-                <td><button type='button' class='btn btn-primary'></button></td>
             </tbody>
         </table>
     </div>
@@ -107,12 +107,33 @@
                 <h3>Completar todos los campos</h3>
                 <div class="container">
                     <label>Numero de ficha</label>
-                    <input type="number" class="form-control">
+                    <input type="number" class="form-control" id="edit_ficha_prog">
                     <label for="">Programa de formacion</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="edit_prog_prog">
                     <label for="">Instructor</label>
-                    <input type="text" class="form-control">
-                    <input type="button" class="btn btn-success" value="Realizar cambios" id="recam">
+                    <select class="form-control" name="" id="edit_instru_prog">
+                    </select>
+                    <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
+                </div>
+            </div>
+          </div>
+      
+        </div>
+    </div>
+    <div id="eliminarp" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal Programas-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Eliminar Programa</h3>
+                <div class="container">
+                    <label>Se eliminará el programa del sistema</label>
+                    <input type="hidden" class="form-control" id="eliminar_prog_id">
+                    <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
                 </div>
             </div>
           </div>
