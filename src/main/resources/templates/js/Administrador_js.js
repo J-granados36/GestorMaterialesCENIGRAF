@@ -1,5 +1,5 @@
 var app_prog= {
-    backend: "https://jsonplaceholder.typicode.com/users",
+    backend_prog: "http://localhost:8080/api/InsModel/all",
     
     leer_prog: function(){      
         $("#tabla_prog").DataTable({
@@ -8,7 +8,7 @@ var app_prog= {
             "processing": true,
             "paging": false,
             ajax: {
-                url: app_prog.backend,
+                url: app_prog.backend_prog + "/all",
                 dataSrc:function(JSON){
                     return JSON;
                 }    
