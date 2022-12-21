@@ -146,7 +146,7 @@ app_inst={
             },
             columns:[
                 {data: "cedula"},
-                {data: "nombreInstructor"},
+                {data: "nombre"},
                 {data: "celular"},
                 {data: "correo"},              
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"},
