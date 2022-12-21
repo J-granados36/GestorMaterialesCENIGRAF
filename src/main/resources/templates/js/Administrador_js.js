@@ -1,5 +1,5 @@
 var app_prog= {
-    backend: "https://jsonplaceholder.typicode.com/users",
+    backend_prog: "http://localhost:8080/api/ProgramaModel",
     
     leer_prog: function(){      
         $("#tabla_prog").DataTable({
@@ -8,14 +8,14 @@ var app_prog= {
             "processing": true,
             "paging": false,
             ajax: {
-                url: app_prog.backend,
+                url: app_prog.backend_prog + "/all",
                 dataSrc:function(JSON){
-                    return JSON;
+                    console.log(JSON);
                 }    
             },
             columns:[
-                {data: "id"},
-                {data: "name"},
+                {data: "id_programa"},
+                {data: "nombre_programa"},
                 {data: "username"},
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp' id='editar_prog'>Editar <i class='bi bi-pencil'></i></button>"},
                 {defaultContent: "<button type='button' class='btn btn-danger' id='eliminar_prog'>Eliminar <i class='bi bi-trash3'></i></button>"}
@@ -130,7 +130,7 @@ var app_prog= {
     }
 }
 app_inst={
-    backend: "https://jsonplaceholder.typicode.com/users",
+    backend: "http://localhost:8080/api/InsModel",
 
     leer_inst: function(){      
         $("#tabla_inst").DataTable({
@@ -139,16 +139,16 @@ app_inst={
             "processing": true,
             "paging": false,
             ajax: {
-                url: app_prog.backend,
+                url: app_inst.backend + "/all",
                 dataSrc:function(JSON){
                     return JSON;
                 }    
             },
             columns:[
-                {data: "id"},
-                {data: "name"},
-                {data: "username"},
-                {data: "address.city"},
+                {data: "cedula"},
+                {data: "nombreInstructor"},
+                {data: "celular"},
+                {data: "correo"},              
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"},
                 {defaultContent: "<button type='button' class='btn btn-danger' >Eliminar <i class='bi bi-trash3'></i></button>"}
             ]
