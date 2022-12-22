@@ -1,5 +1,4 @@
-var app_prog= {
-    // Se llama la url del controller de programas
+app_prog= {
     backend_prog: "http://localhost:8080/api/ProgramaModel",
     
     leer_prog: function(){ 
@@ -14,14 +13,15 @@ var app_prog= {
             // Se usa la url para traer información
                 url: app_prog.backend_prog + "/all",
                 dataSrc:function(JSON){
+                    console.log(JSON);
                     return JSON;
                 }    
             },
             // Se añaden las columnas segun los nombres dados en el controlador
             columns:[
-                {data: "idPrograma"},
-                {data: "nombre_programa"},
-                {data: "username"},
+                {defaultContent: "numeroFicha"},
+                {data: "nombrePrograma"},
+                {defaultContent: "nombreInstructor"},
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp' id='editar_prog'>Editar <i class='bi bi-pencil'></i></button>"},
                 {defaultContent: "<button type='button' class='btn btn-danger' id='eliminar_prog'>Eliminar <i class='bi bi-trash3'></i></button>"}
             ]
@@ -31,8 +31,8 @@ var app_prog= {
         $("#add_programa").click(function(){ 
             $("#instructores_prog").empty();
             $.ajax({
-                type: "GET",
-                url: app_prog.backend,
+                type: "POST",
+                url: app_prog.backend_prog + "/save",
                 dataType: "JSON",
                 error: function(){
                     alert("Error al importar instructores");

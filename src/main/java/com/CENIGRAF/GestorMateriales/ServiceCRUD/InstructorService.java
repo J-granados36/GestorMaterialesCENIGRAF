@@ -43,8 +43,8 @@ public class InstructorService {
                 if (instructorModel.getIdInstructor()!= null){
                     In.get().setIdInstructor(instructorModel.getIdInstructor());
                 }
-                if (instructorModel.getNombre()!=null){
-                    In.get().setNombre(instructorModel.getNombre());
+                if (instructorModel.getNombreInstructor()!=null){
+                    In.get().setNombreInstructor(instructorModel.getNombreInstructor());
                 }
                 if (instructorModel.getCedula()!= null){
                     In.get().setCedula(instructorModel.getCedula());
@@ -73,6 +73,4 @@ public class InstructorService {
         }).orElse(false);
         return dIn;
     }
-
-
 }

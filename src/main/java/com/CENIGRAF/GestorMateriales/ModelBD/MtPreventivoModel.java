@@ -13,24 +13,12 @@ public class MtPreventivoModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idMtPreventivo;
-    private String nombre;
+    private String nombreMtPrev;
     private String descripcion;
 
-
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    @JoinTable(name = "maquinapreventivo",
-            joinColumns = {@JoinColumn(name = "idMtPreventivo")},
-            inverseJoinColumns = {@JoinColumn(name = "idMaquina")}
-    )
-    private List<MaquinaModel> maquinas= new ArrayList<>();
-
-    public List<MaquinaModel> getMaquinas() {
-        return maquinas;
-    }
-
-    public void setMaquinas(List<MaquinaModel> maquinas) {
-        this.maquinas = maquinas;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idMaquina")
+    private MaquinaModel maquinaModel;
 
     public Integer getIdMtPreventivo() {
         return idMtPreventivo;
@@ -40,12 +28,12 @@ public class MtPreventivoModel implements Serializable {
         this.idMtPreventivo = idMtPreventivo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreMtPrev() {
+        return nombreMtPrev;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreMtPrev(String nombreMtPrev) {
+        this.nombreMtPrev = nombreMtPrev;
     }
 
     public String getDescripcion() {

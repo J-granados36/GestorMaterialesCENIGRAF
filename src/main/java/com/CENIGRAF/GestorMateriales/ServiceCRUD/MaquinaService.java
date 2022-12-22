@@ -43,8 +43,8 @@ public class MaquinaService {
                 if (maquinaModel.getIdMaquina()!=null){
                     Ma.get().setIdMaquina(maquinaModel.getIdMaquina());
                 }
-                if (maquinaModel.getNombre()!=null){
-                    Ma.get().setNombre(maquinaModel.getNombre());
+                if (maquinaModel.getNombreMaquina()!=null){
+                    Ma.get().setNombreMaquina(maquinaModel.getNombreMaquina());
                 }
                 if (maquinaModel.getPlaca()!=null){
                     Ma.get().setPlaca(maquinaModel.getPlaca());

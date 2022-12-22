@@ -42,8 +42,8 @@ public class MtPreventivoService {
                 if (mtPreventivoModel.getIdMtPreventivo()!=null){
                     Mtp.get().setIdMtPreventivo(mtPreventivoModel.getIdMtPreventivo());
                 }
-                if (mtPreventivoModel.getNombre()!=null){
-                    Mtp.get().setNombre(mtPreventivoModel.getNombre());
+                if (mtPreventivoModel.getNombreMtPrev()!=null){
+                    Mtp.get().setNombreMtPrev(mtPreventivoModel.getNombreMtPrev());
                 }
                 if (mtPreventivoModel.getDescripcion()!=null){
                     Mtp.get().setDescripcion(mtPreventivoModel.getDescripcion());

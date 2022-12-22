@@ -15,30 +15,18 @@ public class AmbienteModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idAmbiente;
-    private String nombre;
+    private String nombreAmbiente;
     private String descripcion;
 
+    @OneToMany(mappedBy = "ambienteModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<MaquinaModel> maquinaModels;
 
-    //AMBIENTE O-M MAQUINA
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JsonIgnoreProperties({"Ambiente"})
-    public List<MaquinaModel> maquinaModel;
+    @OneToMany(mappedBy = "ambienteModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    @JoinTable(name = "instructorambiente",
-            joinColumns = {@JoinColumn(name = "idAmbiente")},
-            inverseJoinColumns = {@JoinColumn(name = "idInstructor")}
-    )
-    private List<InstructorModel>instructores= new ArrayList<>();
-
-    public List<InstructorModel> getInstructores() {
-        return instructores;
-    }
-
-    public void setInstructores(List<InstructorModel> instructores) {
-        this.instructores = instructores;
-    }
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idInstructor")
+    private InstructorModel instructorModel;
     public Integer getIdAmbiente() {
         return idAmbiente;
     }
@@ -47,12 +35,12 @@ public class AmbienteModel implements Serializable {
         this.idAmbiente = idAmbiente;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreAmbiente() {
+        return nombreAmbiente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreAmbiente(String nombreAmbiente) {
+        this.nombreAmbiente = nombreAmbiente;
     }
 
     public String getDescripcion() {
@@ -63,11 +51,27 @@ public class AmbienteModel implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<MaquinaModel> getMaquinaModel() {
-        return maquinaModel;
+    public List<MaquinaModel> getMaquinaModels() {
+        return maquinaModels;
     }
 
-    public void setMaquinaModel(List<MaquinaModel> maquinaModel) {
-        this.maquinaModel = maquinaModel;
+    public void setMaquinaModels(List<MaquinaModel> maquinaModels) {
+        this.maquinaModels = maquinaModels;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
+    }
+
+    public InstructorModel getInstructorModel() {
+        return instructorModel;
+    }
+
+    public void setInstructorModel(InstructorModel instructorModel) {
+        this.instructorModel = instructorModel;
     }
 }

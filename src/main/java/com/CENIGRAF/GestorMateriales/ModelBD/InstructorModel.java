@@ -15,27 +15,21 @@ public class InstructorModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer idInstructor;
-    private String nombre;
+    private String nombreInstructor;
     private Integer cedula;
 
     private String celular;
 
     private String correo;
 
-    //Relacion en BD
-    //INSTRUCTOR M-O PROGRAMA
-    //INTRUCTOR M-M AMBIENTE
+    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ProgramaModel> programaModels;
 
-    @ManyToMany(mappedBy = "instructores")
-    public List<AmbienteModel> Ambientes;
+    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<AmbienteModel> ambienteModels;
 
-    public List<AmbienteModel> getAmbientes() {
-        return Ambientes;
-    }
-
-    public void setAmbientes(List<AmbienteModel> ambientes) {
-        Ambientes = ambientes;
-    }
+    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public Integer getIdInstructor() {
         return idInstructor;
@@ -45,12 +39,12 @@ public class InstructorModel implements Serializable {
         this.idInstructor = idInstructor;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreInstructor() {
+        return nombreInstructor;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreInstructor(String nombreInstructor) {
+        this.nombreInstructor = nombreInstructor;
     }
 
     public Integer getCedula() {
@@ -75,5 +69,29 @@ public class InstructorModel implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public List<ProgramaModel> getProgramaModels() {
+        return programaModels;
+    }
+
+    public void setProgramaModels(List<ProgramaModel> programaModels) {
+        this.programaModels = programaModels;
+    }
+
+    public List<AmbienteModel> getAmbienteModels() {
+        return ambienteModels;
+    }
+
+    public void setAmbienteModels(List<AmbienteModel> ambienteModels) {
+        this.ambienteModels = ambienteModels;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 }

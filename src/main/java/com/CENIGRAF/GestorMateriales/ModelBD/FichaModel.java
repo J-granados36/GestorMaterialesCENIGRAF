@@ -2,6 +2,7 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "ficha")
@@ -12,10 +13,14 @@ public class FichaModel implements Serializable {
 
     private Integer idFicha;
 
-    private Integer numero;
+    private Integer numeroFicha;
 
-    //Relacion en BD
-    //fichas m-o programa
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPrograma")
+    private ProgramaModel programaModel;
+
+    @OneToMany(mappedBy = "fichaModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public Integer getIdFicha() {
         return idFicha;
@@ -25,11 +30,26 @@ public class FichaModel implements Serializable {
         this.idFicha = idFicha;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public Integer getNumeroFicha() {
+        return numeroFicha;
+    }
+    public void setNumeroFicha(Integer numeroFicha) {
+        this.numeroFicha = numeroFicha;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public ProgramaModel getProgramaModel() {
+        return programaModel;
+    }
+
+    public void setProgramaModel(ProgramaModel programaModel) {
+        this.programaModel = programaModel;
+    }
+
+    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
+        return transaccionalRepoModels;
+    }
+
+    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
+        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 }

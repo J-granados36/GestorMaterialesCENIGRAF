@@ -15,25 +15,6 @@ public class AlmacenModel implements Serializable {
 
     private Integer idAlmacen;
 
-    //ALMACEN O-M ELEMENTOS
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JsonIgnoreProperties({"almacen"})
-    public List<ElementoModel>elementoModel;
-
-    //almacen o-m programa
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JsonIgnoreProperties({"almacen"})
-    public List<ProgramaModel>programaModels;
-
-
-    public List<ProgramaModel> getProgramaModels() {
-        return programaModels;
-    }
-
-    public void setProgramaModels(List<ProgramaModel> programaModels) {
-        this.programaModels = programaModels;
-    }
-
     public Integer getIdAlmacen() {
         return idAlmacen;
     }
@@ -42,11 +23,5 @@ public class AlmacenModel implements Serializable {
         this.idAlmacen = idAlmacen;
     }
 
-    public List<ElementoModel> getElementoModel() {
-        return elementoModel;
-    }
 
-    public void setElementoModel(List<ElementoModel> elementoModel) {
-        this.elementoModel = elementoModel;
-    }
 }
