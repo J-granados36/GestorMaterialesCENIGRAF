@@ -22,11 +22,7 @@ public class InstructorModel implements Serializable {
 
     private String correo;
 
-    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<ProgramaModel> programaModels;
 
-    @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<AmbienteModel> ambienteModels;
 
     @OneToMany(mappedBy = "instructorModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;
@@ -69,22 +65,6 @@ public class InstructorModel implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public List<ProgramaModel> getProgramaModels() {
-        return programaModels;
-    }
-
-    public void setProgramaModels(List<ProgramaModel> programaModels) {
-        this.programaModels = programaModels;
-    }
-
-    public List<AmbienteModel> getAmbienteModels() {
-        return ambienteModels;
-    }
-
-    public void setAmbienteModels(List<AmbienteModel> ambienteModels) {
-        this.ambienteModels = ambienteModels;
     }
 
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {

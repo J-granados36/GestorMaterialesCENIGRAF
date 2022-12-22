@@ -18,9 +18,6 @@ public class MaquinaModel implements Serializable {
     private Integer placa;
     private Date adquisicion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAmbiente")
-    private AmbienteModel ambienteModel;
 
     @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<MtPreventivoModel> mtPreventivoModels;
@@ -62,13 +59,6 @@ public class MaquinaModel implements Serializable {
         this.adquisicion = adquisicion;
     }
 
-    public AmbienteModel getAmbienteModel() {
-        return ambienteModel;
-    }
-
-    public void setAmbienteModel(AmbienteModel ambienteModel) {
-        this.ambienteModel = ambienteModel;
-    }
 
     public List<MtPreventivoModel> getMtPreventivoModels() {
         return mtPreventivoModels;

@@ -19,16 +19,14 @@ app_prog= {
             },
             // Se añaden las columnas segun los nombres dados en el controlador
             columns:[
-                {defaultContent: "numeroFicha"},
                 {data: "nombrePrograma"},
-                {defaultContent: "nombreInstructor"},
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editarp' id='editar_prog'>Editar <i class='bi bi-pencil'></i></button>"},
                 {defaultContent: "<button type='button' class='btn btn-danger' id='eliminar_prog'>Eliminar <i class='bi bi-trash3'></i></button>"}
             ]
         })
     },
     registrar_prog: function(){
-        $("#add_programa").click(function(){ 
+        $("#add_programa").click(function(){
             $("#instructores_prog").empty();
             $.ajax({
                 type: "POST",
@@ -57,7 +55,7 @@ app_prog= {
             }
             $.ajax({
                 type: "POST",
-                url: "",
+                url: app_prog.backend_prog + "/save",
                 data: JSON.stringify(obj_prog),
                 contentType: "application/json",
                 success: function (response) {
@@ -155,7 +153,7 @@ app_inst={
             // Se añaden las columnas segun los nombres dados en el controlador
             columns:[
                 {data: "cedula"},
-                {data: "nombre"},
+                {data: "nombreInstructor"},
                 {data: "celular"},
                 {data: "correo"},              
                 {defaultContent: "<button type='button' class='btn btn-success' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"},
@@ -163,6 +161,9 @@ app_inst={
             ]
         })
     },
+
+
+
     reg_inst:function(){
         $("#reg_instructores").click(function() { 
             var reg_instru_docu=$("#reg_instru_docu").val();
@@ -173,7 +174,7 @@ app_inst={
                 cedula:reg_instru_docu,
                 celular:reg_instru_celu,
                 correo:reg_instru_corr,
-                nombre_intructor:reg_instru_nomb,
+                nombreInstructor:reg_instru_nomb,
                 nombre:null
             }
             $.ajax({
