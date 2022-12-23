@@ -76,12 +76,12 @@
                     <input type="text" class="form-control" id="reg_instru_celu" placeholder="Ingresar número">
                     <label>Correo electrónico:</label>
                     <input type="email" class="form-control" id="reg_instru_corr" placeholder="Ingresar Correo">
-
+                    
                     <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_instructores">
                 </div>
             </div>
         </div>
-        <table class="row-border" id="tabla_inst"> 
+        <table class="table table-stripe" id="tabla_inst"> 
             <thead>
             <tr>
                 <th>N° Documento</th>
@@ -92,7 +92,7 @@
                 <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="body_inst">
             </tbody>
         </table>
     </div>
@@ -107,13 +107,17 @@
             <div class="modal-body">
                 <h3>Completar todos los campos</h3>
                 <div class="container">
-                    <label>Numero de ficha</label>
-                    <input type="number" class="form-control">
-                    <label for="">Programa de formacion</label>
-                    <input type="text" class="form-control">
-                    <label for="">Instructor</label>
-                    <input type="text" class="form-control">
-                    <input type="button" class="btn btn-success" value="Realizar cambios">
+                    <label>Numero de documento</label>
+                    <input type="number" id="edit_cedu_inst" class="form-control">
+                    <label>Nombre</label>
+                    <input type="text" id="edit_nomb_inst" class="form-control">
+                    <label>Celular</label>
+                    <input type="text" id="edit_celu_inst" class="form-control">
+                    <label>Correo</label>
+                    <input type="email" id="edit_corr_inst" class="form-control">
+                    <input type="hidden" id="edit_id_inst">
+
+                    <input type="submit" id='cambios_inst' class="btn btn-success" value="Realizar cambios">
                 </div>
             </div>
           </div>
@@ -121,7 +125,7 @@
         </div>
     </div>
     <script src="../js/jquery-3.6.1.min.js"></script>
-    <script src="../js/Administrador_js.js"></script>
+    <script src="../js/CRUD_instructor.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
 </body>
 </html>
