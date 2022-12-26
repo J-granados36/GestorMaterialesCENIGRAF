@@ -132,6 +132,7 @@ app_prog= {
         });
     }
 }
+
 app_inst={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/InsModel",
@@ -190,14 +191,11 @@ app_inst={
                 var data=$xhr.responseJSON;
             })
 
-        });
-    }
-}
+
+
 $(document).ready(function(){      
     app_prog.leer_prog();
     app_prog.registrar_prog();
     app_prog.actualizar_prog();
     app_prog.eliminar_prog();
-    app_inst.leer_inst();
-    app_inst.reg_inst();
 });
