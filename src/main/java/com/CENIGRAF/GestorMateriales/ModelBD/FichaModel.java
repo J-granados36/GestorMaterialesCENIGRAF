@@ -15,9 +15,6 @@ public class FichaModel implements Serializable {
 
     private Integer numeroFicha;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPrograma")
-    private ProgramaModel programaModel;
 
     @OneToMany(mappedBy = "fichaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;
@@ -35,14 +32,6 @@ public class FichaModel implements Serializable {
     }
     public void setNumeroFicha(Integer numeroFicha) {
         this.numeroFicha = numeroFicha;
-    }
-
-    public ProgramaModel getProgramaModel() {
-        return programaModel;
-    }
-
-    public void setProgramaModel(ProgramaModel programaModel) {
-        this.programaModel = programaModel;
     }
 
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
