@@ -36,10 +36,23 @@
                                 <a href="PrincipalAdmin.html" id="btn-nav" class="btn btn-lg">Informe</a>
                             </li>
                             <li class="nav-link">
-                                <a href="ProgramasAdmin.html" id="btn-nav" class="btn btn-lg">Programas</a>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Formación</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="ProgramasAdmin.html" id="btn-nav">Programas</a>
+                                        <a class="dropdown-item" href="FichasAdmin.html" id="btn-nav">Fichas</a>
+                                        <a class="dropdown-item" href="InstructoresAdmin.html" id="btn-nav">Instructores</a>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-link">
-                                <a href="InstructoresAdmin.html" id="btn-nav" class="btn btn-lg">Instructores</a>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Ambientes</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="AmbientesAdmin.html" id="btn-nav">Ambientes</a>
+                                        <a class="dropdown-item" href="MaquinasAdmin.html" id="btn-nav">Máquinas</a>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-link">
                                 <div class="dropdown">
@@ -47,7 +60,8 @@
                                         Perfil <i class="bi bi-person-circle"></i></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                    <a class="dropdown-item">Administrador</a>
+                                        <a class="dropdown-item">Administrador</a>
+                                        <a class="dropdown-item" href="UsuariossAdmin.html" id="btn-nav">Usuarios</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Cerrar Sesion</a>
                                     </div>
@@ -81,6 +95,7 @@
                 </div>
             </div>
         </div>
+        <input class="form-control" id="buscador_inst" type="text" placeholder="Buscar instructor..">             
         <table class="table table-stripe" id="tabla_inst"> 
             <thead>
             <tr>
@@ -107,23 +122,34 @@
             <div class="modal-body">
                 <h3>Completar todos los campos</h3>
                 <div class="container">
-                    <label>Numero de documento</label>
-                    <input type="number" id="edit_cedu_inst" class="form-control">
-                    <label>Nombre</label>
-                    <input type="text" id="edit_nomb_inst" class="form-control">
-                    <label>Celular</label>
-                    <input type="text" id="edit_celu_inst" class="form-control">
-                    <label>Correo</label>
-                    <input type="email" id="edit_corr_inst" class="form-control">
-                    <input type="hidden" id="edit_id_inst">
+                    <form id="formulario_act_ins">
+                        <label>Numero de documento</label>
+                        <input type="number" id="edit_cedu_inst" class="form-control">
+                        <label>Nombre</label>
+                        <input type="text" id="edit_nomb_inst" class="form-control">
+                        <label>Celular</label>
+                        <input type="text" id="edit_celu_inst" class="form-control">
+                        <label>Correo</label>
+                        <input type="email" id="edit_corr_inst" class="form-control">
+                        <input type="hidden" id="edit_id_inst">
 
-                    <input type="submit" id='cambios_inst' class="btn btn-success" value="Realizar cambios">
+                        <input type="submit" id='cambios_inst' class="btn btn-success" value="Realizar cambios">
+                    </form>
                 </div>
             </div>
-          </div>
-      
+          </div>   
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+          $("#buscador_inst").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#body_inst tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
     <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/CRUD_instructor.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 

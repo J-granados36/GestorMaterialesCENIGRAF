@@ -1,42 +1,11 @@
-function borrarInstructor(idInst){
-        
-    var idEliminar={
-        id:idInst
-    }   
-    $.ajax({
-        type: "DELETE",
-        url: app_inst.backend+'/'+idInst,
-        data: JSON.stringify(idEliminar),
-        dataType: "JSON",
-        contentType: "application/json",
-        success: function (response) {
-            location.reload();
-        }
-    })
-}
-function editarInstructor(idInst){
-    $.ajax({
-        type: "GET",
-        url: app_inst.backend+"/"+idInst,
-        dataType: "JSON",
-        
-        success: function (data) {
-            $("#edit_id_inst").empty().val(data.idInstructor);
-            $("#edit_cedu_inst").empty().val(data.cedula);
-            $("#edit_nomb_inst").empty().val(data.nombreInstructor);
-            $("#edit_celu_inst").empty().val(data.celular);
-            $("#edit_corr_inst").empty().val(data.correo);
-        }
-    });
-}
-app_inst={
+app_prog={
     // Se llama la url del controller de intructores 
-    backend: "http://localhost:8080/api/InsModel",
+    backend: "http://localhost:8080/api/ProgramaModel",
     // Se DataTable para darle un diseño por defecto de jquery 
-    leer_inst: function(){     
+    leer_prog: function(){     
         $.ajax({
             
-            url: app_inst.backend + "/all",
+            url: app_prog.backend + "/all",
             type: 'GET',
             datatype: 'JSON',
             success: function (response) {
@@ -44,19 +13,16 @@ app_inst={
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
-                                '<td>'+ myItems[i].cedula+'</td>'+
-                                '<td>'+ myItems[i].nombreInstructor+'</td>'+
-                                '<td>'+ myItems[i].celular+'</td>'+
-                                '<td>'+ myItems[i].correo+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idInstructor+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idInstructor+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+ myItems[i].nombrePrograma+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
-                $("#body_inst").html(valor);
+                $("#body_prog").html(valor);
             }
         })
     },
-    reg_inst: function(){
+    reg_prog: function(){
         $("#reg_instructores").click(function() { 
             var reg_instru_docu=$("#reg_instru_docu").val();
             var reg_instru_nomb=$("#reg_instru_nomb").val();
@@ -83,7 +49,7 @@ app_inst={
 
         });
     },
-    actualizar_inst(){
+    actualizar_prog(){
         $('#formulario_act_ins').on("click", function (event){
             event.preventDefault();
          })
@@ -120,7 +86,7 @@ app_inst={
     } 
 }
 $(document).ready(function () {
-    app_inst.leer_inst();
-    app_inst.reg_inst();
-    app_inst.actualizar_inst();
+    app_prog.leer_prog();
+    app_prog.reg_prog();
+    app_prog.actualizar_prog();
 });

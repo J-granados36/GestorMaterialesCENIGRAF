@@ -1,4 +1,4 @@
-#btn-nav{
+.nav-link{
     font-family: sans-serif;
 }
 header{
@@ -8,7 +8,7 @@ header{
     font-size: 15px;
 }
 #info{
-    padding: 5%;
+    padding-top: 4%;
 }
 h1{
     font-family: sans-serif;

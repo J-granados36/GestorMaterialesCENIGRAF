@@ -18,81 +18,102 @@
     <title>SENA-Gestor de Materiales</title>
 </head>
 <header>
-    <!--Barra de navegación-->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 logo_section">
-                    <div class="full">
-                        <div class="center-desk">
-                        <div class="logo">
-                                <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
-                            </div>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 logo_section">
+                <div class="full">
+                    <div class="center-desk">
+                    <div class="logo">
+                            <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-expand">
-                                <li class="nav-link">
-                                    <a href="PrincipalAdmin.html" id="btn-nav" class="btn btn-lg">Informe</a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="ProgramasAdmin.html" id="btn-nav" class="btn btn-lg">Programas</a>
-                                </li>
-                                <li class="nav-link">
-                                    <a href="InstructoresAdmin.html" id="btn-nav" class="btn btn-lg">Instructores</a>
-                                </li>
-                                <li class="nav-link">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
-                                            Perfil <i class="bi bi-person-circle"></i></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item">Administrador</a>
-                                        <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Cerrar Sesion</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
             </div>
-        </div> 
+            <div class="col-lg-7">
+                <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-expand">
+                            <li class="nav-link">
+                                <a href="PrincipalAdmin.html" id="btn-nav" class="btn btn-lg">Informe</a>
+                            </li>
+                            <li class="nav-link">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Formación</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="ProgramasAdmin.html" id="btn-nav">Programas</a>
+                                        <a class="dropdown-item" href="FichasAdmin.html" id="btn-nav">Fichas</a>
+                                        <a class="dropdown-item" href="InstructoresAdmin.html" id="btn-nav">Instructores</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-link">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Ambientes</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="AmbientesAdmin.html" id="btn-nav">Ambientes</a>
+                                        <a class="dropdown-item" href="MaquinasAdmin.html" id="btn-nav">Máquinas</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-link">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                                        Perfil <i class="bi bi-person-circle"></i></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item">Administrador</a>
+                                        <a class="dropdown-item" href="UsuariossAdmin.html" id="btn-nav">Usuarios</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div> 
 </header>
 <body>
     <div class="container" id="info">
-        <h1>Lista de programas</h1>
-        <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#programa" id="add_programa">Agregar Programa <i class="bi bi-bookmark-plus"></i></button>
-        <div id="programa" class="collapse">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Complete todos los campos</h4>
-                    <label>Número de ficha:</label>
-                    <input type="number" class="form-control" id="reg_prog_ficha" placeholder="Ingresar número">
-                    <label>Programa:</label>
-                    <input type="text" class="form-control" id="reg_prog_prog" placeholder="Ingresar nombre">
-                    <label>Instructor:</label>
-                    <select class="form-control" name="" id="reg_instructores_prog">
-                    </select>
-                    <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_programa" value="Registrar">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Lista de programas</h1>
+                <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#programa">Agregar programa <i class="bi bi-bookmark-plus"></i></button>
+                <div id="programa" class="collapse">
+                        <h4>Complete todos los campos</h4>
+                        <label>Nombre de programa:</label>
+                        <input type="text" class="form-control" id="reg_instru_docu" placeholder="Ingresar nombre">
+                        
+                        <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_instructores">
                 </div>
+                <input class="form-control" id="buscador_programa" type="text" placeholder="Buscar programa..">         
+                <table class="table table-stripe" id="tabla_prog"> 
+                    <thead>
+                    <tr>
+                        <th>Nombre de programa</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="body_prog">
+                    </tbody>
+                </table>
             </div>
         </div>
-        <table id="tabla_prog" class="row-border">
-            <thead>
-            <tr>
-                <th>Programa de formacion</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
     </div>
+    <script>
+        $(document).ready(function(){
+        $("#buscador_programa").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#body_prog tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
+    </script>
     <div id="editarp" class="modal fade" role="dialog">
         <div class="modal-dialog">
       
@@ -118,28 +139,9 @@
       
         </div>
     </div>
-    <div id="eliminarp" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-      
-          <!-- Modal Programas-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h3>Eliminar Programa</h3>
-                <div class="container">
-                    <label>Se eliminará el programa del sistema</label>
-                    <input type="hidden" class="form-control" id="eliminar_prog_id">
-                    <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
-                </div>
-            </div>
-          </div>
-      
-        </div>
-    </div>
 <!--JQuery y js-->
 <script src="../js/jquery-3.6.1.min.js"></script>
-<script src="../js/Administrador_js.js"></script>
+<script src="../js/CRUD_programa.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
 </body>
+</html>
