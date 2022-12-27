@@ -1,3 +1,32 @@
+function borrarInstructor(idProg){
+
+    var idEliminar={
+        id:idProg
+    }
+    $.ajax({
+        type: "DELETE",
+        url: app_prog.backend+'/'+idProg,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarPrograma(idProg){
+    $.ajax({
+        type: "GET",
+        url: app_prog.backend+"/"+idProg,
+        dataType: "JSON",
+
+        success: function (data) {
+            $("#edit_id_prog").empty().val(data.idPrograma);
+            $("#edit_nomb_prog").empty().val(data.nombrePrograma);
+        }
+    });
+}
+
 app_prog={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/ProgramaModel",
@@ -15,7 +44,7 @@ app_prog={
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombrePrograma+'</td>'+
                                 '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPrograma("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_prog").html(valor);
@@ -23,20 +52,14 @@ app_prog={
         })
     },
     reg_prog: function(){
-        $("#reg_instructores").click(function() { 
-            var reg_instru_docu=$("#reg_instru_docu").val();
-            var reg_instru_nomb=$("#reg_instru_nomb").val();
-            var reg_instru_celu=$("#reg_instru_celu").val();
-            var reg_instru_corr=$("#reg_instru_corr").val();
+        $("#reg_programas").click(function() {
+            var reg_prog_nomb=$("#reg_prog_nomb").val();
             var obj_prog={
-                cedula:reg_instru_docu,
-                celular:reg_instru_celu,
-                correo:reg_instru_corr,
-                nombreInstructor:reg_instru_nomb
+                nombrePrograma:reg_prog_nomb
             }
             $.ajax({
                 type: "POST",
-                url: app_inst.backend + "/save",
+                url: app_prog.backend + "/save",
                 data: JSON.stringify(obj_prog),
                 dataType: 'JSON',
                 contentType: "application/json",
@@ -50,31 +73,23 @@ app_prog={
         });
     },
     actualizar_prog(){
-        $('#formulario_act_ins').on("click", function (event){
+        $('#formulario_act_prog').on("click", function (event){
             event.preventDefault();
          })
 
-        $("#cambios_inst").click(function(){
+        $("#cambios_prog").click(function(){
 
-            var edit_id_inst=$("#edit_id_inst").val();
-            var edit_cedu_inst=$("#edit_cedu_inst").val();
-            var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_nomb_prog=$("#edit_nomb_prog").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
-                cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                nombrePrograma:edit_nomb_prog,
             }
 
             var datosJSON=JSON.stringify(datos_editados);
             
             $.ajax({   
                 type: "PUT",
-                url: app_inst.backend+"/update",
+                url: app_prog.backend+"/update",
                 data: datosJSON,
                 dataType: "JSON",
                 contentType: "application/json",
@@ -90,3 +105,10 @@ $(document).ready(function () {
     app_prog.reg_prog();
     app_prog.actualizar_prog();
 });
+
+
+
+
+
+
+

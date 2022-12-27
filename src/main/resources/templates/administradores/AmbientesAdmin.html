@@ -82,16 +82,16 @@
                     <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#ficha">Agregar ambiente <i class="bi bi-bookmark-plus"></i></button>
                     <div id="ficha" class="collapse">
                             <h4>Complete todos los campos</h4>
-                            <label>Descripción de ambiente:</label>
-                            <input type="number" class="form-control" id="reg_instru_docu" placeholder="Ingresar descripción">
+                            <label>Ambiente:</label>
+                            <input type="text" class="form-control" id="reg_ambi_nomb" placeholder="Ingresar descripción">
                             
-                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_instructores">
+                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_ambientes">
                     </div>
                     <input class="form-control" id="buscador_ambi" type="text" placeholder="Buscar ambiente..">             
                     <table class="table table-stripe" id="tabla_ambi"> 
                         <thead>
                         <tr>
-                            <th>Descripción del ambiente</th>
+                            <th>Ambientes</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -113,18 +113,12 @@
                 <div class="modal-body">
                     <h3>Completar todos los campos</h3>
                     <div class="container">
-                        <form id="formulario_act_ins">
-                            <label>Numero de documento</label>
-                            <input type="number" id="edit_cedu_inst" class="form-control">
-                            <label>Nombre</label>
-                            <input type="text" id="edit_nomb_inst" class="form-control">
-                            <label>Celular</label>
-                            <input type="text" id="edit_celu_inst" class="form-control">
-                            <label>Correo</label>
-                            <input type="email" id="edit_corr_inst" class="form-control">
-                            <input type="hidden" id="edit_id_inst">
+                        <form id="formulario_act_ambi">
+                            <label>Nombre Ambiente</label>
+                            <input type="text" id="edit_nomb_ambi" class="form-control">
+                            <input type="hidden" id="edit_id_ambi">
     
-                            <input type="submit" id='cambios_inst' class="btn btn-success" value="Realizar cambios">
+                            <input type="submit" id='cambios_ambi' class="btn btn-success" value="Realizar cambios">
                         </form>
                     </div>
                 </div>

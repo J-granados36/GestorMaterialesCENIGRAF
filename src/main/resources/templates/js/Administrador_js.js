@@ -1,3 +1,4 @@
+/*
 app_prog= {
     backend_prog: "http://localhost:8080/api/ProgramaModel",
     
@@ -199,3 +200,5 @@ $(document).ready(function(){
     app_prog.actualizar_prog();
     app_prog.eliminar_prog();
 });
+
+ */

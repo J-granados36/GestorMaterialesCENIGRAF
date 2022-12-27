@@ -1,3 +1,33 @@
+function borrarMaquina(idMaqu){
+
+    var idEliminar={
+        id:idMaqu
+    }
+    $.ajax({
+        type: "DELETE",
+        url: app_maqu.backend+'/'+idMaqu,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarMaquina(idMaqu){
+    $.ajax({
+        type: "GET",
+        url: app_maqu.backend+"/"+idMaqu,
+        dataType: "JSON",
+
+        success: function (data) {
+            $("#edit_nomb_maqu").empty().val(data.nombreMaquina);
+            $("#edit_placa_maqu").empty().val(data.placa);
+            $("#edit_fech_maqu").empty().val(data.adquisicion);
+        }
+    });
+}
+
 app_maqu={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/MaquinaModel",
@@ -14,8 +44,8 @@ app_maqu={
                                 '<td>'+ myItems[i].nombreMaquina+'</td>'+
                                 '<td>'+ myItems[i].placa+'</td>'+
                                 '<td>'+ myItems[i].adquisicion+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idMaquina+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idMaquina+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarMaquina("+ myItems[i].idMaquina+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_maqu").html(valor);
@@ -23,20 +53,18 @@ app_maqu={
         })
     },
     reg_maqu: function(){
-        $("#reg_instructores").click(function() { 
-            var reg_instru_docu=$("#reg_instru_docu").val();
-            var reg_instru_nomb=$("#reg_instru_nomb").val();
-            var reg_instru_celu=$("#reg_instru_celu").val();
-            var reg_instru_corr=$("#reg_instru_corr").val();
+        $("#reg_maquinas").click(function() {
+            var reg_maqu_fech=$("#reg_maqu_fech").val();
+            var reg_maqu_nom=$("#reg_maqu_nom").val();
+            var reg_maqu_num=$("#reg_maqu_num").val();
             var obj_prog={
-                cedula:reg_instru_docu,
-                celular:reg_instru_celu,
-                correo:reg_instru_corr,
-                nombreInstructor:reg_instru_nomb
+                adquisicion:reg_maqu_fech,
+                placa:reg_maqu_num,
+                nombreMaquina:reg_maqu_nom
             }
             $.ajax({
                 type: "POST",
-                url: app_inst.backend + "/save",
+                url: app_maqu.backend + "/save",
                 data: JSON.stringify(obj_prog),
                 dataType: 'JSON',
                 contentType: "application/json",
@@ -50,31 +78,27 @@ app_maqu={
         });
     },
     actualizar_maqu(){
-        $('#formulario_act_ins').on("click", function (event){
+        $('#formulario_act_maqu').on("click", function (event){
             event.preventDefault();
          })
 
-        $("#cambios_inst").click(function(){
+        $("#cambios_maqu").click(function(){
 
-            var edit_id_inst=$("#edit_id_inst").val();
-            var edit_cedu_inst=$("#edit_cedu_inst").val();
-            var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_nomb_maqu=$("#edit_nomb_maqu").val();
+            var edit_placa_maqu=$("#edit_placa_maqu").val();
+            var edit_fech_maqu=$("#edit_fech_maqu").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
-                cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                nombreMaquina:edit_nomb_maqu,
+                placa:edit_placa_maqu,
+                adquisicion:edit_fech_maqu,
             }
 
             var datosJSON=JSON.stringify(datos_editados);
             
             $.ajax({   
                 type: "PUT",
-                url: app_inst.backend+"/update",
+                url: app_maqu.backend+"/update",
                 data: datosJSON,
                 dataType: "JSON",
                 contentType: "application/json",
