@@ -1,42 +1,11 @@
-function borrarInstructor(idInst){
-        
-    var idEliminar={
-        id:idInst
-    }   
-    $.ajax({
-        type: "DELETE",
-        url: app_inst.backend+'/'+idInst,
-        data: JSON.stringify(idEliminar),
-        dataType: "JSON",
-        contentType: "application/json",
-        success: function (response) {
-            location.reload();
-        }
-    })
-}
-function editarInstructor(idInst){
-    $.ajax({
-        type: "GET",
-        url: app_inst.backend+"/"+idInst,
-        dataType: "JSON",
-        
-        success: function (data) {
-            $("#edit_id_inst").empty().val(data.idInstructor);
-            $("#edit_cedu_inst").empty().val(data.cedula);
-            $("#edit_nomb_inst").empty().val(data.nombreInstructor);
-            $("#edit_celu_inst").empty().val(data.celular);
-            $("#edit_corr_inst").empty().val(data.correo);
-        }
-    });
-}
-app_inst={
+app_fich={
     // Se llama la url del controller de intructores 
-    backend: "http://localhost:8080/api/InsModel",
+    backend: "http://localhost:8080/api/FichaModel",
     // Se DataTable para darle un diseño por defecto de jquery 
-    leer_inst: function(){     
+    leer_fich: function(){     
         $.ajax({
             
-            url: app_inst.backend + "/all",
+            url: app_fich.backend + "/all",
             type: 'GET',
             datatype: 'JSON',
             success: function (response) {
@@ -44,15 +13,12 @@ app_inst={
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
-                                '<td>'+ myItems[i].cedula+'</td>'+
-                                '<td>'+ myItems[i].nombreInstructor+'</td>'+
-                                '<td>'+ myItems[i].celular+'</td>'+
-                                '<td>'+ myItems[i].correo+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idInstructor+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idInstructor+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+ myItems[i].numeroFicha+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idFicha+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idFicha+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
-                $("#body_inst").html(valor);
+                $("#body_fich").html(valor);
             }
         })
     },
@@ -120,7 +86,7 @@ app_inst={
     } 
 }
 $(document).ready(function () {
-    app_inst.leer_inst();
-    app_inst.reg_inst();
-    app_inst.actualizar_inst();
+    app_fich.leer_fich();
+    app_fich.reg_inst();
+    app_fich.actualizar_inst();
 });
