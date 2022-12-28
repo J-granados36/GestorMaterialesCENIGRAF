@@ -81,24 +81,25 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Lista de usuarios</h1>
-                    <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#programa">Agregar programa <i class="bi bi-bookmark-plus"></i></button>
-                    <div id="programa" class="collapse">
+                    <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#usuario">Agregar usuario <i class="bi bi-bookmark-plus"></i></button>
+                    <div id="usuario" class="collapse">
                             <h4>Complete todos los campos</h4>
-                            <label>Nombre de programa:</label>
-                            <input type="text" class="form-control" id="reg_instru_docu" placeholder="Ingresar nombre">
-                            
-                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_instructores">
+                            <label>Nombre del usuario:</label>
+                            <input type="text" class="form-control" id="reg_usuario_nomb" placeholder="Ingresar nombre">
+                            <label>Contraseña:</label>
+                            <input type="text" class="form-control" id="reg_usuario_cont" placeholder="Ingresar contraseña">
+                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_usuario">
                     </div>
-                    <input class="form-control" id="buscador_programa" type="text" placeholder="Buscar programa..">         
-                    <table class="table table-stripe" id="tabla_prog"> 
+                    <input class="form-control" id="buscador_usuario" type="text" placeholder="Buscar contraseña..">         
+                    <table class="table table-stripe" id="tabla_usua"> 
                         <thead>
                         <tr>
-                            <th>Nombre de programa</th>
-                            <th></th>
+                            <th>Nombre del usuario</th>
+                            <th>Contraseña</th>
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody id="body_prog">
+                        <tbody id="body_usua">
                         </tbody>
                     </table>
                 </div>
@@ -106,9 +107,9 @@
         </div>
         <script>
             $(document).ready(function(){
-            $("#buscador_programa").on("keyup", function() {
+            $("#buscador_usuario").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
-                $("#body_prog tr").filter(function() {
+                $("#body_usua tr").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
@@ -142,6 +143,5 @@
     <!--JQuery y js-->
     <script src="../js/jquery-3.6.1.min.js"></script>
     <script src="../js/CRUD_usuarios.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> 
     </body>
 </html>

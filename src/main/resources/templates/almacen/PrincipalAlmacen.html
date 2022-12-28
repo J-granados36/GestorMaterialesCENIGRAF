@@ -58,24 +58,21 @@
     </header>
     <body>
         <div class="container" id="info">
-            <h2>Elementos</h2>
-            <p>Para registrar un nuevo articulo seleccione el siguiente boton:</p>
+            <h1>Elementos</h1>
             <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#articulo">Agregar Articulo <i class="bi bi-bookmark-plus"></i></button>
             <div id="articulo" class="collapse">
                 <div class="row">
                     <div class="col-md-6">
                         <h4>Complete todos los campos</h4>
-                        <label>Codigo del elemento:</label>
-                        <input type="number" class="form-control" placeholder="Ingresar número">
                         <label>Nombre:</label>
-                        <input type="text" class="form-control" placeholder="Ingresar nombre">
+                        <input type="text" id="reg_elem_nomb" class="form-control" placeholder="Ingresar nombre">
                         <label>Descripción:</label>
-                        <textarea class="form-control" rows="5" id="comment" placeholder="Ingresar descripción"></textarea>
+                        <textarea class="form-control" id="reg_elem_desc" placeholder="Ingresar descripción"></textarea>
                         <label>Medida:</label>
-                        <input type="text" class="form-control" placeholder="Ingresar nombre">
+                        <input type="text" class="form-control" id="reg_elem_medi" placeholder="Ingresar nombre">
                         <label>Cantidad:</label>
-                        <input type="number" class="form-control" placeholder="Ingresar nombre">
-                        <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar">
+                        <input type="number" class="form-control" id="reg_elem_cant" placeholder="Ingresar nombre">
+                        <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_elementos" value="Registrar">
                     </div>
                 </div>
             </div>
@@ -89,20 +86,11 @@
                   <th>Descripción</th>
                   <th>Medida</th>
                   <th>Cantidad</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody id="bodytable">
-                <tr>
-                    <td>1</td>
-                    <td>Cartulina</td>
-                    <td>...</td>
-                    <td>Pliego</td>
-                    <td>329</td>
-                    <td><a href=""><button class="btn btn-success">Editar <i class="bi bi-pencil"></i></button></a></td>
-                    <td><a href=""><button class="btn btn-danger">Eliminar <i class="bi bi-trash3"></i></button></a></td>
-                </tr>
+              <tbody id="body_elem">
               </tbody>
             </table>    
           </div>
@@ -111,11 +99,13 @@
           $(document).ready(function(){
             $("#buscarel").on("keyup", function() {
               var value = $(this).val().toLowerCase();
-              $("#bodytable tr").filter(function() {
+              $("#body_elem tr").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
             });
           });
           </script>
+          <script src="../js/jquery-3.6.1.min.js"></script>
+          <script src="../js/CRUD_elementos.js"></script>
     </body>
 </html>
