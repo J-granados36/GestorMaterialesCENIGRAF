@@ -35,7 +35,7 @@
                                     <a href="SolicitudInstruc.html" id="btn-nav" class="btn btn-lg">Solicitudes</a>
                                 </li>
                                 <li class="nav-link">
-                                    <a href="PrincipalAlmacen.html" id="btn-nav" class="btn btn-lg">Elementos</a>
+                                    <a href="PrincipalAlmacen.html" id="btn-nav" class="btn btn-lg">Inventario</a>
                                 </li>
                                 <li class="nav-link">
                                     <div class="dropdown">
@@ -58,21 +58,35 @@
     </header>
     <body>
         <div class="container" id="info">
-            <h1>Elementos</h1>
+            <h1>Inventario</h1>
             <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#articulo">Agregar Articulo <i class="bi bi-bookmark-plus"></i></button>
             <div id="articulo" class="collapse">
                 <div class="row">
                     <div class="col-md-6">
                         <h4>Complete todos los campos</h4>
                         <label>Nombre:</label>
-                        <input type="text" id="reg_elem_nomb" class="form-control" placeholder="Ingresar nombre">
+                        <input type="text" id="reg_inve_nomb" class="form-control" placeholder="Ingresar nombre">
                         <label>Descripción:</label>
-                        <textarea class="form-control" id="reg_elem_desc" placeholder="Ingresar descripción"></textarea>
+                        <textarea class="form-control" id="reg_inve_desc" placeholder="Ingresar descripción"></textarea>
                         <label>Medida:</label>
-                        <input type="text" class="form-control" id="reg_elem_medi" placeholder="Ingresar nombre">
+                        <select class="form-control" id="reg_inve_medi">
+                            <option default hidden>Seleccionar</option>
+                            <option>Unidad</option>
+                            <option>Pliego</option>
+                            <option>1/2 Pliego</option>
+                            <option>Caja</option>
+                            <option>Kilo</option>
+                            <option>Rollo</option>
+                            <option>Lamina</option>
+                            <option>Galón</option>
+                            <option>Paquete</option>
+                            <option>Metros</option>
+                        </select>
                         <label>Cantidad:</label>
-                        <input type="number" class="form-control" id="reg_elem_cant" placeholder="Ingresar nombre">
-                        <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_elementos" value="Registrar">
+                        <input type="number" class="form-control" id="reg_inve_cant" placeholder="Ingresar nombre">
+                        <label>Estado:</label>
+                        <input type="number" class="form-control" id="reg_inve_esta" placeholder="Ingresar estado">
+                        <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_inventario" value="Registrar">
                     </div>
                 </div>
             </div>
@@ -86,11 +100,12 @@
                   <th>Descripción</th>
                   <th>Medida</th>
                   <th>Cantidad</th>
+                  <th>Estado</th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
-              <tbody id="body_elem">
+              <tbody id="body_inve">
               </tbody>
             </table>    
           </div>
@@ -99,13 +114,13 @@
           $(document).ready(function(){
             $("#buscarel").on("keyup", function() {
               var value = $(this).val().toLowerCase();
-              $("#body_elem tr").filter(function() {
+              $("#body_inve tr").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
             });
           });
           </script>
           <script src="../js/jquery-3.6.1.min.js"></script>
-          <script src="../js/CRUD_elementos.js"></script>
+          <script src="../js/CRUD_inventario.js"></script>
     </body>
 </html>
