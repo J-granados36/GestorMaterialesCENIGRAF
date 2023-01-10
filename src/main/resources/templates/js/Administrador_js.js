@@ -192,7 +192,10 @@ app_inst={
                 var data=$xhr.responseJSON;
             })
 
-
+        })
+    
+    }
+}
 
 $(document).ready(function(){      
     app_prog.leer_prog();
