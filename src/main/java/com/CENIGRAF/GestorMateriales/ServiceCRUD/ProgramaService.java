@@ -38,7 +38,7 @@ public class ProgramaService {
     public ProgramaModel update(ProgramaModel programaModel){
         if (programaModel.getIdPrograma()!=null){
             Optional<ProgramaModel> Pr=programaRepository.getProgramaModel(programaModel.getIdPrograma());
-            if (Pr.isEmpty()){
+            if (!Pr.isEmpty()){
                 if (programaModel.getIdPrograma()!=null){
                     Pr.get().setIdPrograma(programaModel.getIdPrograma());
                 }

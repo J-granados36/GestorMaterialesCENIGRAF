@@ -4,6 +4,7 @@ import com.CENIGRAF.GestorMateriales.ModelBD.AmbienteModel;
 import com.CENIGRAF.GestorMateriales.Repository.AmbienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +40,7 @@ public class AmbienteService {
     public AmbienteModel update(AmbienteModel ambienteModel){
         if (ambienteModel.getIdAmbiente()!= null){
             Optional<AmbienteModel> Am=ambienteRepository.getAmbienteModel(ambienteModel.getIdAmbiente());
-            if (Am.isEmpty()){
+            if (!Am.isEmpty()){
                 if (ambienteModel.getIdAmbiente()!= null){
                     Am.get().setIdAmbiente(ambienteModel.getIdAmbiente());
                 }

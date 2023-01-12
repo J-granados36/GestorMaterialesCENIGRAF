@@ -35,11 +35,10 @@ public class MaquinaService {
         }
     }
 
-
     public MaquinaModel update(MaquinaModel maquinaModel){
         if (maquinaModel.getIdMaquina()!=null){
             Optional<MaquinaModel> Ma=maquinaRepository.getMaquinaModel(maquinaModel.getIdMaquina());
-            if (Ma.isEmpty()){
+            if (!Ma.isEmpty()){
                 if (maquinaModel.getIdMaquina()!=null){
                     Ma.get().setIdMaquina(maquinaModel.getIdMaquina());
                 }
@@ -61,6 +60,7 @@ public class MaquinaService {
             return maquinaModel;
         }
     }
+
 
     public boolean deleteMaquinaModel(int id){
         Boolean dMa=getMaquinaModel(id).map(maquinaModel -> {

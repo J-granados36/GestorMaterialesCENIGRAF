@@ -39,7 +39,7 @@ public class ElementoService {
     public ElementoModel update(ElementoModel elementoModel){
         if(elementoModel.getIdElemento()!=null){
             Optional<ElementoModel> El=elementoRepository.getElementoModel(elementoModel.getIdElemento());
-            if (El.isEmpty()){
+            if (!El.isEmpty()){
                 if (elementoModel.getIdElemento()!=null){
                     El.get().setIdElemento(elementoModel.getIdElemento());
                 }

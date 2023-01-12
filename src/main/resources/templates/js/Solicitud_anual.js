@@ -3,7 +3,7 @@ var contador2a=2;
 function suma_elementoa(){
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/Inventario/all",
+        url: "http://localhost:8080/api/ElementoModel/all",
         dataType: "JSON",
         success: function (response) {
             var myItems= response;
@@ -68,7 +68,7 @@ $.ajax({
 });
 $.ajax({
     type: "GET",
-    url: "http://localhost:8080/api/Inventario/all",
+    url: "http://localhost:8080/api/ElementoModel/all",
     dataType: "JSON",
     success: function (response) {
         var myItems= response;
@@ -76,6 +76,7 @@ $.ajax({
         for (i = 0; i < myItems.length; i++) {
             valor +='<option hidden default>Seleccionar</option>'+
             '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>'
+            '<option value"'+myItems[i].idInventario+'">'+ myItems[i].undMedida+'</option>'
         }
         $("#elemento_anu").html(valor);
     }

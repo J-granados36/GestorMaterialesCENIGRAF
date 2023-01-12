@@ -38,7 +38,7 @@ public class FichaService {
     public FichaModel update(FichaModel fichaModel){
         if (fichaModel.getIdFicha()!=null){
             Optional<FichaModel> Fi=fichaRepository.getFichaModel(fichaModel.getIdFicha());
-            if (Fi.isEmpty()){
+            if (!Fi.isEmpty()){
                 if (fichaModel.getIdFicha()!=null){
                     Fi.get().setIdFicha(fichaModel.getIdFicha());
                 }
