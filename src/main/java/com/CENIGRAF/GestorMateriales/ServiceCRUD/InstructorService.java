@@ -39,7 +39,7 @@ public class InstructorService {
     public InstructorModel update(InstructorModel instructorModel){
         if (instructorModel.getIdInstructor() != null){
             Optional<InstructorModel> In=instructorRepository.getInstructorModel(instructorModel.getIdInstructor());
-            if (In.isEmpty()){
+            if (!In.isEmpty()){
                 if (instructorModel.getIdInstructor()!= null){
                     In.get().setIdInstructor(instructorModel.getIdInstructor());
                 }

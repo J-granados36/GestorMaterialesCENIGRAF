@@ -39,7 +39,7 @@ public class AmbienteService {
     public AmbienteModel update(AmbienteModel ambienteModel){
         if (ambienteModel.getIdAmbiente()!= null){
             Optional<AmbienteModel> Am=ambienteRepository.getAmbienteModel(ambienteModel.getIdAmbiente());
-            if (Am.isEmpty()){
+            if (!Am.isEmpty()){
                 if (ambienteModel.getIdAmbiente()!= null){
                     Am.get().setIdAmbiente(ambienteModel.getIdAmbiente());
                 }

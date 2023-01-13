@@ -38,7 +38,7 @@ public class InventarioService {
     public InventarioModel update(InventarioModel inventarioModel){
         if (inventarioModel.getIdInventario()!=null){
             Optional<InventarioModel> Inv=inventarioRepository.getInventarioModel(inventarioModel.getIdInventario());
-            if (Inv.isEmpty()){
+            if (!Inv.isEmpty()){
                 if (inventarioModel.getIdInventario()!=null){
                     Inv.get().setIdInventario(inventarioModel.getIdInventario());
                 }
