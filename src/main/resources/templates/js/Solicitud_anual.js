@@ -10,6 +10,7 @@ function suma_elementoa(){
             var valor = '';
             for (i = 0; i < myItems.length; i++) {
                 valor += myItems[i].nombreElemento;
+                idvalor += myItems[i].idInventario; 
             }
             $("#tb_elementoa").append(
             '<tr>'+
