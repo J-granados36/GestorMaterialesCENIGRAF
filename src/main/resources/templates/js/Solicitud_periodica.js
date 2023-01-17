@@ -24,7 +24,6 @@ $(document).ready(function(){
         });    
     });
 });
-
 $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/InsModel/all",
@@ -74,9 +73,10 @@ $.ajax({
     success: function (response) {
         var myItems= response;
         var valor = '';
+        var udmedida='';
         for (i = 0; i < myItems.length; i++) {
             valor +=
-            '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>'
+            '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>';
         }
         $("#elemento_per").html(valor);
     }

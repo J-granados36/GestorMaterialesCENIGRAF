@@ -1,29 +1,57 @@
-var contadora=1;
 var contador2a=2;
-function suma_elementoa(){
+$(document).ready(function(){
+    $(document).on("click","#sumitema", function (){
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/api/Inventario/all",
-        dataType: "JSON",
-        success: function (response) {
-            var myItems= response;
-            var valor = '';
-            for (i = 0; i < myItems.length; i++) {
-                valor += myItems[i].nombreElemento;
-                idvalor += myItems[i].idInventario; 
-            }
-            $("#tb_elementoa").append(
-            '<tr>'+
+        success: function (response) {         
+
+            $('<tr>'+
                 '<td><input class="form-control" type="number" value="'+contador2a+'" readonly></td>'+
-                '<td><select class="form-control"><option default hidden>Seleccionar</option><option value="'+idvalor+'">'+valor+'</option></select></td>'+
+                '<td><select class="js-example-basic" id="buscador_elemanu" style="width: 100%"><option default hidden>Seleccionar</option></select></td>'+
                 '<td><input type="number" class="form-control"></td>'+
-                '<td><input type="number" class="form-control"></td>'+
-                '<td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>'+
-            '</tr>');        
+                '<td><input type="text" class="form-control" id="udmedanui"></td>'+
+                '<td><textarea style="height: 40px;" class="form-control" id="descanui"></textarea></td>'+
+            '</tr>').appendTo("#tb_elementoa");    
+            
+            $.each(response, function(indice, fila){
+                $('#buscador_elemanu').append("<option value='"+ fila.idInventario+"'>"+fila.nombreElemento+"</option>");
+            });
+
+
             contador2a++;
-        }
+
+
+            $("#buscador_elemanu").on('focus change', function () {
+                $("#udmedanui").empty();
+                $("#descanui").empty();
+            
+                var ideleanu=$("#buscador_elemanu").val();
+            
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/Inventario/"+ideleanu,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#udmedanui").val(response.undMedida);
+                        $("#descanui").val(response.descripcionElemento);
+                    }
+                });
+            });
+            }
+        });    
     });
-}
+    $(function(){
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/api/Inventario/all',
+            success:function (response){  
+                $.each(response, function(indice, fila){
+                    $('#elemento_anu').append("<option value='"+ fila.idInventario+"'>"+fila.nombreElemento+"</option>");
+                });
+        }});
+    });
+});
 $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/InsModel/all",
@@ -66,17 +94,20 @@ $.ajax({
         $("#pro_anu").html(valor);
     }
 });
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/Inventario/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>'
+
+$("#elemento_anu").on('focus change', function () {
+    $("#udmedanu").empty();
+    $("#descanu").empty();
+
+    var ideleanu=$("#elemento_anu").val();
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/Inventario/"+ideleanu,
+        dataType: "JSON",
+        success: function (response) {
+            $("#udmedanu").val(response.undMedida);
+            $("#descanu").val(response.descripcionElemento);
         }
-        $("#elemento_anu").html(valor);
-    }
+    });
 });
