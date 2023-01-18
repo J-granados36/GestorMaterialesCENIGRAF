@@ -6,13 +6,14 @@ $(document).ready(function(){
         url: "http://localhost:8080/api/Inventario/all",
         success: function (response) {         
 
-            $('<tr>'+
+            $("#tb_elementoa_body").append(
+            '<tr>'+
                 '<td><input class="form-control" type="number" value="'+contador2a+'" readonly></td>'+
                 '<td><select class="js-example-basic" id="buscador_elemanu" style="width: 100%"><option default hidden>Seleccionar</option></select></td>'+
                 '<td><input type="number" class="form-control"></td>'+
                 '<td><input type="text" class="form-control" id="udmedanui"></td>'+
                 '<td><textarea style="height: 40px;" class="form-control" id="descanui"></textarea></td>'+
-            '</tr>').appendTo("#tb_elementoa");    
+            '</tr>');    
             
             $.each(response, function(indice, fila){
                 $('#buscador_elemanu').append("<option value='"+ fila.idInventario+"'>"+fila.nombreElemento+"</option>");
