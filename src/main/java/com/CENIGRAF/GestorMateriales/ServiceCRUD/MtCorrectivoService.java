@@ -39,7 +39,7 @@ public class MtCorrectivoService {
     public MtCorrectivoModel update(MtCorrectivoModel mtCorrectivoModel){
         if (mtCorrectivoModel.getIdMtCorrectivo()!=null){
             Optional<MtCorrectivoModel>Mtc=mtCorrectivoRepository.getMtCorrectivoModel(mtCorrectivoModel.getIdMtCorrectivo());
-            if (Mtc.isEmpty()){
+            if (!Mtc.isEmpty()){
                 if (mtCorrectivoModel.getIdMtCorrectivo()!=null){
                     Mtc.get().setIdMtCorrectivo(mtCorrectivoModel.getIdMtCorrectivo());
                 }

@@ -1,3 +1,31 @@
+function borrarAmbiente(idAmbie){
+        
+    var idEliminar={
+        idAmbiente:idAmbie
+    }   
+    $.ajax({
+        type: "DELETE",
+        url: app_ambi.backend+'/'+idAmbie,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarAmbiente(idAmbi){
+    $.ajax({
+        type: "GET",
+        url: app_ambi.backend+"/"+idAmbi,
+        dataType: "JSON",
+        
+        success: function (data) {
+            $("#edit_id_ambi").empty().val(data.idAmbiente);
+            $("#edit_desc_ambi").empty().val(data.nombreAmbiente);
+        }
+    });
+}
 app_ambi={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/AmbienteModel",
@@ -12,29 +40,23 @@ app_ambi={
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombreAmbiente+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idAmbiente+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idAmbiente+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarAmbiente('+ myItems[i].idAmbiente+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarAmbiente("+ myItems[i].idAmbiente+")' data-toggle='modal' data-target='#editara'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_ambi").html(valor);
             }
         })
     },
-    reg_inst: function(){
-        $("#reg_instructores").click(function() { 
-            var reg_instru_docu=$("#reg_instru_docu").val();
-            var reg_instru_nomb=$("#reg_instru_nomb").val();
-            var reg_instru_celu=$("#reg_instru_celu").val();
-            var reg_instru_corr=$("#reg_instru_corr").val();
+    reg_ambi: function(){
+        $("#reg_ambientes").click(function() { 
+            var reg_ambi_desc=$("#reg_ambi_desc").val();
             var obj_prog={
-                cedula:reg_instru_docu,
-                celular:reg_instru_celu,
-                correo:reg_instru_corr,
-                nombreInstructor:reg_instru_nomb
+                nombreAmbiente:reg_ambi_desc,
             }
             $.ajax({
                 type: "POST",
-                url: app_inst.backend + "/save",
+                url: app_ambi.backend + "/save",
                 data: JSON.stringify(obj_prog),
                 dataType: 'JSON',
                 contentType: "application/json",
@@ -44,35 +66,28 @@ app_ambi={
             }).fail(function($xhr){
                 var data=$xhr.responseJSON;
             })
-
         });
     },
-    actualizar_inst(){
-        $('#formulario_act_ins').on("click", function (event){
+    actualizar_ambi(){
+        $('#formulario_act_amb').on("click", function (event){
             event.preventDefault();
          })
 
-        $("#cambios_inst").click(function(){
+        $("#cambios_ambi").click(function(){
 
-            var edit_id_inst=$("#edit_id_inst").val();
-            var edit_cedu_inst=$("#edit_cedu_inst").val();
-            var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_desc_ambi=$("#edit_desc_ambi").val();
+            var edit_id_ambi=$("#edit_id_ambi").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
-                cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                idAmbiente: edit_id_ambi,
+                nombreAmbiente: edit_desc_ambi
             }
 
             var datosJSON=JSON.stringify(datos_editados);
             
             $.ajax({   
                 type: "PUT",
-                url: app_inst.backend+"/update",
+                url: app_ambi.backend+"/update",
                 data: datosJSON,
                 dataType: "JSON",
                 contentType: "application/json",
@@ -83,8 +98,9 @@ app_ambi={
         });       
     } 
 }
+
 $(document).ready(function () {
     app_ambi.leer_ambi();
-    app_ambi.reg_inst();
-    app_ambi.actualizar_inst();
+    app_ambi.reg_ambi();
+    app_ambi.actualizar_ambi();
 });

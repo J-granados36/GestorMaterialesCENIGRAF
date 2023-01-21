@@ -38,7 +38,7 @@ public class MtPreventivoService {
     public MtPreventivoModel update(MtPreventivoModel mtPreventivoModel){
         if (mtPreventivoModel.getIdMtPreventivo()!=null){
             Optional<MtPreventivoModel>Mtp=mtPreventivoRepository.getMtPreventivoModel(mtPreventivoModel.getIdMtPreventivo());
-            if (Mtp.isEmpty()){
+            if (!Mtp.isEmpty()){
                 if (mtPreventivoModel.getIdMtPreventivo()!=null){
                     Mtp.get().setIdMtPreventivo(mtPreventivoModel.getIdMtPreventivo());
                 }

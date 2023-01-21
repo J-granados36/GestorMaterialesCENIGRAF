@@ -1,3 +1,31 @@
+function borrarFicha(idFich){
+        
+    var idEliminar={
+        idFicha:idFich
+    }   
+    $.ajax({
+        type: "DELETE",
+        url: app_fich.backend+'/'+idFich,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarFicha(idInst){
+    $.ajax({
+        type: "GET",
+        url: app_fich.backend+"/"+idInst,
+        dataType: "JSON",
+        
+        success: function (data) {
+            $("#edit_id_fich").empty().val(data.idFicha);
+            $("#edit_nomb_fich").empty().val(data.numeroFicha);
+        }
+    });
+}
 app_fich={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/FichaModel",
@@ -14,29 +42,24 @@ app_fich={
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].numeroFicha+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idFicha+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idFicha+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarFicha('+ myItems[i].idFicha+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarFicha("+ myItems[i].idFicha+")' data-toggle='modal' data-target='#editarf'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_fich").html(valor);
             }
         })
     },
-    reg_inst: function(){
-        $("#reg_instructores").click(function() { 
-            var reg_instru_docu=$("#reg_instru_docu").val();
-            var reg_instru_nomb=$("#reg_instru_nomb").val();
-            var reg_instru_celu=$("#reg_instru_celu").val();
-            var reg_instru_corr=$("#reg_instru_corr").val();
+    reg_fich: function(){
+        $("#reg_ficha").click(function() { 
+            var reg_fic_nomb=$("#reg_fic_nomb").val();
+
             var obj_prog={
-                cedula:reg_instru_docu,
-                celular:reg_instru_celu,
-                correo:reg_instru_corr,
-                nombreInstructor:reg_instru_nomb
+                numeroFicha:reg_fic_nomb,
             }
             $.ajax({
                 type: "POST",
-                url: app_inst.backend + "/save",
+                url: app_fich.backend + "/save",
                 data: JSON.stringify(obj_prog),
                 dataType: 'JSON',
                 contentType: "application/json",
@@ -49,32 +72,26 @@ app_fich={
 
         });
     },
-    actualizar_inst(){
-        $('#formulario_act_ins').on("click", function (event){
+    actualizar_fich(){
+        $('#formulario_act_fic').on("click", function (event){
             event.preventDefault();
          })
 
-        $("#cambios_inst").click(function(){
+        $("#cambios_fich").click(function(){
 
-            var edit_id_inst=$("#edit_id_inst").val();
-            var edit_cedu_inst=$("#edit_cedu_inst").val();
-            var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_id_fich=$("#edit_id_fich").val();
+            var edit_nomb_fich=$("#edit_nomb_fich").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
-                cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                idFicha:edit_id_fich,
+                numeroFicha:edit_nomb_fich,
             }
 
             var datosJSON=JSON.stringify(datos_editados);
             
             $.ajax({   
                 type: "PUT",
-                url: app_inst.backend+"/update",
+                url: app_fich.backend+"/update",
                 data: datosJSON,
                 dataType: "JSON",
                 contentType: "application/json",
@@ -87,6 +104,6 @@ app_fich={
 }
 $(document).ready(function () {
     app_fich.leer_fich();
-    app_fich.reg_inst();
-    app_fich.actualizar_inst();
+    app_fich.reg_fich();
+    app_fich.actualizar_fich();
 });

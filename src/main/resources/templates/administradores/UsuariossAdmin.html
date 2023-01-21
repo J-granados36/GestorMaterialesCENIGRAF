@@ -115,7 +115,7 @@
             });
             });
         </script>
-        <div id="editarp" class="modal fade" role="dialog">
+        <div id="editaru" class="modal fade" role="dialog">
             <div class="modal-dialog">
           
               <!-- Modal Programas-->
@@ -126,14 +126,15 @@
                 <div class="modal-body">
                     <h3>Completar todos los campos</h3>
                     <div class="container">
-                        <label>Numero de ficha</label>
-                        <input type="number" class="form-control" id="edit_ficha_prog">
-                        <label for="">Programa de formacion</label>
-                        <input type="text" class="form-control" id="edit_prog_prog">
-                        <label for="">Instructor</label>
-                        <select class="form-control" name="" id="edit_instru_prog">
-                        </select>
-                        <input type="button" class="btn btn-success" value="Realizar cambios" id="guardar_edit_prog">
+                        <form id="formulario_act_usu">
+                            <label>Nombre de usuario</label>
+                            <input type="text" class="form-control" id="edit_nomb_usua">
+                            <label>Contraseña</label>
+                            <input type="text" class="form-control" id="edit_cont_usua">
+                            <input type="hidden" id="edit_id_usua">
+
+                            <input type="button" class="btn btn-success mt-3" value="Realizar cambios" id="cambios_usua">
+                        </form>
                     </div>
                 </div>
               </div>

@@ -38,7 +38,7 @@ public class TransaccionalRepoService {
     public TransaccionalRepoModel update(TransaccionalRepoModel transaccionalRepoModel){
         if (transaccionalRepoModel.getIdTransaccional()!=null){
             Optional<TransaccionalRepoModel> Tran=transaccionalRepoRepository.getTransaccionalRepoModel(transaccionalRepoModel.getIdTransaccional());
-            if (Tran.isEmpty()){
+            if (!Tran.isEmpty()){
                 if(transaccionalRepoModel.getIdTransaccional()!=null){
                     Tran.get().setIdTransaccional(transaccionalRepoModel.getIdTransaccional());
                 }

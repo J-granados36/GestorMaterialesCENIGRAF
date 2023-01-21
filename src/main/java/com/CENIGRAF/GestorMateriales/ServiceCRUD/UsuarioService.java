@@ -38,7 +38,7 @@ public class UsuarioService {
     public UsuarioModel update(UsuarioModel usuarioModel){
         if (usuarioModel.getIdUsuario() != null){
             Optional<UsuarioModel> Us=usuarioRepository.getUsuarioModel(usuarioModel.getIdUsuario());
-            if (Us.isEmpty()){
+            if (!Us.isEmpty()){
                 if (usuarioModel.getIdUsuario()!= null){
                     Us.get().setIdUsuario(usuarioModel.getIdUsuario());
                 }

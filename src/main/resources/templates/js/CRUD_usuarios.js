@@ -14,7 +14,7 @@ app_usua={
                                 '<td>'+ myItems[i].nombre+'</td>'+
                                 '<td>'+ myItems[i].contrasena+'</td>'+
                                 '<td>'+'<button class="btn btn-danger" onclick="borrarUsuario('+ myItems[i].idUsuario+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idUsuario+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarUsuario("+ myItems[i].idUsuario+")' data-toggle='modal' data-target='#editaru'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_usua").html(valor);
@@ -45,35 +45,31 @@ app_usua={
         });
     },
     actualizar_usua(){
-        $('#formulario_act_ins').on("click", function (event){
+        $('#formulario_act_usu').on("click", function (event){
             event.preventDefault();
          })
 
-        $("#cambios_inst").click(function(){
+        $("#cambios_usua").click(function(){
 
-            var edit_id_inst=$("#edit_id_inst").val();
-            var edit_cedu_inst=$("#edit_cedu_inst").val();
-            var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_id_usua=$("#edit_id_usua").val();
+            var edit_nomb_usua=$("#edit_nomb_usua").val();
+            var edit_cont_usua=$("#edit_cont_usua").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
-                cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                idUsuario:edit_id_usua,
+                nombre:edit_nomb_usua,
+                contrasena:edit_cont_usua
             }
 
             var datosJSON=JSON.stringify(datos_editados);
             
             $.ajax({   
                 type: "PUT",
-                url: app_inst.backend+"/update",
+                url: app_usua.backend+"/update",
                 data: datosJSON,
                 dataType: "JSON",
                 contentType: "application/json",
-                success: function () {
+                success: function (data) {
                     location.reload();
                 }
             });
@@ -95,6 +91,21 @@ function borrarUsuario(idUsua){
             location.reload();
         }
     })
+}
+function editarUsuario(idUsua){
+    $.ajax({
+        type: "GET",
+        url: app_usua.backend+"/"+idUsua,
+        dataType: "JSON",
+        
+        success: function (data) {
+            
+            $("#edit_id_usua").empty().val(data.idUsuario);
+            $("#edit_nomb_usua").empty().val(data.nombre);
+            $("#edit_cont_usua").empty().val(data.contrasena);
+
+        }
+    });
 }
 $(document).ready(function () {
     app_usua.leer_usua();
