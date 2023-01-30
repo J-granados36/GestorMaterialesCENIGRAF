@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
     <link rel="stylesheet" href="../CSS/style_menu_instructores.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!--Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- Extenciones Bootstrap-->
@@ -155,61 +156,63 @@
                     <h3>Formulario solicitud de elementos periodicamente</h3>
                     <div class="container">
                         <div class="row">
-                            <div class="col-12">
-                                <label for="" >Seleccione el programa de formacion:</label>
-                                <select name="" class="form-control" id="progra">
-                                    <option value="">Seleccionar</option>
-                                </select>
-                                <table class="table table-bordered" id="tb_elementos">
-                                    <thead>
-                                      <tr>
-                                        <th class="col-1">Item</th>
-                                        <th class="col-5">Nombre del elemento</th>
-                                        <th class="col-2">Cantidad</th>
-                                        <th class="col-1">U/Medida</th>
-                                        <th class="col-4">Descripción</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td><input class="form-control" type="number" value="1" id="val_inicial" readonly></td>
-                                        <td>
-                                            <input type="search" class="form-control" placeholder="Buscar elemento" list="lista_elementos">
-                                            <datalist id="lista_elementos">
-                                                <option value="Audi">
-                                            </datalist>
-                                        </td>
-                                        <td><input type="number" class="form-control"></td>
-                                        <td>
-                                            <select class="form-control">
-                                                <option value="" default hidden></option>
-                                                <option value="">Unidad</option>
-                                                <option value="">Pliego</option>
-                                                <option value="">1/2 Pliego</option>
-                                                <option value="">Caja</option>
-                                                <option value="">Kilo</option>
-                                                <option value="">Rollo</option>
-                                                <option value="">Lamina</option>
-                                                <option value="">Galón</option>
-                                                <option value="">Paquete</option>
-                                                <option value="">Metros</option>
-                                            </select>
-                                        </td>
-                                        <td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>
-                                    </tr> 
-                                    </tbody>                                  
-                                  </table>
-                                  <button class="btn btn-secondary" onClick="suma_elemento()" id="sumitem">Añadir Item</button><br>
-                                  <button class="btn btn-success">Enviar Informe</button>
-                                        
-                                </div> 
+                            <div class="col-6">
+                                <label>Seleccionar el instructor:</label>
+                                <select id="ins_per" class="form-control"></select>
+                                <label>Seleccionar la ficha:</label>
+                                <select id="fic_per" class="form-control"></select>                                
+                                <label>Seleccionar el programa de formación:</label>
+                                <select id="pro_per" class="form-control"></select>
+                                <br>
                             </div>
+                            <div class="col-12">
+                                <div class="tablaele">
+                                    <table class="table table-bordered" id="tb_elementop">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-1">Item</th>
+                                            <th class="col-5">Nombre del elemento</th>
+                                            <th class="col-2">Cantidad</th>
+                                            <th class="col-1">U/Medida</th>
+                                            <th class="col-4">Descripción</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><input class="form-control" type="number" value="1" id="val_inicial" readonly></td>
+                                            <td>
+                                                <select class="js-example-basic-single" id="elemento_per">
+
+                                                </select>
+                                            </td>
+                                            <td><input type="number" class="form-control"></td>
+                                            <td><select class="form-control">
+                                                <option default hidden></option>
+                                                <option>Unidad</option>
+                                                <option>Pliego</option>
+                                                <option>1/2 Pliego</option>
+                                                <option>Caja</option>
+                                                <option>Kilo</option>
+                                                <option>Rollo</option>
+                                                <option>Lamina</option>
+                                                <option>Galón</option>
+                                                <option>Paquete</option>
+                                                <option>Metros</option>
+                                            </select></td>
+                                            <td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>
+                                        </tr> 
+                                        </tbody>                                  
+                                    </table>
+                                    <button class="btn btn-secondary" id="sumitem">Añadir Item</button><br>
+                                    <button class="btn btn-success">Enviar Informe</button>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
-             </div>
             </div>
         </div>
+    </div>
         <div id="solianual" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
           
@@ -222,12 +225,17 @@
                     <h3>Formulario solicitud de elementos anual</h3>
                     <div class="container">
                         <div class="row">
+                            <div class="col-6">
+                                <label>Seleccionar el instructor:</label>
+                                <select id="ins_anu" class="form-control"></select>
+                                <label>Seleccionar la ficha:</label>
+                                <select id="fic_anu" class="form-control"></select>                                
+                                <label>Seleccionar el programa de formación:</label>
+                                <select id="pro_anu" class="form-control"></select>
+                                <br>
+                            </div>
                             <div class="col-12">
-                                <label for="" >Seleccione la especialización para solicitar materiales:</label>
-                                <select name="" class="form-control" id="progra">
-                                    <option value="">Seleccionar</option>
-                                </select>
-                                <table class="table table-bordered" id="tb_elementop">
+                                <table class="table table-bordered" id="tb_elementoa">
                                     <thead>
                                       <tr>
                                         <th class="col-1">Item</th>
@@ -241,34 +249,20 @@
                                       <tr>
                                         <td><input class="form-control" type="number" value="1" id="val_inicial" readonly></td>
                                         <td>
-                                            <input type="search" class="form-control" placeholder="Buscar elemento" list="lista_elementos">
-                                            <datalist id="lista_elementos">
-                                                <option value="Audi">
-                                                <option value="Moto">
-                                                <option value="Taxi">
-                                            </datalist>
-                                        </td>
-                                        <td><input type="number" class="form-control"></td>
-                                        <td>
-                                            <select class="form-control">
-                                                <option value="" default hidden></option>
-                                                <option value="">Unidad</option>
-                                                <option value="">Pliego</option>
-                                                <option value="">1/2 Pliego</option>
-                                                <option value="">Caja</option>
-                                                <option value="">Kilo</option>
-                                                <option value="">Rollo</option>
-                                                <option value="">Lamina</option>
-                                                <option value="">Galón</option>
-                                                <option value="">Paquete</option>
-                                                <option value="">Metros</option>
+                                            <select class="form-control" id="elemento_anu">
+
                                             </select>
                                         </td>
+                                        <td><input type="number" class="form-control"></td>
+                                        <td><input type="number" class="form-control"></td>
                                         <td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>
-                                    </tr>       
+                                    </tr> 
+                                    <tr >
+
+                                    </tr>      
                                 </tbody>                                      
                                 </table>
-                                <button class="btn btn-secondary" onClick="suma_elementop()" id="sumitem">Añadir Item</button><br>
+                                <button class="btn btn-secondary" onClick="suma_elementoa()" id="sumitem">Añadir Item</button><br>
                                 <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
@@ -278,5 +272,14 @@
             </div>
         </div>
         <script src="../js/prin_intructores.js" type="text/javascript"></script>
+        <script src="../js/Solicitud_anual.js"></script>
+        <script src="../js/Solicitud_periodica.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $('.js-example-basic-single').select2({
+                dropdownParent: $('#solisemanal')
+            });
+        </script>
+        
     </body>
 </html>

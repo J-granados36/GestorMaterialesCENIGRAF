@@ -15,6 +15,9 @@ function borrarAmbiente(idAmbi){
     })
 }
 function editarAmbiente(idAmbi){
+    var idEditar={
+        id: idAmbi
+    }
     $.ajax({
         type: "GET",
         url: app_ambi.backend+"/"+idAmbi,
@@ -22,38 +25,38 @@ function editarAmbiente(idAmbi){
 
         success: function (data) {
             $("#edit_nomb_ambi").empty().val(data.nombreAmbiente);
-
         }
     });
 }
 
-app_ambi={
+
+app_ambi= {
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/AmbienteModel",
-    leer_ambi: function(){     
+    leer_ambi: function () {
         $.ajax({
             url: app_ambi.backend + "/all",
             type: 'GET',
             datatype: 'JSON',
             success: function (response) {
-                var myItems= response;
-                var valor = '';
+                var myItems = response;
+                var valor = '', i;
                 for (i = 0; i < myItems.length; i++) {
-                    valor +='<tr>'+
-                                '<td>'+ myItems[i].nombreAmbiente+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarAmbiente('+ myItems[i].idAmbiente+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarAmbiente("+ myItems[i].idAmbiente+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
-                            '</tr>'
+                    valor += '<tr>' +
+                        '<td>' + myItems[i].nombreAmbiente + '</td>' +
+                        '<td>' + '<button class="btn btn-danger" onclick="borrarAmbiente(' + myItems[i].idAmbiente + ')">Borrar</button>' + '</td>' +
+                        '<td>' + "<button type='button' class='btn btn-success' onclick='editarAmbiente(" + myItems[i].idAmbiente + ")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>" + '</td>' +
+                        '</tr>'
                 }
                 $("#body_ambi").html(valor);
             }
         })
     },
-    reg_ambi: function(){
-        $("#reg_ambientes").click(function() {
-            var reg_ambi_nomb=$("#reg_ambi_nomb").val();
-            var obj_prog={
-                nombreAmbiente:reg_ambi_nomb
+    reg_ambi: function () {
+        $("#reg_ambientes").click(function () {
+            var reg_ambi_nomb = $("#reg_ambi_nomb").val();
+            var obj_prog = {
+                nombreAmbiente: reg_ambi_nomb
             }
             $.ajax({
                 type: "POST",
@@ -64,39 +67,41 @@ app_ambi={
                 success: function () {
                     location.reload();
                 }
-            }).fail(function($xhr){
-                var data=$xhr.responseJSON;
+            }).fail(function ($xhr) {
+                var data = $xhr.responseJSON;
             })
 
         });
     },
-    actualizar_ambi(){
-        $('#formulario_act_ambi').on("click", function (event){
-            event.preventDefault();
-         })
+
+    actualizar_ambi:function (){
 
         $("#cambios_ambi").click(function(){
 
             var edit_nomb_ambi=$("#edit_nomb_ambi").val();
             var datos_editados={
                 nombreAmbiente:edit_nomb_ambi,
-
             }
-
-            var datosJSON=JSON.stringify(datos_editados);
-            
-            $.ajax({   
+            $.ajax({
                 type: "PUT",
-                url: app_ambi.backend+"/update",
-                data: datosJSON,
+                url: app_ambi.backend+"/update/{id}",
+                data: JSON.stringify(datos_editados),
                 dataType: "JSON",
-                contentType: "application/json",
+                contentType:"application/json",
                 success: function () {
+                    app_ambi.reg_ambi();
                     location.reload();
+                    console.log(app_ambi.actualizar_ambi());
                 }
-            });
+            }).fail(function ($xhr){
+                var data=$xhr.responseJSON;
+            })
         });       
-    } 
+    },
+
+
+
+
 }
 $(document).ready(function () {
     app_ambi.leer_ambi();
