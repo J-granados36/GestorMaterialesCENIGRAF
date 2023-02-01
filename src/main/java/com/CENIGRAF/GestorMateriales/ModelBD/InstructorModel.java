@@ -1,7 +1,6 @@
 package com.CENIGRAF.GestorMateriales.ModelBD;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
