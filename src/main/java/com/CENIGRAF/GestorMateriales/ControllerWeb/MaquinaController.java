@@ -4,6 +4,7 @@ import com.CENIGRAF.GestorMateriales.ModelBD.MaquinaModel;
 import com.CENIGRAF.GestorMateriales.ServiceCRUD.MaquinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,11 +35,15 @@ public class MaquinaController {
         return maquinaService.save(maquinaModel);
     }
 
+
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public MaquinaModel update(@RequestBody MaquinaModel maquinaModel){
         return maquinaService.update(maquinaModel);
     }
+
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

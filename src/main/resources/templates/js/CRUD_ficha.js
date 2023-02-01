@@ -51,6 +51,7 @@ app_fich={
         })
     },
     reg_fich: function(){
+
         $("#reg_ficha").click(function() { 
             var reg_fic_nomb=$("#reg_fic_nomb").val();
 
@@ -73,15 +74,18 @@ app_fich={
         });
     },
     actualizar_fich(){
+
         $('#formulario_act_fic').on("click", function (event){
             event.preventDefault();
          })
 
         $("#cambios_fich").click(function(){
 
+
             var edit_id_fich=$("#edit_id_fich").val();
             var edit_nomb_fich=$("#edit_nomb_fich").val();
 
+            var edit_num_fich=$("#edit_num_fich").val();
             var datos_editados={
                 idFicha:edit_id_fich,
                 numeroFicha:edit_nomb_fich,

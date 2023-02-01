@@ -1,3 +1,32 @@
+function borrarInstructor(idProg){
+
+    var idEliminar={
+        id:idProg
+    }
+    $.ajax({
+        type: "DELETE",
+        url: app_prog.backend+'/'+idProg,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarPrograma(idProg){
+    $.ajax({
+        type: "GET",
+        url: app_prog.backend+"/"+idProg,
+        dataType: "JSON",
+
+        success: function (data) {
+            $("#edit_id_prog").empty().val(data.idPrograma);
+            $("#edit_nomb_prog").empty().val(data.nombrePrograma);
+        }
+    });
+}
+
 app_prog={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/ProgramaModel",
@@ -14,6 +43,7 @@ app_prog={
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombrePrograma+'</td>'+
+
                                 '<td>'+'<button class="btn btn-danger" onclick="borrarPrograma('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarPrograma("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editarp'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
@@ -23,6 +53,7 @@ app_prog={
         })
     },
     reg_prog: function(){
+
         $("#reg_programas").click(function() { 
             var reg_nomb_prog=$("#reg_nomb_prog").val();
             var obj_prog={
@@ -44,11 +75,13 @@ app_prog={
         });
     },
     actualizar_prog(){
+
         $('#formulario_act_pro').on("click", function (event){
             event.preventDefault();
          })
 
         $("#cambios_prog").click(function(){
+
 
             var edit_id_prog=$("#edit_id_prog").val();
             var edit_nomb_prog=$("#edit_nomb_prog").val();
@@ -107,3 +140,10 @@ $(document).ready(function () {
     app_prog.reg_prog();
     app_prog.actualizar_prog();
 });
+
+
+
+
+
+
+

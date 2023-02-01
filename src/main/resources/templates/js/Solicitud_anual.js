@@ -3,10 +3,18 @@ $(document).ready(function(){
     $(document).on("click","#sumitema", function (){
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/Inventario/all",
-        success: function (response) {         
 
-            $("#tb_elementoa_body").append(
+url: "http://localhost:8080/api/ElementoModel/all",
+        dataType: "JSON",
+        success: function (response) {
+            var myItems= response;
+            var valor = '';
+            for (i = 0; i < myItems.length; i++) {
+                valor += myItems[i].nombreElemento;
+                idvalor += myItems[i].idInventario; 
+            }
+            $("#tb_elementoa").append(
+
             '<tr>'+
                 '<td><input class="form-control" type="number" value="'+contador2a+'" readonly></td>'+
                 '<td><select class="js-example-basic" id="buscador_elemanu" style="width: 100%"><option default hidden>Seleccionar</option></select></td>'+
@@ -95,6 +103,7 @@ $.ajax({
         $("#pro_anu").html(valor);
     }
 });
+
 
 $("#elemento_anu").on('focus change', function () {
     $("#udmedanu").empty();

@@ -1,3 +1,33 @@
+function borrarMaquina(idMaqu){
+
+    var idEliminar={
+        id:idMaqu
+    }
+    $.ajax({
+        type: "DELETE",
+        url: app_maqu.backend+'/'+idMaqu,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarMaquina(idMaqu){
+    $.ajax({
+        type: "GET",
+        url: app_maqu.backend+"/"+idMaqu,
+        dataType: "JSON",
+
+        success: function (data) {
+            $("#edit_nomb_maqu").empty().val(data.nombreMaquina);
+            $("#edit_placa_maqu").empty().val(data.placa);
+            $("#edit_fech_maqu").empty().val(data.adquisicion);
+        }
+    });
+}
+
 app_maqu={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/MaquinaModel",
@@ -15,6 +45,7 @@ app_maqu={
                                 '<td>'+ myItems[i].placa+'</td>'+
                                 '<td>'+ myItems[i].adquisicion+'</td>'+
                                 '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar</button>'+'</td>'+
+
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarMaquina("+ myItems[i].idMaquina+")' data-toggle='modal' data-target='#editarm'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
@@ -23,6 +54,7 @@ app_maqu={
         })
     },
     reg_maqu: function(){
+
         $("#reg_maquina").click(function() { 
             var reg_fech_maqu=$("#reg_fech_maqu").val();
             var reg_nomb_maqu=$("#reg_nomb_maqu").val();
@@ -48,11 +80,13 @@ app_maqu={
         });
     },
     actualizar_maqu(){
+
         $('#formulario_act_maq').on("click", function (event){
             event.preventDefault();
          })
 
         $("#cambios_maqu").click(function(){
+
 
             var edit_id_maqu= $("#edit_id_maqu").val();
             var edit_nomb_maqu= $("#edit_nomb_maqu").val();

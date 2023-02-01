@@ -1,6 +1,5 @@
 package com.CENIGRAF.GestorMateriales.ModelBD;
 
-import com.lowagie.text.pdf.PdfPCell;
 
 import javax.persistence.*;
 import java.io.Serializable;

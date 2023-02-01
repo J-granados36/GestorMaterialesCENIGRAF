@@ -2,6 +2,7 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "TransaccionalReporte")
@@ -14,6 +15,7 @@ public class TransaccionalRepoModel implements Serializable {
     private Integer TotalSolicitud;
 
     //muchos
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idInstructor")
     private InstructorModel instructorModel;
@@ -59,6 +61,7 @@ public class TransaccionalRepoModel implements Serializable {
     public void setIdTransaccional(Integer idTransaccional) {
         this.idTransaccional = idTransaccional;
     }
+
 
     public InstructorModel getInstructorModel() {
         return instructorModel;

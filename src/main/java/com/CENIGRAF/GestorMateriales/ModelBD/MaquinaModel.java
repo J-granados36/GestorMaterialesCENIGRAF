@@ -15,7 +15,7 @@ public class MaquinaModel implements Serializable {
 
     private Integer idMaquina;
     private String nombreMaquina;
-    private Integer placa;
+    private String placa;
     private Date adquisicion;
 
 
@@ -43,11 +43,11 @@ public class MaquinaModel implements Serializable {
         this.nombreMaquina = nombreMaquina;
     }
 
-    public Integer getPlaca() {
+    public String getPlaca() {
         return placa;
     }
 
-    public void setPlaca(Integer placa) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
 
