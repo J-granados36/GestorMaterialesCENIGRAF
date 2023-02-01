@@ -86,7 +86,8 @@
                 <div id="programa" class="collapse">
                         <h4>Complete todos los campos</h4>
                         <label>Nombre de programa:</label>
-                        <input type="text" class="form-control" id="reg_prog_nomb" placeholder="Ingresar nombre">
+
+                        <input type="text" class="form-control" id="reg_nomb_prog" placeholder="Ingresar nombre">
                         
                         <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_programas">
                 </div>
@@ -108,23 +109,21 @@
 
     <div id="editarp" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
-            <!-- Modal Programas-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <h3>Completar todos los campos</h3>
-                    <div class="container">
-                        <form id="formulario_act_prog">
-                            <label>Programa de formacion</label>
-                            <input id="edit_nomb_prog" type="text" class="form-control">
-
-
-                            <input id="cambios_prog" type="submit" className="btn btn-success" value="Realizar cambios">
-                        </form>
-                    </div>
+      
+          <!-- Modal Programas-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Completar todos los campos</h3>
+                <div class="container">
+                    <form id="formulario_act_pro">
+                        <label for="">Programa de formacion</label>
+                        <input type="text" class="form-control" id="edit_nomb_prog">
+                        <input type="hidden" class="form-control" id="edit_id_prog">
+                        <input type="button" class="btn btn-success mt-3" value="Realizar cambios" id="cambios_prog">
+                    </form>
                 </div>
             </div>
         </div>

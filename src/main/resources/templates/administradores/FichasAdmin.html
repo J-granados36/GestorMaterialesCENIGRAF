@@ -83,9 +83,10 @@
                     <div id="ficha" class="collapse">
                             <h4>Complete todos los campos</h4>
                             <label>Número de ficha:</label>
-                            <input type="number" class="form-control" id="reg_fich_num" placeholder="Ingresar número">
+                            <input type="number" class="form-control" id="reg_fic_nomb" placeholder="Ingresar número">
                             
-                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_fichas">
+                            <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_ficha">
+
                     </div>
                     <input class="form-control" id="buscador_ficha" type="text" placeholder="Buscar ficha..">             
                     <table class="table table-stripe" id="tabla_fich"> 
@@ -102,7 +103,7 @@
                 </div>              
             </div>
         </div>
-        <div id="editari" class="modal fade" role="dialog">
+        <div id="editarf" class="modal fade" role="dialog">
             <div class="modal-dialog">
           
               <!-- Modal Programas-->
@@ -113,12 +114,11 @@
                 <div class="modal-body">
                     <h3>Completar todos los campos</h3>
                     <div class="container">
-                        <form id="formulario_act_fich">
-                            <label>Numero de ficha</label>
-                            <input type="number" id="edit_num_fich" class="form-control">
+                        <form id="formulario_act_fic">
+                            <label>Numero de documento</label>
+                            <input type="number" id="edit_nomb_fich" class="form-control">
                             <input type="hidden" id="edit_id_fich">
-    
-                            <input type="submit" id='cambios_fich' class="btn btn-success" value="Realizar cambios">
+                            <input type="submit" id='cambios_fich' class="btn btn-success mt-3" value="Realizar cambios">
                         </form>
                     </div>
                 </div>

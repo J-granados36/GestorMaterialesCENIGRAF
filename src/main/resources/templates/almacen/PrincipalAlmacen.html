@@ -109,7 +109,49 @@
               </tbody>
             </table>    
           </div>
+          <div id="editarinve" class="modal fade" role="dialog">
+            <div class="modal-dialog">
           
+              <!-- Modal Programas-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Completar todos los campos</h3>
+                    <div class="container">
+                        <form id="formulario_act_inv">
+                            <label>Nombre</label>
+                            <input type="text" id="edit_nomb_inve" class="form-control">
+                            <label>Descripcion</label>
+                            <textarea class="form-control" id="edit_desc_inve" placeholder="Ingresar descripción"></textarea>
+                            <label>Medida</label>
+                            <input list="medidas" class="form-control" id="edit_medi_inve">
+                                <datalist id="medidas">
+                                    <option>Unidad</option>
+                                    <option>Pliego</option>
+                                    <option>1/2 Pliego</option>
+                                    <option>Caja</option>
+                                    <option>Kilo</option>
+                                    <option>Rollo</option>
+                                    <option>Lamina</option>
+                                    <option>Galón</option>
+                                    <option>Paquete</option>
+                                    <option>Metros</option>
+                                </datalist>
+                            <label>Cantidad</label>
+                            <input type="number" id="edit_cant_inve" class="form-control">
+                            <label>Estado</label>
+                            <input type="number" id="edit_esta_inve" class="form-control">
+                            <input type="hidden" id="edit_id_inve">
+    
+                            <input type="submit" id='cambios_inve' class="btn btn-success mt-3" value="Realizar cambios">
+                        </form>
+                    </div>
+                </div>
+              </div>   
+            </div>
+        </div>
           <script>
           $(document).ready(function(){
             $("#buscarel").on("keyup", function() {

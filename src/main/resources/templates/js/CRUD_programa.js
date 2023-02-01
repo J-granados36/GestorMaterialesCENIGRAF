@@ -43,8 +43,9 @@ app_prog={
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombrePrograma+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPrograma("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarPrograma('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPrograma("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editarp'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_prog").html(valor);
@@ -52,10 +53,11 @@ app_prog={
         })
     },
     reg_prog: function(){
-        $("#reg_programas").click(function() {
-            var reg_prog_nomb=$("#reg_prog_nomb").val();
+
+        $("#reg_programas").click(function() { 
+            var reg_nomb_prog=$("#reg_nomb_prog").val();
             var obj_prog={
-                nombrePrograma:reg_prog_nomb
+                nombrePrograma:reg_nomb_prog,
             }
             $.ajax({
                 type: "POST",
@@ -73,15 +75,20 @@ app_prog={
         });
     },
     actualizar_prog(){
-        $('#formulario_act_prog').on("click", function (event){
+
+        $('#formulario_act_pro').on("click", function (event){
             event.preventDefault();
          })
 
         $("#cambios_prog").click(function(){
 
+
+            var edit_id_prog=$("#edit_id_prog").val();
             var edit_nomb_prog=$("#edit_nomb_prog").val();
 
+
             var datos_editados={
+                idPrograma:edit_id_prog,
                 nombrePrograma:edit_nomb_prog,
             }
 
@@ -99,6 +106,34 @@ app_prog={
             });
         });       
     } 
+}
+function borrarPrograma(idprog){
+        
+    var idEliminar={
+        id:idprog
+    }   
+    $.ajax({
+        type: "DELETE",
+        url: app_prog.backend+'/'+idprog,
+        data: JSON.stringify(idEliminar),
+        dataType: "JSON",
+        contentType: "application/json",
+        success: function (response) {
+            location.reload();
+        }
+    })
+}
+function editarPrograma(idprog){
+    $.ajax({
+        type: "GET",
+        url: app_prog.backend+"/"+idprog,
+        dataType: "JSON",
+        
+        success: function (data) {
+            $("#edit_id_prog").empty().val(data.idPrograma);
+            $("#edit_nomb_prog").empty().val(data.nombrePrograma);
+        }
+    });
 }
 $(document).ready(function () {
     app_prog.leer_prog();

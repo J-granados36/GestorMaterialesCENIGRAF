@@ -25,6 +25,7 @@ function suma_elementop(){
         }
     });   
 }
+
 $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/InsModel/all",
@@ -74,9 +75,11 @@ $.ajax({
     success: function (response) {
         var myItems= response;
         var valor = '';
+        var udmedida='';
         for (i = 0; i < myItems.length; i++) {
             valor +='<option hidden default>Seleccionar</option>'+
             '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>'
+
         }
         $("#elemento_per").html(valor);
     }

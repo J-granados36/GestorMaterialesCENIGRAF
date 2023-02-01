@@ -1,11 +1,11 @@
-function borrarAmbiente(idAmbi){
-
+function borrarAmbiente(idAmbie){
+        
     var idEliminar={
-        id:idAmbi
-    }
+        idAmbiente:idAmbie
+    }   
     $.ajax({
         type: "DELETE",
-        url: app_ambi.backend+'/'+idAmbi,
+        url: app_ambi.backend+'/'+idAmbie,
         data: JSON.stringify(idEliminar),
         dataType: "JSON",
         contentType: "application/json",
@@ -15,22 +15,24 @@ function borrarAmbiente(idAmbi){
     })
 }
 function editarAmbiente(idAmbi){
+
     var idEditar={
         id: idAmbi
     }
+
     $.ajax({
         type: "GET",
         url: app_ambi.backend+"/"+idAmbi,
         dataType: "JSON",
 
+        
         success: function (data) {
-            $("#edit_nomb_ambi").empty().val(data.nombreAmbiente);
+            $("#edit_id_ambi").empty().val(data.idAmbiente);
+            $("#edit_desc_ambi").empty().val(data.nombreAmbiente);
         }
     });
 }
-
-
-app_ambi= {
+app_ambi={
     // Se llama la url del controller de intructores 
     backend: "http://localhost:8080/api/AmbienteModel",
     leer_ambi: function () {
@@ -42,21 +44,22 @@ app_ambi= {
                 var myItems = response;
                 var valor = '', i;
                 for (i = 0; i < myItems.length; i++) {
-                    valor += '<tr>' +
-                        '<td>' + myItems[i].nombreAmbiente + '</td>' +
-                        '<td>' + '<button class="btn btn-danger" onclick="borrarAmbiente(' + myItems[i].idAmbiente + ')">Borrar</button>' + '</td>' +
-                        '<td>' + "<button type='button' class='btn btn-success' onclick='editarAmbiente(" + myItems[i].idAmbiente + ")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>" + '</td>' +
-                        '</tr>'
+                    valor +='<tr>'+
+                                '<td>'+ myItems[i].nombreAmbiente+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarAmbiente('+ myItems[i].idAmbiente+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarAmbiente("+ myItems[i].idAmbiente+")' data-toggle='modal' data-target='#editara'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                            '</tr>'
                 }
                 $("#body_ambi").html(valor);
             }
         })
     },
-    reg_ambi: function () {
-        $("#reg_ambientes").click(function () {
-            var reg_ambi_nomb = $("#reg_ambi_nomb").val();
-            var obj_prog = {
-                nombreAmbiente: reg_ambi_nomb
+
+    reg_ambi: function(){
+        $("#reg_ambientes").click(function() { 
+            var reg_ambi_desc=$("#reg_ambi_desc").val();
+            var obj_prog={
+                nombreAmbiente:reg_ambi_desc,
             }
             $.ajax({
                 type: "POST",
@@ -70,22 +73,29 @@ app_ambi= {
             }).fail(function ($xhr) {
                 var data = $xhr.responseJSON;
             })
-
         });
     },
 
-    actualizar_ambi:function (){
+    actualizar_ambi(){
+        $('#formulario_act_amb').on("click", function (event){
+            event.preventDefault();
+         })
 
         $("#cambios_ambi").click(function(){
 
+            var edit_desc_ambi=$("#edit_desc_ambi").val();
+            var edit_id_ambi=$("#edit_id_ambi").val();
+
             var edit_nomb_ambi=$("#edit_nomb_ambi").val();
             var datos_editados={
-                nombreAmbiente:edit_nomb_ambi,
+                idAmbiente: edit_id_ambi,
+                nombreAmbiente: edit_desc_ambi
             }
             $.ajax({
                 type: "PUT",
-                url: app_ambi.backend+"/update/{id}",
-                data: JSON.stringify(datos_editados),
+
+                url: app_ambi.backend+"/update",
+                data: datosJSON,
                 dataType: "JSON",
                 contentType:"application/json",
                 success: function () {
@@ -103,6 +113,7 @@ app_ambi= {
 
 
 }
+
 $(document).ready(function () {
     app_ambi.leer_ambi();
     app_ambi.reg_ambi();
