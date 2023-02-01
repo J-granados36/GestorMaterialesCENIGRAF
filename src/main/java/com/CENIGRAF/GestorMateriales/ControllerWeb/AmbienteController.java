@@ -34,7 +34,7 @@ public class AmbienteController {
         return ambienteService.save(ambienteModel);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public AmbienteModel update(@RequestBody AmbienteModel ambienteModel){
         return ambienteService.update(ambienteModel);

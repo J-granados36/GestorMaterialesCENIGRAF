@@ -40,10 +40,10 @@ app_fich={
                 var myItems= response;
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
-                    valor +='<tr>'+
-                                '<td>'+ myItems[i].numeroFicha+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarFicha('+ myItems[i].idFicha+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarFicha("+ myItems[i].idFicha+")' data-toggle='modal' data-target='#editarf'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                    valor += '<tr>' +
+                        '<td>' + myItems[i].numeroFicha + '</td>' +
+                        '<td>' + '<button class="btn btn-danger" onclick="borrarFicha(' + myItems[i].idFicha + ')">Borrar</button>' + '</td>' +
+                        '<td>' + "<button type='button' class='btn btn-success' onclick='editarFicha(" + myItems[i].idFicha + ")' data-toggle='modal' data-target='#editarf'>Editar <i class='bi bi-pencil'></i></button></td>"+
                             '</tr>'
                 }
                 $("#body_fich").html(valor);

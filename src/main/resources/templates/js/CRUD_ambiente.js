@@ -16,9 +16,9 @@ function borrarAmbiente(idAmbie){
 }
 function editarAmbiente(idAmbi){
 
-    var idEditar={
-        id: idAmbi
-    }
+   // var idEditar={
+     //   id: idAmbi
+    //}
 
     $.ajax({
         type: "GET",
@@ -42,7 +42,7 @@ app_ambi={
             datatype: 'JSON',
             success: function (response) {
                 var myItems = response;
-                var valor = '', i;
+                var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombreAmbiente+'</td>'+
@@ -54,7 +54,6 @@ app_ambi={
             }
         })
     },
-
     reg_ambi: function(){
         $("#reg_ambientes").click(function() { 
             var reg_ambi_desc=$("#reg_ambi_desc").val();
@@ -91,6 +90,7 @@ app_ambi={
                 idAmbiente: edit_id_ambi,
                 nombreAmbiente: edit_desc_ambi
             }
+            var datosJSON=JSON.stringify(datos_editados);
             $.ajax({
                 type: "PUT",
 
@@ -99,19 +99,11 @@ app_ambi={
                 dataType: "JSON",
                 contentType:"application/json",
                 success: function () {
-                    app_ambi.reg_ambi();
                     location.reload();
-                    console.log(app_ambi.actualizar_ambi());
-                }
-            }).fail(function ($xhr){
-                var data=$xhr.responseJSON;
-            })
+                    }
+            });
         });       
-    },
-
-
-
-
+    }
 }
 
 $(document).ready(function () {
