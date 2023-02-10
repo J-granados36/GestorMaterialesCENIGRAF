@@ -1,30 +1,38 @@
-var contadorp=1;
-var contador2p=2;
-function suma_elementop(){
+$(function () {
     $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/api/Inventario/all",
-        dataType: "JSON",
-        success: function (response) {
+        type: 'GET',
+        url: 'http://localhost:8080/api/Inventario/all',
+        success:function (response){ 
             var myItems= response;
             var valor = '';
-            var idvalor = '';
             for (i = 0; i < myItems.length; i++) {
-                valor += myItems[i].nombreElemento;
-                idvalor += myItems[i].idInventario;
-            }
-            $("#tb_elementop").append(
-            '<tr>'+
-                '<td><input class="form-control" type="number" value="'+contador2p+'" readonly></td>'+
-                '<td><select class="form-control"><option default hidden>Seleccionar</option><option value="'+idvalor+'">'+valor+'</option></select></td>'+
-                '<td><input type="number" class="form-control"></td>'+
-                '<td><input type="number" class="form-control"></td>'+
-                '<td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>'+
-            '</tr>');        
-            contador2p++;
-        }
-    });   
-}
+                valor += '<option value="'+myItems[i].idInventario+'">'+myItems[i].nombreElemento+'</option>';
+            } 
+            $("#elemento_per").append(valor);
+
+            $("#elemento_per").on('focus change', function () {
+                $("#udmedper").empty();
+                $("#descper").empty();
+            
+                var ideleanu=$("#elemento_per").val();
+            
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/Inventario/"+ideleanu,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#udmedper").val(response.undMedida);
+                        $("#descper").val(response.descripcionElemento);
+                    }
+                });
+            });            
+    }});
+    $("#suma_elementop").click(function () { 
+        $("#fila_prinp").clone().appendTo("#tb_elementop_body");
+        $("#udmedper").empty();
+        $("#descper").empty();
+    });
+});
 
 $.ajax({
     type: "GET",
@@ -66,21 +74,5 @@ $.ajax({
             '<option value="'+myItems[i].idPrograma+'">'+ myItems[i].nombrePrograma+'</option>'
         }
         $("#pro_per").html(valor);
-    }
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/Inventario/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        var udmedida='';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value"'+myItems[i].idInventario+'">'+ myItems[i].nombreElemento+'</option>'
-
-        }
-        $("#elemento_per").html(valor);
     }
 });
