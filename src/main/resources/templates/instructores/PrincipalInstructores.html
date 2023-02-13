@@ -93,7 +93,7 @@
             </div>
         </div>
         <div id="infomant" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
           
               <!-- Modal Materiales-->
               <div class="modal-content">
@@ -101,40 +101,45 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h3>Solicitud de mantenimiento</h3>
                     <div class="container">
+                        <h2>Solicitud de mantenimiento</h2> 
                         <div class="row">
                             <div class="col-12">
-                                <label>Seleccione el ambiente de formación:</label>
-                                <select name="" class="form-control col-10" id="">
-                                    <option value="">Seleccionar</option>
+                                <label class="mt-2">Seleccione el ambiente de formación:</label>
+                                <select class="form-control mt-2 mb-2"  style="width: 70%" id="amb_man"></select>
+                                <label class="mt-2">Seleccione la maquina o elemento para mantenimiento:</label>
+                                <select class="form-control mt-2 mb-2" style="width: 70%" id="maq_man"></select>
+                                <label class="mt-2">Seleccione el tipo de mantenimiento que desea:</label>
+                                <select class="form-control mt-2 mb-2" style="width: 70%" id="tipo_mante">
+                                    <option default >Seleccionar</option>
+                                    <option value="Preventivo">Preventivo</option>
+                                    <option value="Correctivo">Correctivo</option>
                                 </select>
-                                <label>Seleccione la maquina o elemento para mantenimiento:</label>
-                                <select name="" class="form-control col-10" id="">
-                                    <option value="">Seleccionar</option>
-                                </select>
-                                <label>Seleccione el tipo de mantenimiento que desea:</label>
-                                <select name="" class="form-control col-10" id="">
-                                    <option value="" hidden>Seleccionar</option>
-                                    <option value="">Preventivo</option>
-                                </select>
-                                <label>Seleccione los elementos que necesita para el mantenimiento:<i class="fas fa-drum-steelpan    "></i>:</label>
-                                <table class="table table-bordered" id="tb_mante">
+                                <label class="mt-2">Seleccione los elementos que necesita para el mantenimiento<i class="fas fa-drum-steelpan"></i>:</label>
+                                <table class="table table-bordered" id="tb_elementom">
                                     <thead>
-                                        <td class="col-2">Item</td>
-                                        <td class="col-10">Nombre</td>
+                                        <tr >
+                                            <th class="col-3">Nombre del elemento</th>
+                                            <th class="col-1">U/Medida</th>
+                                            <th class="col-4">Descripción</th>
+                                            <th class="col-2">Cantidad</th>
+                                        </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input class="form-control" type="number" value="1" readonly></td>
-
+                                    <tbody id="tb_elementom_body">
+                                        <tr id="fila_prinm">
                                             <td>
-                                                <input type="search" class="form-control" placeholder="Buscar elemento" list="lista_elementos">
+                                                <select class="js-example-basic" id="elemento_man">
+                                                    <option default>Seleccionar</option>
+                                                </select>
                                             </td>
-                                        </tr>      
-                                    </tbody>
+                                            <td><input type="text" class="form-control" id="udmedman" readonly></td>
+                                            <td><textarea style="height: 40px;" class="form-control" id="descman" readonly></textarea></td>
+                                            <td><input type="number" class="form-control" ></td>
+                                        </tr>
+                                    </tbody>                                      
                                 </table>
-                                <button class="btn btn-secondary" onClick="suma_elementom()" id="sumitem">Añadir Item</button><br>
+                                <button class="btn btn-secondary mb-3" id="suma_elementom">Añadir Artículo <i class="bi bi-journal-plus"></i></button><br>
+                                <button type="button" class="btn btn-danger mb-3" id="eliminar_fila_man">Eliminar Artículo <i class="bi bi-trash"></i></button><br>
                                 <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
@@ -146,51 +151,48 @@
         </div>
         <div id="solisemanal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-          
-              <!-- Modal Materiales-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <h3>Formulario solicitud de elementos periodicamente</h3>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6">
-                                <label>Seleccionar el instructor:</label>
-                                <select id="ins_per" class="form-control"></select>
-                                <label>Seleccionar la ficha:</label>
-                                <select id="fic_per" class="form-control"></select>                                
-                                <label>Seleccionar el programa de formación:</label>
-                                <select id="pro_per" class="form-control"></select>
-                                <br>
-                            </div>
-                            <div class="col-12">
-                                <div class="tablaele">
+                <!-- Modal Materiales-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Formulario solicitud de elementos periodicamente</h3>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Seleccionar el instructor:</label>
+                                    <select id="ins_per" class="form-control"></select>
+                                    <label>Seleccionar la ficha:</label>
+                                    <select id="fic_per" class="form-control"></select>                                
+                                    <label>Seleccionar el programa de formación:</label>
+                                    <select id="pro_per" class="form-control"></select>
+                                    <br>
+                                </div>
+                                <div class="col-12">
                                     <table class="table table-bordered" id="tb_elementop">
                                         <thead>
-                                        <tr>
-                                            <th class="col-1">Item</th>
-                                            <th class="col-5">Nombre del elemento</th>
-                                            <th class="col-2">Cantidad</th>
+                                            <tr >
+                                            <th class="col-4">Nombre del elemento</th>
                                             <th class="col-1">U/Medida</th>
                                             <th class="col-4">Descripción</th>
-                                        </tr>
+                                            <th class="col-2">Cantidad</th>
+                                            </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><input class="form-control" type="number" value="1" id="val_inicial" readonly></td>
-                                            <td>
-                                                <select class="js-example-basic-single" id="elemento_per">
-                                                </select>
-                                            </td>
-                                            <td><input type="number" class="form-control"></td>
-                                            <td><input type="text" class="form-control" id="udmedidaper"></td>
-                                            <td><textarea style="height: 40px;" class="form-control" id=""></textarea></td>
-                                        </tr> 
-                                        </tbody>                                  
+                                        <tbody id="tb_elementop_body">
+                                            <tr id="fila_prinp">
+                                                <td>
+                                                    <select class="js-example-basic" id="elemento_per">
+                                                        <option default>Seleccionar</option>
+                                                    </select>
+                                                </td>
+                                                <td><input type="text" class="form-control" id="udmedper" readonly></td>
+                                                <td><textarea style="height: 40px;" class="form-control" id="descper" readonly></textarea></td>
+                                                <td><input type="number" class="form-control" ></td>
+                                            </tr>
+                                        </tbody>                                      
                                     </table>
-                                    <button class="btn btn-secondary" onClick="suma_elementop()" id="sumitem">Añadir Item</button><br>
+                                    <button class="btn btn-secondary mb-3" id="suma_elementop">Añadir Item</button><br>
                                     <button class="btn btn-success">Enviar Informe</button>
                                 </div>
                             </div> 
@@ -199,70 +201,81 @@
                 </div>
             </div>
         </div>
-    </div>
         <div id="solianual" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-          
-              <!-- Modal Materiales-->
-              <div class="modal-content">
+            
+                <!-- Modal Materiales-->
+                <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h3>Formulario solicitud de elementos anual</h3>
                     <div class="container">
+                        <h2 class="mb-3">Formulario solicitud de elementos anual</h2>
                         <div class="row">
                             <div class="col-6">
                                 <label>Seleccionar el instructor:</label>
-                                <select id="ins_anu" class="form-control"></select>
+                                <select id="ins_anu" class="form-control mt-1 mb-1"></select>
                                 <label>Seleccionar la ficha:</label>
-                                <select id="fic_anu" class="form-control"></select>                                
+                                <select id="fic_anu" class="form-control mt-1 mb-1"></select>                                
                                 <label>Seleccionar el programa de formación:</label>
-                                <select id="pro_anu" class="form-control"></select>
+                                <select id="pro_anu" class="form-control mt-1 mb-1"></select>
                                 <br>
                             </div>
                             <div class="col-12">
                                 <table class="table table-bordered" id="tb_elementoa">
                                     <thead>
-                                      <tr>
-                                        <th class="col-1">Item</th>
+                                        <tr >
                                         <th class="col-4">Nombre del elemento</th>
-                                        <th class="col-2">Cantidad</th>
                                         <th class="col-1">U/Medida</th>
                                         <th class="col-4">Descripción</th>
-                                      </tr>
+                                        <th class="col-2">Cantidad</th>
+                                        </tr>
                                     </thead>
                                     <tbody id="tb_elementoa_body">
-                                        <tr>
-                                            <td><input class="form-control" type="number" value="1" id="val_inicial" readonly></td>
-                                            <td >
+                                        <tr  id="fila_prina">
+                                            <td>
                                                 <select class="js-example-basic" id="elemento_anu">
                                                     <option default>Seleccionar</option>
                                                 </select>
                                             </td>
-                                            <td><input type="number" class="form-control"></td>
-                                            <td><input type="text" class="form-control" id="udmedanu"></td>
-                                            <td><textarea style="height: 40px;" class="form-control" id="descanu"></textarea></td>
-                                        </tr>      
+                                            <td><input type="text" class="form-control" id="udmedanu" readonly></td>
+                                            <td><textarea style="height: 40px;" class="form-control" id="descanu" readonly></textarea></td>
+                                            <td><input type="number" class="form-control" ></td>
+                                        </tr>
                                     </tbody>                                      
                                 </table>
-                                <button class="btn btn-secondary" id="sumitema">Añadir Item</button><br>
+                                <button class="btn btn-secondary mb-3" id="suma_elementoa">Añadir Item</button><br>
                                 <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
                     </div>
                 </div>
-             </div>
+                </div>
             </div>
         </div>
-        <script src="../js/prin_intructores.js" type="text/javascript"></script>
         <script src="../js/Solicitud_anual.js"></script>
+        <script src="../js/Solicitud_mantenimiento.js"></script>
         <script src="../js/Solicitud_periodica.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-        <script>
-            $('.js-example-basic-single').select2();
-            $('.js-example-basic').select2();
-            $('.buscador_el').select2();
+        <script>          
+            $('#elemento_anu').select2();
+            $('#elemento_per').select2();
+            $('#elemento_man').select2();
+            $('#ins_anu').select2();
+            $('#fic_anu').select2();
+            $('#pro_anu').select2();
+            $('#ins_per').select2();
+            $('#fic_per').select2();
+            $('#pro_per').select2();
+            $('#amb_man').select2();
+            $('#maq_man').select2();
+            $('#tipo_mante').select2();
+
+
+            $("#eliminar_fila_man").click(function () { 
+                $("#tb_elementom tr:odd").remove();
+            });
         </script>       
     </body> 
 </html>
