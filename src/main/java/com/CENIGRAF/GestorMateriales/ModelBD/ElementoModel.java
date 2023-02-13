@@ -16,10 +16,12 @@ public class ElementoModel implements Serializable {
     private String nombreElemento;
     private String descripcion;
     private String UndMedida;
-    private Integer cantidad;
 
-    @OneToMany(mappedBy = "elementoModel",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "elementoModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;
+
+
+
 
     public Integer getIdElemento() {
         return idElemento;
@@ -53,15 +55,6 @@ public class ElementoModel implements Serializable {
         UndMedida = undMedida;
     }
 
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
         return transaccionalRepoModels;
     }
@@ -69,4 +62,8 @@ public class ElementoModel implements Serializable {
     public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
         this.transaccionalRepoModels = transaccionalRepoModels;
     }
+
+
+    private static final long serialVersionUID = 1L;
+
 }

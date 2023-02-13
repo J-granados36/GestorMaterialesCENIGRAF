@@ -16,6 +16,7 @@ public class MaquinaModel implements Serializable {
     private Integer idMaquina;
     private String nombreMaquina;
     private String placa;
+    @Temporal(TemporalType.DATE)
     private Date adquisicion;
 
 

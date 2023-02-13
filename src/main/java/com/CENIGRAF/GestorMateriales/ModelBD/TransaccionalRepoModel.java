@@ -2,7 +2,6 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "TransaccionalReporte")
@@ -18,7 +17,7 @@ public class TransaccionalRepoModel implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idInstructor")
-    private InstructorModel instructorModel;
+    private personalCenigrafModel personalCenigrafModel;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,6 +45,17 @@ public class TransaccionalRepoModel implements Serializable {
 
 
 
+    /*public Integer calcularTotal(){
+        Integer total = 0;
+        int size = elementoModel.getCantidad();
+
+        for (int i=0;i< size;i++)
+            total+= elementoModel.getCantidad();
+
+        return elementoModel.getCantidad()-getTotalSolicitud();
+    }
+         */
+
     public Integer getTotalSolicitud() {
         return TotalSolicitud;
     }
@@ -63,12 +73,12 @@ public class TransaccionalRepoModel implements Serializable {
     }
 
 
-    public InstructorModel getInstructorModel() {
-        return instructorModel;
+    public personalCenigrafModel getInstructorModel() {
+        return personalCenigrafModel;
     }
 
-    public void setInstructorModel(InstructorModel instructorModel) {
-        this.instructorModel = instructorModel;
+    public void setInstructorModel(personalCenigrafModel personalCenigrafModel) {
+        this.personalCenigrafModel = personalCenigrafModel;
     }
 
     public ProgramaModel getProgramaModel() {
@@ -117,5 +127,8 @@ public class TransaccionalRepoModel implements Serializable {
 
     public void setInventarioModel(InventarioModel inventarioModel) {
         this.inventarioModel = inventarioModel;
+    }
+
+    public void addRepoA(TransaccionalRepoModel transaccionalRepoModel) {
     }
 }

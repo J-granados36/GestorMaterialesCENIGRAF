@@ -52,9 +52,7 @@ public class ElementoService {
                 if (elementoModel.getUndMedida()!=null){
                     El.get().setUndMedida(elementoModel.getUndMedida());
                 }
-                if (elementoModel.getCantidad()!=null){
-                    El.get().setCantidad(elementoModel.getCantidad());
-                }
+//atributos cantidad de elemento borrado
                 elementoRepository.save(El.get());
                 return El.get();
             }else {
