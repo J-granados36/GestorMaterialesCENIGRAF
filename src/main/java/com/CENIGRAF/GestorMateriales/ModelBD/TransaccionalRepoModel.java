@@ -16,7 +16,7 @@ public class TransaccionalRepoModel implements Serializable {
     //muchos
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInstructor")
+    @JoinColumn(name = "idPer")
     private personalCenigrafModel personalCenigrafModel;
 
 
@@ -73,11 +73,11 @@ public class TransaccionalRepoModel implements Serializable {
     }
 
 
-    public personalCenigrafModel getInstructorModel() {
+    public com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel getPersonalCenigrafModel() {
         return personalCenigrafModel;
     }
 
-    public void setInstructorModel(personalCenigrafModel personalCenigrafModel) {
+    public void setPersonalCenigrafModel(com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel personalCenigrafModel) {
         this.personalCenigrafModel = personalCenigrafModel;
     }
 

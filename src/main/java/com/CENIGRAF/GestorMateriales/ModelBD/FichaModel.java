@@ -16,7 +16,7 @@ public class FichaModel implements Serializable {
 
     private Integer numeroFicha;
 
-    @OneToMany(mappedBy = "instructorModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<RepoPeriModel> repoPeriModels;
     @OneToMany(mappedBy = "fichaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;

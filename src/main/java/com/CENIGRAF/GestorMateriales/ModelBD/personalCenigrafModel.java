@@ -14,13 +14,12 @@ public class personalCenigrafModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer idInstructor;
-    private String nombreInstructor;
-    private Integer cedula;
+    private Integer idPer;
+    private String nombrePersonal;
+    private Integer documento;
+    private String cargo;
 
-    private String celular;
 
-    private String correo;
 
     @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<RepoPeriModel> repoPeriModels;
@@ -32,44 +31,36 @@ public class personalCenigrafModel implements Serializable {
         repoPeriModels=new ArrayList<RepoPeriModel>();
     }
 
-    public Integer getIdInstructor() {
-        return idInstructor;
+    public Integer getIdPer() {
+        return idPer;
     }
 
-    public void setIdInstructor(Integer idInstructor) {
-        this.idInstructor = idInstructor;
+    public void setIdPer(Integer idPer) {
+        this.idPer = idPer;
     }
 
-    public String getNombreInstructor() {
-        return nombreInstructor;
+    public String getNombrePersonal() {
+        return nombrePersonal;
     }
 
-    public void setNombreInstructor(String nombreInstructor) {
-        this.nombreInstructor = nombreInstructor;
+    public void setNombrePersonal(String nombrePersonal) {
+        this.nombrePersonal = nombrePersonal;
     }
 
-    public Integer getCedula() {
-        return cedula;
+    public Integer getDocumento() {
+        return documento;
     }
 
-    public void setCedula(Integer cedula) {
-        this.cedula = cedula;
+    public void setDocumento(Integer documento) {
+        this.documento = documento;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {

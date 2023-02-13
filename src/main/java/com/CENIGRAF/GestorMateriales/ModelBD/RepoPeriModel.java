@@ -49,11 +49,11 @@ public class RepoPeriModel implements Serializable {
         FechaSolicitud = fechaSolicitud;
     }
 
-    public personalCenigrafModel getInstructorModel() {
+    public com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel getPersonalCenigrafModel() {
         return personalCenigrafModel;
     }
 
-    public void setInstructorModel(personalCenigrafModel personalCenigrafModel) {
+    public void setPersonalCenigrafModel(com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel personalCenigrafModel) {
         this.personalCenigrafModel = personalCenigrafModel;
     }
 

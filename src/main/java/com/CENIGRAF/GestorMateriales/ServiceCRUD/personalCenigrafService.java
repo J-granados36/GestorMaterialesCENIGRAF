@@ -18,15 +18,15 @@ public class personalCenigrafService {
         return personalCenigrafRepository.getAll();
     }
 
-    public Optional<personalCenigrafModel> getInstructorModel(int id){
-        return personalCenigrafRepository.getInstructorModel(id);
+    public Optional<personalCenigrafModel> getPersonalCenigrafModel(int id){
+        return personalCenigrafRepository.getPersonalCenigrafModel(id);
     }
     //Guardar
     public personalCenigrafModel save(personalCenigrafModel personalCenigrafModel){
-        if (personalCenigrafModel.getIdInstructor()==null){
+        if (personalCenigrafModel.getIdPer()==null){
             return personalCenigrafRepository.save(personalCenigrafModel);
         }else{
-            Optional<personalCenigrafModel> insaux= personalCenigrafRepository.getInstructorModel(personalCenigrafModel.getIdInstructor());
+            Optional<personalCenigrafModel> insaux= personalCenigrafRepository.getPersonalCenigrafModel(personalCenigrafModel.getIdPer());
             if (insaux.isEmpty()){
                 return personalCenigrafRepository.save(personalCenigrafModel);
             }else{
@@ -37,24 +37,22 @@ public class personalCenigrafService {
 
     //Actualizar
     public personalCenigrafModel update(personalCenigrafModel personalCenigrafModel){
-        if (personalCenigrafModel.getIdInstructor() != null){
-            Optional<personalCenigrafModel> In= personalCenigrafRepository.getInstructorModel(personalCenigrafModel.getIdInstructor());
+        if (personalCenigrafModel.getIdPer() != null){
+            Optional<personalCenigrafModel> In= personalCenigrafRepository.getPersonalCenigrafModel(personalCenigrafModel.getIdPer());
             if (!In.isEmpty()){
-                if (personalCenigrafModel.getIdInstructor()!= null){
-                    In.get().setIdInstructor(personalCenigrafModel.getIdInstructor());
+                if (personalCenigrafModel.getIdPer()!= null){
+                    In.get().setIdPer(personalCenigrafModel.getIdPer());
                 }
-                if (personalCenigrafModel.getNombreInstructor()!=null){
-                    In.get().setNombreInstructor(personalCenigrafModel.getNombreInstructor());
+                if (personalCenigrafModel.getNombrePersonal()!=null){
+                    In.get().setNombrePersonal(personalCenigrafModel.getNombrePersonal());
                 }
-                if (personalCenigrafModel.getCedula()!= null){
-                    In.get().setCedula(personalCenigrafModel.getCedula());
+                if (personalCenigrafModel.getDocumento()!= null){
+                    In.get().setDocumento(personalCenigrafModel.getDocumento());
                 }
-                if (personalCenigrafModel.getCelular()!= null){
-                    In.get().setCelular(personalCenigrafModel.getCelular());
+                if (personalCenigrafModel.getCargo()!= null){
+                    In.get().setCargo(personalCenigrafModel.getCargo());
                 }
-                if (personalCenigrafModel.getCorreo()!=null){
-                    In.get().setCorreo(personalCenigrafModel.getCorreo());
-                }
+
                 personalCenigrafRepository.save(In.get());
                 return In.get();
             }else {
@@ -66,9 +64,9 @@ public class personalCenigrafService {
     }
 
     //Borrar
-    public boolean deleteInstructorModel(int id){
-        Boolean dIn=getInstructorModel(id).map(instructorModel -> {
-            personalCenigrafRepository.delete(instructorModel);
+    public boolean deletePersonalCenigrafModel(int id){
+        Boolean dIn=getPersonalCenigrafModel(id).map(personaCenigrafModel -> {
+            personalCenigrafRepository.delete(personaCenigrafModel);
             return true;
         }).orElse(false);
         return dIn;

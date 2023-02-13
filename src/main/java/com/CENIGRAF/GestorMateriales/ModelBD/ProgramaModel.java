@@ -19,7 +19,7 @@ public class ProgramaModel implements Serializable {
 
     private String nombrePrograma;
 
-    @OneToMany(mappedBy = "instructorModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<RepoPeriModel> repoPeriModels;
 
     @OneToMany(mappedBy = "programaModel",cascade = CascadeType.ALL,orphanRemoval = true)

@@ -19,7 +19,7 @@ public class personalCenigrafRepository {
         return (List<personalCenigrafModel>) personalCenigrafCrudRepository.findAll();
     }
 
-    public Optional<personalCenigrafModel> getInstructorModel(int id){
+    public Optional<personalCenigrafModel> getPersonalCenigrafModel(int id){
         return personalCenigrafCrudRepository.findById(id);
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/InsModel")
+@RequestMapping("/api/PersonalCenigrafModel")
 @CrossOrigin(origins = "*" , methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 public class personalCenigrafController {
@@ -19,13 +19,13 @@ public class personalCenigrafController {
     private personalCenigrafService personalCenigrafService;
 
     @GetMapping("/all")
-    public List<personalCenigrafModel> getInstructorModels(){
+    public List<personalCenigrafModel> getPersonalCenigrafModels(){
         return personalCenigrafService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<personalCenigrafModel> getInstructorModel(@PathVariable("id")int id){
-        return personalCenigrafService.getInstructorModel(id);
+    public Optional<personalCenigrafModel> getPersonalCenigrafModel(@PathVariable("id")int id){
+        return personalCenigrafService.getPersonalCenigrafModel(id);
     }
 
     @PostMapping("/save")
@@ -43,7 +43,7 @@ public class personalCenigrafController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id")int id){
-        return personalCenigrafService.deleteInstructorModel(id);
+        return personalCenigrafService.deletePersonalCenigrafModel(id);
 
     }
 

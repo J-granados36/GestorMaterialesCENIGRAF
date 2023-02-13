@@ -16,6 +16,7 @@ public class MaquinaModel implements Serializable {
     private Integer idMaquina;
     private String nombreMaquina;
     private String placa;
+    private String serial;
     @Temporal(TemporalType.DATE)
     private Date adquisicion;
 
@@ -42,6 +43,14 @@ public class MaquinaModel implements Serializable {
 
     public void setNombreMaquina(String nombreMaquina) {
         this.nombreMaquina = nombreMaquina;
+    }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
     public String getPlaca() {
