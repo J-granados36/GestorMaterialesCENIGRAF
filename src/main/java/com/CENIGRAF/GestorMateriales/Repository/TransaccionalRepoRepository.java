@@ -1,7 +1,6 @@
 package com.CENIGRAF.GestorMateriales.Repository;
 
 import com.CENIGRAF.GestorMateriales.ModelBD.TransaccionalRepoModel;
-import com.CENIGRAF.GestorMateriales.Repository.CrudRepository.InventarioCrudRepository;
 import com.CENIGRAF.GestorMateriales.Repository.CrudRepository.TransaccionalRepoCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,8 +13,6 @@ public class TransaccionalRepoRepository {
 
     @Autowired
     private TransaccionalRepoCrudRepository transaccionalRepoCrudRepository;
-    @Autowired
-    private InventarioCrudRepository inventarioCrudRepository;
 
     public List<TransaccionalRepoModel> getAll(){
         return (List<TransaccionalRepoModel>) transaccionalRepoCrudRepository.findAll();

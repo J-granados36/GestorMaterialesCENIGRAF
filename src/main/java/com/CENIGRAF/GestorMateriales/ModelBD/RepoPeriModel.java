@@ -22,15 +22,11 @@ public class RepoPeriModel implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private ProgramaModel programaModel;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "IdRepoPeri")
-    private List<ItemReporte> items;
 
 
 
-    public RepoPeriModel(){
-        this.items = new ArrayList<ItemReporte>();
-    }
+
+
     //METODOS
 
     public Integer getIdRepoPeri() {
@@ -73,27 +69,7 @@ public class RepoPeriModel implements Serializable {
         this.programaModel = programaModel;
     }
 
-    public List<ItemReporte> getItems() {
-        return items;
-    }
 
-    public void setItems(List<ItemReporte> items) {
-        this.items = items;
-    }
-    public void addItemReporte(ItemReporte item){
-        this.items.add(item);
-    }
-    //calcular elementos
-    //mostrar calculo de los itemsReport suma++ al addItemReporte x idReporte
-    public Integer getTotal(){
-        Integer total = 0;
-
-        int size = items.size();
-        for (int i=0;i<size;i++){
-            total+= items.get(i).calcularItem();
-        }
-        return total;
-    }
 
     private static final long serialVersionUID = 1L;
 }

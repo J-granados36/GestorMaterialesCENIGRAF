@@ -35,26 +35,8 @@ public class TransaccionalRepoModel implements Serializable {
     @JoinColumn(name = "idMaquina")
     private MaquinaModel maquinaModel;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idElemento")
-    private ElementoModel elementoModel;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idInventario")
-    private InventarioModel inventarioModel;
 
 
-
-    /*public Integer calcularTotal(){
-        Integer total = 0;
-        int size = elementoModel.getCantidad();
-
-        for (int i=0;i< size;i++)
-            total+= elementoModel.getCantidad();
-
-        return elementoModel.getCantidad()-getTotalSolicitud();
-    }
-         */
 
     public Integer getTotalSolicitud() {
         return TotalSolicitud;
@@ -111,22 +93,6 @@ public class TransaccionalRepoModel implements Serializable {
 
     public void setMaquinaModel(MaquinaModel maquinaModel) {
         this.maquinaModel = maquinaModel;
-    }
-
-    public ElementoModel getElementoModel() {
-        return elementoModel;
-    }
-
-    public void setElementoModel(ElementoModel elementoModel) {
-        this.elementoModel = elementoModel;
-    }
-
-    public InventarioModel getInventarioModel() {
-        return inventarioModel;
-    }
-
-    public void setInventarioModel(InventarioModel inventarioModel) {
-        this.inventarioModel = inventarioModel;
     }
 
     public void addRepoA(TransaccionalRepoModel transaccionalRepoModel) {
