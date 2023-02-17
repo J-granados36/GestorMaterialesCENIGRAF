@@ -28,31 +28,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-5">
                     <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-expand">
                                 <li class="nav-link">
-                                    <a href="PrincipalAdmin.html" id="btn-nav" class="btn btn-lg">Informe</a>
+                                    <a href="SolicitudInstruc.html" id="btn-nav" class="btn btn-lg">Solicitudes</a>
                                 </li>
                                 <li class="nav-link">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Formación</button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="ProgramasAdmin.html" id="btn-nav">Programas</a>
-                                            <a class="dropdown-item" href="FichasAdmin.html" id="btn-nav">Fichas</a>
-                                            <a class="dropdown-item" href="InstructoresAdmin.html" id="btn-nav">Instructores</a>
-                                        </div>
-                                    </div>
+                                    <a href="PrincipalAlmacen.html" id="btn-nav" class="btn btn-lg">Inventario</a>
                                 </li>
                                 <li class="nav-link">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Ambientes</button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="AmbientesAdmin.html" id="btn-nav">Ambientes</a>
-                                            <a class="dropdown-item" href="MaquinasAdmin.html" id="btn-nav">Máquinas</a>
-                                        </div>
-                                    </div>
+                                    <a class="btn btn-lg" href="MaquinasAlmacen.html" id="btn-nav">Máquinas</a>
                                 </li>
                                 <li class="nav-link">
                                     <div class="dropdown">
@@ -60,8 +47,7 @@
                                             Perfil <i class="bi bi-person-circle"></i></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item">Administrador</a>
-                                        <a class="dropdown-item" href="UsuariossAdmin.html" id="btn-nav">Usuarios</a>
+                                        <a class="dropdown-item">Almacen</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Cerrar Sesion</a>
                                         </div>
@@ -77,23 +63,28 @@
     <body>
         <div class="container" id="info">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-12">
                     <h1>Lista de máquinas</h1>
                     <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#maquina">Agregar máquina <i class="bi bi-bookmark-plus"></i></button>
                     <div id="maquina" class="collapse">
+                        <form>
                             <h4>Complete todos los campos</h4>
-                            <label>Adquisición de la máquina:</label>
-                            <input type="datetime-local" class="form-control" id="reg_fech_maqu">
+                            <label>Serial:</label>
+                            <input type="text" class="form-control" id="reg_fech_maqu">
                             <label>Nombre:</label>
                             <input type="text" class="form-control" id="reg_nomb_maqu" placeholder="Ingresar nombre">
                             <label>Placa:</label>
                             <input type="number" class="form-control" id="reg_plac_maqu" placeholder="Ingresar placa">
+                            <label>Adquisición de la máquina:</label>
+                            <input type="datetime-local" class="form-control" id="reg_fech_maqu">
                             <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_maquina">
+                        </form>
                     </div>
                     <input class="form-control" id="buscador_ambi" type="text" placeholder="Buscar ambiente..">             
                     <table class="table table-stripe" id="tabla_maqu"> 
                         <thead>
                         <tr>
+                            <th>Serial</th>
                             <th>Nombre</th>
                             <th>Placa</th>
                             <th>Fecha adquisición</th>
@@ -120,12 +111,14 @@
                     <div class="container">
 
                         <form id="formulario_act_maq">
+                            <label>Serial</label>
+                            <input type="text" id="edit_nomb_maqu" class="form-control">
                             <label>Nombre</label>
                             <input type="text" id="edit_nomb_maqu" class="form-control">
-                            <label>Adquisición</label>
-                            <input type="datetime" id="edit_adqu_maqu" class="form-control">
                             <label>Placa</label>
                             <input type="number" id="edit_plac_maqu" class="form-control">
+                            <label>Adquisición</label>
+                            <input type="datetime" id="edit_adqu_maqu" class="form-control">
                             <input type="hidden" id="edit_id_maqu">
                             <input type="submit" id='cambios_maqu' class="btn btn-success mt-3" value="Realizar cambios">
                         </form>

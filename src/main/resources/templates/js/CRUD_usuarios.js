@@ -13,7 +13,7 @@ app_usua={
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombre+'</td>'+
                                 '<td>'+ myItems[i].contrasena+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarUsuario('+ myItems[i].idUsuario+')">Borrar</button>'+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarUsuario('+ myItems[i].idUsuario+')">Borrar <i class="bi bi-trash3"></i></button>'+'</td>'+
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarUsuario("+ myItems[i].idUsuario+")' data-toggle='modal' data-target='#editaru'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }

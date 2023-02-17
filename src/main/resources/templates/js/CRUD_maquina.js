@@ -41,10 +41,11 @@ app_maqu={
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
+                                '<td>'+ myItems[i].placa+'</td>'+
                                 '<td>'+ myItems[i].nombreMaquina+'</td>'+
                                 '<td>'+ myItems[i].placa+'</td>'+
                                 '<td>'+ myItems[i].adquisicion+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar</button>'+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar <i class="bi bi-trash3"></i></button>'+'</td>'+
 
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarMaquina("+ myItems[i].idMaquina+")' data-toggle='modal' data-target='#editarm'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'

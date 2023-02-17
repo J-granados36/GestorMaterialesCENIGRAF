@@ -44,7 +44,7 @@ app_prog={
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombrePrograma+'</td>'+
 
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarPrograma('+ myItems[i].idPrograma+')">Borrar</button>'+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarPrograma('+ myItems[i].idPrograma+')">Borrar <i class="bi bi-trash3"></i></button>'+'</td>'+
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarPrograma("+ myItems[i].idPrograma+")' data-toggle='modal' data-target='#editarp'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }

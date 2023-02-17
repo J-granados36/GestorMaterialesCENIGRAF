@@ -1,78 +1,62 @@
 $(function () {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/api/Inventario/all',
-        success:function (response){ 
-            var myItems= response;
-            var valor = '';
-            for (i = 0; i < myItems.length; i++) {
-                valor += '<option value="'+myItems[i].idInventario+'">'+myItems[i].nombreElemento+'</option>';
-            } 
-            $("#elemento_per").append(valor);
+    $("#eliminar_fila").hide();
+    $("#nuevo_articulo").click(function () { 
+        var html_ele=$("#elemento_prin_per").html();
+        $("#body_elemento").append(
+            "<tr>"+html_ele+"</tr>"
+        );
+        $("#eliminar_fila").show();
+    });
+    $("#eliminar_fila").click(function () { 
+        $("#tabla_ele_per tr:last").remove();
+        var filas=$("#tabla_ele_per tr").length;
 
-            $("#elemento_per").on('focus change', function () {
-                $("#udmedper").empty();
-                $("#descper").empty();
-            
-                var ideleanu=$("#elemento_per").val();
-            
-                $.ajax({
-                    type: "GET",
-                    url: "http://localhost:8080/api/Inventario/"+ideleanu,
-                    dataType: "JSON",
-                    success: function (response) {
-                        $("#udmedper").val(response.undMedida);
-                        $("#descper").val(response.descripcionElemento);
-                    }
-                });
-            });            
-    }});
-    $("#suma_elementop").click(function () { 
-        $("#fila_prinp").clone().appendTo("#tb_elementop_body");
-        $("#udmedper").empty();
-        $("#descper").empty();
+        if(filas>=3){
+            $("#eliminar_fila").show();
+        }
+        else{
+            $("#eliminar_fila").hide();
+        }
     });
 });
+$("#tip_cuentadante").on("change", function () { 
 
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/InsModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].idInstructor+'">'+ myItems[i].nombreInstructor+'</option>'
-        }
-        $("#ins_per").html(valor);
-    }
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/FichaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].numeroFicha+'">'+ myItems[i].numeroFicha+'</option>'
-        }
-        $("#fic_per").html(valor);
-    }
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/ProgramaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].idPrograma+'">'+ myItems[i].nombrePrograma+'</option>'
-        }
-        $("#pro_per").html(valor);
+    var tip_cue=$("#tip_cuentadante option:selected").val();
+        
+    switch(tip_cue){
+        case "Unipersonal":
+            $(".tipo_cuenta_nom").html(
+                '<label>Nombre cuentadante:</label>'+
+                '<select class="form-control" id=""></select>'
+            );
+            $(".tipo_cuenta_doc").html(
+                '<label>Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_uno">'
+            );
+            break;
+
+        case "Multiple":
+            $(".tipo_cuenta_nom").html(
+                '<label>Nombre cuentadante 1:</label>'+
+                '<select class="form-control" id=""></select>'+
+                '<label>Nombre cuentadante 2:</label>'+
+                '<select class="form-control" id=""></select>'+
+                '<label>Nombre cuentadante 3:</label>'+
+                '<select class="form-control" id=""></select>'
+            );
+            $(".tipo_cuenta_doc").html(
+                '<label>Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_uno">'+
+                '<label>Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_dos">'+
+                '<label>Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_tres">'
+            );
+            break;
+
+        default:
+            $(".tipo_cuenta_nom").html(" ");
+            $(".tipo_cuenta_doc").html(" ");
+            break;
     }
 });

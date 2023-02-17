@@ -1,4 +1,4 @@
-function borrarInstructor(idInst){
+function borrarPersonal(idInst){
         
     var idEliminar={
         id:idInst
@@ -14,18 +14,17 @@ function borrarInstructor(idInst){
         }
     })
 }
-function editarInstructor(idInst){
+function editarPersonal(idInst){
     $.ajax({
         type: "GET",
         url: app_inst.backend+"/"+idInst,
         dataType: "JSON",
         
         success: function (data) {
-            $("#edit_id_inst").empty().val(data.idInstructor);
+            $("#edit_id_inst").empty().val(data.idPersonal);
             $("#edit_cedu_inst").empty().val(data.cedula);
-            $("#edit_nomb_inst").empty().val(data.nombreInstructor);
+            $("#edit_nomb_inst").empty().val(data.nombrePersonal);
             $("#edit_celu_inst").empty().val(data.celular);
-            $("#edit_corr_inst").empty().val(data.correo);
         }
     });
 }
@@ -47,9 +46,8 @@ app_inst={
                                 '<td>'+ myItems[i].cedula+'</td>'+
                                 '<td>'+ myItems[i].nombreInstructor+'</td>'+
                                 '<td>'+ myItems[i].celular+'</td>'+
-                                '<td>'+ myItems[i].correo+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarInstructor('+ myItems[i].idInstructor+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarInstructor("+ myItems[i].idInstructor+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarPersonal('+ myItems[i].idPersonal+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPersonal("+ myItems[i].idPersonal+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_inst").html(valor);
@@ -57,7 +55,7 @@ app_inst={
         })
     },
     reg_inst: function(){
-        $("#reg_instructores").click(function() { 
+        $("#reg_Personales").click(function() { 
             var reg_instru_docu=$("#reg_instru_docu").val();
             var reg_instru_nomb=$("#reg_instru_nomb").val();
             var reg_instru_celu=$("#reg_instru_celu").val();
@@ -66,7 +64,7 @@ app_inst={
                 cedula:reg_instru_docu,
                 celular:reg_instru_celu,
                 correo:reg_instru_corr,
-                nombreInstructor:reg_instru_nomb
+                nombrePersonal:reg_instru_nomb
             }
             $.ajax({
                 type: "POST",
@@ -97,9 +95,9 @@ app_inst={
             var edit_corr_inst=$("#edit_corr_inst").val();
 
             var datos_editados={
-                idInstructor:edit_id_inst,
+                idPersonal:edit_id_inst,
                 cedula:edit_cedu_inst,
-                nombreInstructor:edit_nomb_inst,
+                nombrePersonal:edit_nomb_inst,
                 celular:edit_celu_inst,
                 correo:edit_corr_inst
             }
