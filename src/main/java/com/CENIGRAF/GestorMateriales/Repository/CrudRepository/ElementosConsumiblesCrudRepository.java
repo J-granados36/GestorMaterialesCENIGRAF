@@ -4,4 +4,5 @@ import com.CENIGRAF.GestorMateriales.ModelBD.ElementosConsumiblesModel;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ElementosConsumiblesCrudRepository extends CrudRepository<ElementosConsumiblesModel,Integer> {
+    ElementosConsumiblesModel findFirstByCodigoSena(Integer codigoSena);
 }

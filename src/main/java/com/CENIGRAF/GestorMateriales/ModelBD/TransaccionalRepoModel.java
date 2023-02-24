@@ -2,30 +2,23 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "TransaccionalReporte")
+@Table(name = "Reporte_Maquina")
 public class TransaccionalRepoModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer idTransaccional;
-    private Integer TotalSolicitud;
+    private Integer idReporte;
 
-    //muchos
+    @Temporal(value = TemporalType.DATE)
+    private Date fecha;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPer")
     private personalCenigrafModel personalCenigrafModel;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPrograma")
-    private ProgramaModel programaModel;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idFicha")
-    private FichaModel fichaModel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idAmbiente")
@@ -35,25 +28,26 @@ public class TransaccionalRepoModel implements Serializable {
     @JoinColumn(name = "idMaquina")
     private MaquinaModel maquinaModel;
 
+    //tipo correctivo o preventivo
+
+    private String Observaciones;
 
 
-
-    public Integer getTotalSolicitud() {
-        return TotalSolicitud;
+    public Integer getIdReporte() {
+        return idReporte;
     }
 
-    public void setTotalSolicitud(Integer totalSolicitud) {
-        TotalSolicitud = totalSolicitud;
+    public void setIdReporte(Integer idReporte) {
+        this.idReporte = idReporte;
     }
 
-    public Integer getIdTransaccional() {
-        return idTransaccional;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setIdTransaccional(Integer idTransaccional) {
-        this.idTransaccional = idTransaccional;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
-
 
     public com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel getPersonalCenigrafModel() {
         return personalCenigrafModel;
@@ -61,22 +55,6 @@ public class TransaccionalRepoModel implements Serializable {
 
     public void setPersonalCenigrafModel(com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel personalCenigrafModel) {
         this.personalCenigrafModel = personalCenigrafModel;
-    }
-
-    public ProgramaModel getProgramaModel() {
-        return programaModel;
-    }
-
-    public void setProgramaModel(ProgramaModel programaModel) {
-        this.programaModel = programaModel;
-    }
-
-    public FichaModel getFichaModel() {
-        return fichaModel;
-    }
-
-    public void setFichaModel(FichaModel fichaModel) {
-        this.fichaModel = fichaModel;
     }
 
     public AmbienteModel getAmbienteModel() {
@@ -93,6 +71,14 @@ public class TransaccionalRepoModel implements Serializable {
 
     public void setMaquinaModel(MaquinaModel maquinaModel) {
         this.maquinaModel = maquinaModel;
+    }
+
+    public String getObservaciones() {
+        return Observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        Observaciones = observaciones;
     }
 
     public void addRepoA(TransaccionalRepoModel transaccionalRepoModel) {

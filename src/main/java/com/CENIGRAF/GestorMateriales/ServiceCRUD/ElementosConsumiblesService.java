@@ -51,8 +51,8 @@ public class ElementosConsumiblesService {
                 if (elementosConsumiblesModel.getUnidadMedida()!=null){
                     ElCo.get().setUnidadMedida(elementosConsumiblesModel.getUnidadMedida());
                 }
-                if (elementosConsumiblesModel.getCantidadAlmacen()!=null){
-                    ElCo.get().setCantidadAlmacen(elementosConsumiblesModel.getCantidadAlmacen());
+                if (elementosConsumiblesModel.getExistenciaAlmacen()!=null){
+                    ElCo.get().setExistenciaAlmacen(elementosConsumiblesModel.getExistenciaAlmacen());
                 }
                 if (elementosConsumiblesModel.getObservaciones()!=null){
                     ElCo.get().setObservaciones(elementosConsumiblesModel.getObservaciones());

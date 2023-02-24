@@ -23,10 +23,10 @@ public class TransaccionalRepoService {
     }
 
     public TransaccionalRepoModel save(TransaccionalRepoModel transaccionalRepoModel){
-        if (transaccionalRepoModel.getIdTransaccional()==null){
+        if (transaccionalRepoModel.getIdReporte()==null){
             return transaccionalRepoRepository.save(transaccionalRepoModel);
         }else{
-            Optional<TransaccionalRepoModel> transaux=transaccionalRepoRepository.getTransaccionalRepoModel(transaccionalRepoModel.getIdTransaccional());
+            Optional<TransaccionalRepoModel> transaux=transaccionalRepoRepository.getTransaccionalRepoModel(transaccionalRepoModel.getIdReporte());
             if (transaux.isEmpty()){
                 return transaccionalRepoRepository.save(transaccionalRepoModel);
             }else{
@@ -36,14 +36,26 @@ public class TransaccionalRepoService {
     }
 
     public TransaccionalRepoModel update(TransaccionalRepoModel transaccionalRepoModel){
-        if (transaccionalRepoModel.getIdTransaccional()!=null){
-            Optional<TransaccionalRepoModel> Tran=transaccionalRepoRepository.getTransaccionalRepoModel(transaccionalRepoModel.getIdTransaccional());
+        if (transaccionalRepoModel.getIdReporte()!=null){
+            Optional<TransaccionalRepoModel> Tran=transaccionalRepoRepository.getTransaccionalRepoModel(transaccionalRepoModel.getIdReporte());
             if (!Tran.isEmpty()){
-                if(transaccionalRepoModel.getIdTransaccional()!=null){
-                    Tran.get().setIdTransaccional(transaccionalRepoModel.getIdTransaccional());
+                if(transaccionalRepoModel.getIdReporte()!=null){
+                    Tran.get().setIdReporte(transaccionalRepoModel.getIdReporte());
                 }
-                if (transaccionalRepoModel.getTotalSolicitud()!=null){
-                    Tran.get().setTotalSolicitud(transaccionalRepoModel.getTotalSolicitud());
+                if (transaccionalRepoModel.getFecha()!=null){
+                    Tran.get().setFecha(transaccionalRepoModel.getFecha());
+                }
+                if (transaccionalRepoModel.getPersonalCenigrafModel()!=null){
+                    Tran.get().setPersonalCenigrafModel(transaccionalRepoModel.getPersonalCenigrafModel());
+                }
+                if (transaccionalRepoModel.getAmbienteModel()!=null){
+                    Tran.get().setAmbienteModel(transaccionalRepoModel.getAmbienteModel());
+                }
+                if (transaccionalRepoModel.getMaquinaModel()!=null){
+                    Tran.get().setMaquinaModel(transaccionalRepoModel.getMaquinaModel());
+                }
+                if (transaccionalRepoModel.getObservaciones()!=null){
+                    Tran.get().setObservaciones(transaccionalRepoModel.getObservaciones());
                 }
                 transaccionalRepoRepository.save(Tran.get());
                 return Tran.get();

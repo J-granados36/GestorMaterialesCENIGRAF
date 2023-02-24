@@ -18,8 +18,6 @@ public class FichaModel implements Serializable {
 
     @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<RepoPeriModel> repoPeriModels;
-    @OneToMany(mappedBy = "fichaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<TransaccionalRepoModel> transaccionalRepoModels;
 
     public FichaModel() {
         repoPeriModels=new ArrayList<RepoPeriModel>();
@@ -38,14 +36,6 @@ public class FichaModel implements Serializable {
     }
     public void setNumeroFicha(Integer numeroFicha) {
         this.numeroFicha = numeroFicha;
-    }
-
-    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
-        return transaccionalRepoModels;
-    }
-
-    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
-        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 
     public void addReportPeri(RepoPeriModel repoPeriModel){

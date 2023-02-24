@@ -22,9 +22,6 @@ public class ProgramaModel implements Serializable {
     @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<RepoPeriModel> repoPeriModels;
 
-    @OneToMany(mappedBy = "programaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<TransaccionalRepoModel> transaccionalRepoModels;
-
     public ProgramaModel() {
         repoPeriModels=new ArrayList<RepoPeriModel>();
     }
@@ -42,14 +39,6 @@ public class ProgramaModel implements Serializable {
 
     public void setNombrePrograma(String nombrePrograma) {
         this.nombrePrograma = nombrePrograma;
-    }
-
-    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
-        return transaccionalRepoModels;
-    }
-
-    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
-        this.transaccionalRepoModels = transaccionalRepoModels;
     }
 
     public void addReportPeri(RepoPeriModel repoPeriModel){

@@ -20,13 +20,6 @@ public class MaquinaModel implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date adquisicion;
 
-
-    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<MtPreventivoModel> mtPreventivoModels;
-
-    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<MtCorrectivoModel> mtCorrectivoModels;
-
     @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;
     public Integer getIdMaquina() {
@@ -67,23 +60,6 @@ public class MaquinaModel implements Serializable {
 
     public void setAdquisicion(Date adquisicion) {
         this.adquisicion = adquisicion;
-    }
-
-
-    public List<MtPreventivoModel> getMtPreventivoModels() {
-        return mtPreventivoModels;
-    }
-
-    public void setMtPreventivoModels(List<MtPreventivoModel> mtPreventivoModels) {
-        this.mtPreventivoModels = mtPreventivoModels;
-    }
-
-    public List<MtCorrectivoModel> getMtCorrectivoModels() {
-        return mtCorrectivoModels;
-    }
-
-    public void setMtCorrectivoModels(List<MtCorrectivoModel> mtCorrectivoModels) {
-        this.mtCorrectivoModels = mtCorrectivoModels;
     }
 
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {

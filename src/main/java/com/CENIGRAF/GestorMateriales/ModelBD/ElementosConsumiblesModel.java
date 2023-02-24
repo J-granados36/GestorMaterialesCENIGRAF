@@ -9,24 +9,59 @@ public class ElementosConsumiblesModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer IdEc;
-    private Long codigoSena;
+    private Integer codigoSena;
     private String decripcionBien;
     private String unidadMedida;
-    private Integer cantidadAlmacen;
-    private String observaciones;
+    private Integer existenciaAlmacen;
+    private Integer cantidadSolicitada;
+    private Integer observaciones;
     //Atributo imagen pendiente
 
 
-    public ElementosConsumiblesModel(Integer idEc, Long codigoSena, String decripcionBien, String unidadMedida, Integer cantidadAlmacen, String observaciones) {
+    public ElementosConsumiblesModel(Integer idEc, Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones) {
         IdEc = idEc;
         this.codigoSena = codigoSena;
         this.decripcionBien = decripcionBien;
         this.unidadMedida = unidadMedida;
-        this.cantidadAlmacen = cantidadAlmacen;
+        this.existenciaAlmacen = existenciaAlmacen;
+        this.cantidadSolicitada = cantidadSolicitada;
+        this.observaciones = observaciones;
+    }
+
+    public ElementosConsumiblesModel(Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones) {
+        this.codigoSena = codigoSena;
+        this.decripcionBien = decripcionBien;
+        this.unidadMedida = unidadMedida;
+        this.existenciaAlmacen = existenciaAlmacen;
+        this.cantidadSolicitada = cantidadSolicitada;
         this.observaciones = observaciones;
     }
 
     public ElementosConsumiblesModel() {
+    }
+
+    public boolean sinExistencia(){
+        return this.existenciaAlmacen <=0;
+    }
+
+    public Integer getExistenciaAlmacen() {
+        return existenciaAlmacen;
+    }
+
+    public void setExistenciaAlmacen(Integer existenciaAlmacen) {
+        this.existenciaAlmacen = existenciaAlmacen;
+    }
+
+    public void restarExistencia(Integer existenciaAlmacen){
+        this.existenciaAlmacen -= existenciaAlmacen;
+    }
+
+    public Integer getCantidadSolicitada() {
+        return cantidadSolicitada;
+    }
+
+    public void setCantidadSolicitada(Integer cantidadSolicitada) {
+        this.cantidadSolicitada = cantidadSolicitada;
     }
 
     public Integer getIdEc() {
@@ -37,11 +72,11 @@ public class ElementosConsumiblesModel implements Serializable {
         IdEc = idEc;
     }
 
-    public Long getCodigoSena() {
+    public Integer getCodigoSena() {
         return codigoSena;
     }
 
-    public void setCodigoSena(Long codigoSena) {
+    public void setCodigoSena(Integer codigoSena) {
         this.codigoSena = codigoSena;
     }
 
@@ -61,19 +96,12 @@ public class ElementosConsumiblesModel implements Serializable {
         this.unidadMedida = unidadMedida;
     }
 
-    public Integer getCantidadAlmacen() {
-        return cantidadAlmacen;
-    }
 
-    public void setCantidadAlmacen(Integer cantidadAlmacen) {
-        this.cantidadAlmacen = cantidadAlmacen;
-    }
-
-    public String getObservaciones() {
+    public Integer getObservaciones() {
         return observaciones;
     }
 
-    public void setObservaciones(String observaciones) {
+    public void setObservaciones(Integer observaciones) {
         this.observaciones = observaciones;
     }
 
