@@ -51,6 +51,9 @@ public class MaquinaService {
                 if (maquinaModel.getAdquisicion()!=null){
                     Ma.get().setAdquisicion(maquinaModel.getAdquisicion());
                 }
+                if (maquinaModel.getSerial()!=null){
+                    Ma.get().setSerial(maquinaModel.getSerial());
+                }
                 maquinaRepository.save(Ma.get());
                 return Ma.get();
             }else {

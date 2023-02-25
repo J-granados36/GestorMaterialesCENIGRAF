@@ -16,14 +16,9 @@ public class MaquinaModel implements Serializable {
     private Integer idMaquina;
     private String nombreMaquina;
     private String placa;
+    private String serial;
+    @Temporal(TemporalType.DATE)
     private Date adquisicion;
-
-
-    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<MtPreventivoModel> mtPreventivoModels;
-
-    @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<MtCorrectivoModel> mtCorrectivoModels;
 
     @OneToMany(mappedBy = "maquinaModel",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TransaccionalRepoModel> transaccionalRepoModels;
@@ -43,6 +38,14 @@ public class MaquinaModel implements Serializable {
         this.nombreMaquina = nombreMaquina;
     }
 
+    public String getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
     public String getPlaca() {
         return placa;
     }
@@ -57,23 +60,6 @@ public class MaquinaModel implements Serializable {
 
     public void setAdquisicion(Date adquisicion) {
         this.adquisicion = adquisicion;
-    }
-
-
-    public List<MtPreventivoModel> getMtPreventivoModels() {
-        return mtPreventivoModels;
-    }
-
-    public void setMtPreventivoModels(List<MtPreventivoModel> mtPreventivoModels) {
-        this.mtPreventivoModels = mtPreventivoModels;
-    }
-
-    public List<MtCorrectivoModel> getMtCorrectivoModels() {
-        return mtCorrectivoModels;
-    }
-
-    public void setMtCorrectivoModels(List<MtCorrectivoModel> mtCorrectivoModels) {
-        this.mtCorrectivoModels = mtCorrectivoModels;
     }
 
     public List<TransaccionalRepoModel> getTransaccionalRepoModels() {

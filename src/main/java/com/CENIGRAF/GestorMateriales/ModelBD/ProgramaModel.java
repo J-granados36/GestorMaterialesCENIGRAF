@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,9 +19,12 @@ public class ProgramaModel implements Serializable {
 
     private String nombrePrograma;
 
-    @OneToMany(mappedBy = "programaModel",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<TransaccionalRepoModel> transaccionalRepoModels;
+    @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<RepoPeriModel> repoPeriModels;
 
+    public ProgramaModel() {
+        repoPeriModels=new ArrayList<RepoPeriModel>();
+    }
     public Integer getIdPrograma() {
         return idPrograma;
     }
@@ -37,11 +41,8 @@ public class ProgramaModel implements Serializable {
         this.nombrePrograma = nombrePrograma;
     }
 
-    public List<TransaccionalRepoModel> getTransaccionalRepoModels() {
-        return transaccionalRepoModels;
+    public void addReportPeri(RepoPeriModel repoPeriModel){
+        repoPeriModels.add(repoPeriModel);
     }
-
-    public void setTransaccionalRepoModels(List<TransaccionalRepoModel> transaccionalRepoModels) {
-        this.transaccionalRepoModels = transaccionalRepoModels;
-    }
+    private static final long serialVersionUID = 1L;
 }
