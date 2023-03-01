@@ -1,6 +1,4 @@
-#btn-nav{
-    font-family: sans-serif;
-}
+
 header{
     background-color:  rgb(57, 169, 0);
 }
@@ -29,4 +27,7 @@ header{
 }
 #sumitem{
     margin-bottom: 20px;
+}
+.container{
+    Font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 }

@@ -1,78 +1,193 @@
 $(function () {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/api/Inventario/all',
-        success:function (response){ 
-            var myItems= response;
-            var valor = '';
-            for (i = 0; i < myItems.length; i++) {
-                valor += '<option value="'+myItems[i].idInventario+'">'+myItems[i].nombreElemento+'</option>';
-            } 
-            $("#elemento_per").append(valor);
+    n =  new Date();y = n.getFullYear();m = n.getMonth() + 1;d = n.getDate();
+    if(d<10){d='0'+d;}
+    if(m<10){ m='0'+m;}
+    $("#f_solicitud").val(d+"/"+m+"/"+y);
 
-            $("#elemento_per").on('focus change', function () {
-                $("#udmedper").empty();
-                $("#descper").empty();
-            
-                var ideleanu=$("#elemento_per").val();
-            
-                $.ajax({
-                    type: "GET",
-                    url: "http://localhost:8080/api/Inventario/"+ideleanu,
-                    dataType: "JSON",
-                    success: function (response) {
-                        $("#udmedper").val(response.undMedida);
-                        $("#descper").val(response.descripcionElemento);
-                    }
-                });
-            });            
-    }});
-    $("#suma_elementop").click(function () { 
-        $("#fila_prinp").clone().appendTo("#tb_elementop_body");
-        $("#udmedper").empty();
-        $("#descper").empty();
+    $("#eliminar_fila").hide();
+    $("#nuevo_articulo").click(function () { 
+        var html_ele=$("#elemento_prin_per").html();
+        $("#body_elemento").append(
+            "<tr>"+html_ele+"</tr>"
+        );
+        $("#eliminar_fila").show();
+    });
+    $("#eliminar_fila").click(function () { 
+        $("#tabla_ele_per tr:last").remove();
+        var filas=$("#tabla_ele_per tr").length;
+
+        if(filas>=3){
+            $("#eliminar_fila").show();
+        }
+        else{
+            $("#eliminar_fila").hide();
+        }
+    });
+    $("#ficha").select2({ 
+        ajax:{
+            url: "http://localhost:8080/api/FichaModel/all",
+            dataType: "JSON",
+            processResults: function (data) {
+                return{
+                    results:
+                        $.map(data, function (obj) {
+                            return{ id: obj.idFicha, text: obj.numeroFicha}
+                        })
+                }
+        }},
+        placeholder: "Seleccionar la fecha"
+    });
+    $("#tip_cuentadante").select2({
+        placeholder: "Seleccionar el tipo"
     });
 });
+$("#tip_cuentadante").on("change", function () { 
 
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/InsModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].idInstructor+'">'+ myItems[i].nombreInstructor+'</option>'
-        }
-        $("#ins_per").html(valor);
+    var tip_cue=$("#tip_cuentadante option:selected").val();
+        
+    switch(tip_cue){
+        case "Unipersonal":
+            $(".tipo_cuenta_nom").html(
+                '<label>Nombre cuentadante:</label>'+
+                '<select class="form-control mt-2" id="nom_cue_uni" style="width: 100%" required></select>'
+            );
+            $(".tipo_cuenta_doc").html(
+                '<label>Documento cuentadante:</label>'+
+                '<input type="number" class="form-control " id="doc_cuenta_uni" readonly>'
+            );
+            $("#nom_cue_uni").select2({
+                ajax:{
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/all",
+                    dataType: "JSON",
+                    processResults: function (data) {
+                        return{
+                            results:
+                                $.map(data, function (obj) {
+                                    return{ id: obj.idPer, text: obj.nombrePersonal}
+                                })
+                        }
+                }},
+                placeholder: "Seleccionar el cuentadante"
+            })
+            $("#nom_cue_uni").on("focus", function () {
+                var cue_uni=$("#nom_cue_uni").val();
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/"+cue_uni,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#doc_cuenta_uni").val(response.documento);
+                    }
+                });
+            });
+            break;
+
+        case "Multiple":
+            $(".tipo_cuenta_nom").html(
+                '<label>Nombre cuentadante 1:</label>'+
+                '<select class="form-control mt-2" id="nom_cue_uno" required></select>'+
+                '<label class="mt-2">Nombre cuentadante 2:</label>'+
+                '<select class="form-control mt-2" id="nom_cue_dos"></select>'+
+                '<label class="mt-2">Nombre cuentadante 3:</label>'+
+                '<select class="form-control mt-2" id="nom_cue_tres"></select>'
+            );
+            $(".tipo_cuenta_doc").html(
+                '<label >Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_uno" readonly>'+
+                '<label class="mt-2">Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_dos" readonly>'+
+                '<label class="mt-2">Documento cuentadante:</label>'+
+                '<input type="number" class="form-control" id="doc_cuenta_tres" readonly>'
+            );
+            $("#nom_cue_uno").select2({
+                ajax:{
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/all",
+                    dataType: "JSON",
+                    processResults: function (data) {
+                        return{
+                            results:
+                                $.map(data, function (obj) {
+                                    return{ id: obj.idPer, text: obj.nombrePersonal}
+                                })
+                        }
+                }},
+                placeholder: "Seleccionar el cuentadante"
+            })
+            $("#nom_cue_uno").on("change", function () {
+                var cue_uni=$("#nom_cue_uno").val();
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/"+cue_uni,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#doc_cuenta_uno").val(response.documento);
+                    }
+                });
+            });
+            $("#nom_cue_dos").select2({
+                ajax:{
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/all",
+                    dataType: "JSON",
+                    processResults: function (data) {
+                        return{
+                            results:
+                                $.map(data, function (obj) {
+                                    return{ id: obj.idPer, text: obj.nombrePersonal}
+                                })
+                        }
+                }},
+                placeholder: "Seleccionar el cuentadante"
+            })
+            $("#nom_cue_dos").on("change", function () {
+                var cue_uni=$("#nom_cue_dos").val();
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/"+cue_uni,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#doc_cuenta_dos").val(response.documento);
+                    }
+                });
+            });
+            $("#nom_cue_tres").select2({
+                ajax:{
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/all",
+                    dataType: "JSON",
+                    processResults: function (data) {
+                        return{
+                            results:
+                                $.map(data, function (obj) {
+                                    return{ id: obj.idPer, text: obj.nombrePersonal}
+                                })
+                        }
+                }},
+                placeholder: "Seleccionar el cuentadante"
+            })
+            $("#nom_cue_tres").on("change", function () {
+                var cue_uni=$("#nom_cue_tres").val();
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:8080/api/PersonalCenigrafModel/"+cue_uni,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $("#doc_cuenta_tres").val(response.documento);
+                    }
+                });
+            });
+            break;
+
+        default:
+            $(".tipo_cuenta_nom").html(" ");
+            $(".tipo_cuenta_doc").html(" ");
+            break;
     }
 });
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/FichaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].numeroFicha+'">'+ myItems[i].numeroFicha+'</option>'
-        }
-        $("#fic_per").html(valor);
-    }
+$("#area_solicitud").change(function () { 
+   $("#destino").val($("#area_solicitud").val()); 
 });
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/ProgramaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +='<option hidden default>Seleccionar</option>'+
-            '<option value="'+myItems[i].idPrograma+'">'+ myItems[i].nombrePrograma+'</option>'
-        }
-        $("#pro_per").html(valor);
-    }
+$("#nombre_coor").change(function () { 
+    $("#nombre").val($("#nombre_coor").val()); 
+ });
+ $('#solicitud_per').on('submit', function(){
+    var area=$("#area_solicitud").val();
 });

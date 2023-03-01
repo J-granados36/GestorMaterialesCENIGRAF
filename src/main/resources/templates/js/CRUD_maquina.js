@@ -23,6 +23,7 @@ function editarMaquina(idMaqu){
         success: function (data) {
             $("#edit_nomb_maqu").empty().val(data.nombreMaquina);
             $("#edit_placa_maqu").empty().val(data.placa);
+            $("#edit_seri_maqu").empty().val(data.serial);
             $("#edit_fech_maqu").empty().val(data.adquisicion);
         }
     });
@@ -42,9 +43,10 @@ app_maqu={
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
                                 '<td>'+ myItems[i].nombreMaquina+'</td>'+
+                                '<td>'+ myItems[i].serial+'</td>'+
                                 '<td>'+ myItems[i].placa+'</td>'+
                                 '<td>'+ myItems[i].adquisicion+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar</button>'+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarMaquina('+ myItems[i].idMaquina+')">Borrar <i class="bi bi-trash3"></i></button>'+'</td>'+
 
                                 '<td>'+"<button type='button' class='btn btn-success' onclick='editarMaquina("+ myItems[i].idMaquina+")' data-toggle='modal' data-target='#editarm'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
@@ -56,13 +58,16 @@ app_maqu={
     reg_maqu: function(){
 
         $("#reg_maquina").click(function() { 
+            var reg_seri_maqu=$("#reg_seri_maqu").val();
             var reg_fech_maqu=$("#reg_fech_maqu").val();
             var reg_nomb_maqu=$("#reg_nomb_maqu").val();
             var reg_plac_maqu=$("#reg_plac_maqu").val();
+
             var obj_prog={
                 adquisicion:reg_fech_maqu,
                 nombreMaquina:reg_nomb_maqu,
-                placa:reg_plac_maqu
+                placa:reg_plac_maqu,
+                serial:reg_seri_maqu
             }
             $.ajax({
                 type: "POST",
@@ -91,13 +96,15 @@ app_maqu={
             var edit_id_maqu= $("#edit_id_maqu").val();
             var edit_nomb_maqu= $("#edit_nomb_maqu").val();
             var edit_adqu_maqu= $("#edit_adqu_maqu").val();
+            var edit_seri_maqu= $("#edit_seri_maqu").val();
             var edit_plac_maqu= $("#edit_plac_maqu").val();
 
             var datos_editados={
                 idMaquina:edit_id_maqu,
                 nombreMaquina:edit_nomb_maqu,
                 adquisicion:edit_adqu_maqu,
-                placa:edit_plac_maqu
+                placa:edit_plac_maqu,
+                serial:edit_seri_maqu
             }
 
             var datosJSON=JSON.stringify(datos_editados);
@@ -142,6 +149,7 @@ function editarMaquina(idMaqu){
             $("#edit_nomb_maqu").empty().val(data.nombreMaquina);
             $("#edit_adqu_maqu").empty().val(data.adquisicion);
             $("#edit_plac_maqu").empty().val(data.placa);
+            $("#edit_seri_maqu").empty().val(data.serial);
         }
     });
 }

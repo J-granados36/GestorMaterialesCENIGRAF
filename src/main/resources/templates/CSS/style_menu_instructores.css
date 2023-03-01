@@ -1,42 +1,31 @@
-
-#btn-nav{
-    font-family: sans-serif;
-}
 header{
     background-color: rgb(57, 169, 0);
 }
 .dropdown-item{
     font-size: 15px;
 }
-#info{
-    padding: 5%;
-}
-h4{
-    font-family: sans-serif;
+h1{
+    font-size: 150%;
 }
 .modal-body{
     height:500px;
     width: 100%;
-    overflow-y: auto;
-}
-.col-md-6{
-    margin-top: 5%;
-    text-align: center;
 }
 #infor{
-    font-family: sans-serif;
     font-size: x-large;
     width: 70%;
     height: 150%;
+    -webkit-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.53);
+-moz-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.53);
+box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.53);
 }
 #icon-btn{
     font-size: 300%;
 }
-h1{
-    text-align: center;
-    
+.row, div{
+    text-align: center; 
 }
-#solicitudmate, #solicitudmante{
+#solicitudmate, #solicitudmante, a{
     width: 80%;
     height: 140%;
 }
@@ -50,11 +39,10 @@ h1{
     margin-bottom: 20px;
 }
 #btn_principales{
-    display:flex;
-    margin-top: 15%;
+    margin-top: 13%;
     place-content: center;
 }
-.select2-selection__rendered {
+/*.select2-selection__rendered {
     line-height: 31px !important;
 }
 .select2-container .select2-selection--single {
@@ -62,4 +50,7 @@ h1{
 }
 .select2-selection__arrow {
     height: 34px !important;
+}*/
+.container{
+    Font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;    
 }

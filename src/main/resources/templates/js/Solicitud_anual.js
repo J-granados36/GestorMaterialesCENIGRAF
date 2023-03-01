@@ -1,76 +1,21 @@
 $(function () {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/api/Inventario/all',
-        success:function (response){ 
-            var myItems= response;
-            var valor = '';
-            for (i = 0; i < myItems.length; i++) {
-                valor += '<option value="'+myItems[i].idInventario+'">'+myItems[i].nombreElemento+'</option>';
-            } 
-            $("#elemento_anu").append(valor);
-
-            $("#elemento_anu").on('focus change', function () {
-                $("#udmedanu").empty();
-                $("#descanu").empty();
-            
-                var ideleanu=$("#elemento_anu").val();
-            
-                $.ajax({
-                    type: "GET",
-                    url: "http://localhost:8080/api/Inventario/"+ideleanu,
-                    dataType: "JSON",
-                    success: function (response) {
-                        $("#udmedanu").val(response.undMedida);
-                        $("#descanu").val(response.descripcionElemento);
-                    }
-                });
-            });            
-    }});
-    $("#suma_elementoa").click(function () { 
-        $("#fila_prina").clone().appendTo("#tb_elementoa_body").end();
-        $("#elemento_anu").$(selector).attr(attributeName, value);;
+    $("#eliminar_fila").hide();
+    $("#nuevo_articulo").click(function () { 
+        var html_ele=$("#elemento_prin_anu").html();
+        $("#body_elemento").append(
+            "<tr>"+html_ele+"</tr>"
+        );
+        $("#eliminar_fila").show();
     });
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/InsModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +=
-            '<option value="'+myItems[i].idInstructor+'">'+ myItems[i].nombreInstructor+'</option>'
+    $("#eliminar_fila").click(function () { 
+        $("#tabla_ele_anu tr:last").remove();
+        var filas=$("#tabla_ele_anu tr").length;
+
+        if(filas>=3){
+            $("#eliminar_fila").show();
         }
-        $("#ins_anu").html('<option hidden default>Seleccionar</option>'+valor);
-    }
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/FichaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +=
-            '<option value="'+myItems[i].numeroFicha+'">'+ myItems[i].numeroFicha+'</option>'
+        else{
+            $("#eliminar_fila").hide();
         }
-        $("#fic_anu").html('<option hidden default>Seleccionar</option>'+valor);
-    }
-});
-$.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/ProgramaModel/all",
-    dataType: "JSON",
-    success: function (response) {
-        var myItems= response;
-        var valor = '';
-        for (i = 0; i < myItems.length; i++) {
-            valor +=
-            '<option value="'+myItems[i].idPrograma+'">'+ myItems[i].nombrePrograma+'</option>'
-        }
-        $("#pro_anu").html('<option hidden default>Seleccionar</option>'+valor);
-    }
+    });
 });
