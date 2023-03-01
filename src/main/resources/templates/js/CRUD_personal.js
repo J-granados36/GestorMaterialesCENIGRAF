@@ -21,16 +21,16 @@ function editarPersonal(idInst){
         dataType: "JSON",
         
         success: function (data) {
-            $("#edit_id_inst").empty().val(data.idPersonal);
-            $("#edit_cedu_inst").empty().val(data.cedula);
+            $("#edit_id_inst").empty().val(data.idPer);
+            $("#edit_cedu_inst").empty().val(data.documento);
             $("#edit_nomb_inst").empty().val(data.nombrePersonal);
-            $("#edit_celu_inst").empty().val(data.celular);
+            $("#edit_carg_inst").empty().val(data.cargo);
         }
     });
 }
 app_inst={
     // Se llama la url del controller de intructores 
-    backend: "http://localhost:8080/api/InsModel",
+    backend: "http://localhost:8080/api/PersonalCenigrafModel",
     // Se DataTable para darle un diseño por defecto de jquery 
     leer_inst: function(){     
         $.ajax({
@@ -43,11 +43,11 @@ app_inst={
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
-                                '<td>'+ myItems[i].cedula+'</td>'+
-                                '<td>'+ myItems[i].nombreInstructor+'</td>'+
-                                '<td>'+ myItems[i].celular+'</td>'+
-                                '<td>'+'<button class="btn btn-danger" onclick="borrarPersonal('+ myItems[i].idPersonal+')">Borrar</button>'+'</td>'+
-                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPersonal("+ myItems[i].idPersonal+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
+                                '<td>'+ myItems[i].documento+'</td>'+
+                                '<td>'+ myItems[i].nombrePersonal+'</td>'+
+                                '<td>'+ myItems[i].cargo+'</td>'+
+                                '<td>'+'<button class="btn btn-danger" onclick="borrarPersonal('+ myItems[i].idPer+')">Borrar</button>'+'</td>'+
+                                '<td>'+"<button type='button' class='btn btn-success' onclick='editarPersonal("+ myItems[i].idPer+")' data-toggle='modal' data-target='#editari'>Editar <i class='bi bi-pencil'></i></button>"+'</td>'+
                             '</tr>'
                 }
                 $("#body_inst").html(valor);
@@ -55,16 +55,14 @@ app_inst={
         })
     },
     reg_inst: function(){
-        $("#reg_Personales").click(function() { 
+        $("#reg_personal").click(function() { 
             var reg_instru_docu=$("#reg_instru_docu").val();
             var reg_instru_nomb=$("#reg_instru_nomb").val();
-            var reg_instru_celu=$("#reg_instru_celu").val();
-            var reg_instru_corr=$("#reg_instru_corr").val();
+            var reg_instru_carg=$("#reg_instru_carg").val();
             var obj_prog={
-                cedula:reg_instru_docu,
-                celular:reg_instru_celu,
-                correo:reg_instru_corr,
-                nombrePersonal:reg_instru_nomb
+                documento:reg_instru_docu,
+                nombrePersonal:reg_instru_nomb,
+                cargo:reg_instru_carg,
             }
             $.ajax({
                 type: "POST",
@@ -91,15 +89,13 @@ app_inst={
             var edit_id_inst=$("#edit_id_inst").val();
             var edit_cedu_inst=$("#edit_cedu_inst").val();
             var edit_nomb_inst=$("#edit_nomb_inst").val();
-            var edit_celu_inst=$("#edit_celu_inst").val();
-            var edit_corr_inst=$("#edit_corr_inst").val();
+            var edit_carg_inst=$("#edit_carg_inst").val();
 
             var datos_editados={
-                idPersonal:edit_id_inst,
-                cedula:edit_cedu_inst,
+                idPer:edit_id_inst,
+                documento:edit_cedu_inst,
                 nombrePersonal:edit_nomb_inst,
-                celular:edit_celu_inst,
-                correo:edit_corr_inst
+                cargo:edit_carg_inst,
             }
 
             var datosJSON=JSON.stringify(datos_editados);

@@ -69,23 +69,14 @@
                     <div id="maquina" class="collapse">
                         <form>
                             <h4>Complete todos los campos</h4>
-<<<<<<< HEAD:src/main/resources/templates/almacen/MaquinasAlmacen.html
+                            <label>Nombre:</label>
+                            <input type="text" class="form-control mb-2" id="reg_nomb_maqu" placeholder="Ingresar nombre">
                             <label>Serial:</label>
-                            <input type="text" class="form-control" id="reg_fech_maqu">
-                            <label>Nombre:</label>
-                            <input type="text" class="form-control" id="reg_nomb_maqu" placeholder="Ingresar nombre">
+                            <input type="text" class="form-control mb-2" id="reg_seri_maqu" placeholder="Ingresar serial">
                             <label>Placa:</label>
-                            <input type="number" class="form-control" id="reg_plac_maqu" placeholder="Ingresar placa">
+                            <input type="number" class="form-control mb-2" id="reg_plac_maqu" placeholder="Ingresar placa">
                             <label>Adquisición de la máquina:</label>
-                            <input type="datetime-local" class="form-control" id="reg_fech_maqu">
-=======
-                            <label>Adquisición de la máquina:</label>
-                            <input type="date" class="form-control" id="reg_fech_maqu">
-                            <label>Nombre:</label>
-                            <input type="text" class="form-control" id="reg_nomb_maqu" placeholder="Ingresar nombre">
-                            <label>Placa:</label>
-                            <input type="text" class="form-control" id="reg_plac_maqu" placeholder="Ingresar placa">
->>>>>>> 0c8bfd6653713f0e8b3eada1dc34efc4434be7ee:src/main/resources/templates/administradores/MaquinasAdmin.html
+                            <input type="time" class="form-control mb-2" id="reg_fech_maqu">
                             <input type="submit" class="btn btn-success mt-3 mb-3" value="Registrar" id="reg_maquina">
                         </form>
                     </div>
@@ -93,8 +84,8 @@
                     <table class="table table-stripe" id="tabla_maqu"> 
                         <thead>
                         <tr>
+                            <th>Nombre</th> 
                             <th>Serial</th>
-                            <th>Nombre</th>
                             <th>Placa</th>
                             <th>Fecha adquisición</th>
                             <th></th>
@@ -120,18 +111,14 @@
                     <div class="container">
 
                         <form id="formulario_act_maq">
-                            <label>Serial</label>
-                            <input type="text" id="edit_nomb_maqu" class="form-control">
                             <label>Nombre</label>
                             <input type="text" id="edit_nomb_maqu" class="form-control">
+                            <label>Serial</label>
+                            <input type="text" id="edit_seri_maqu" class="form-control">
                             <label>Placa</label>
-<<<<<<< HEAD:src/main/resources/templates/almacen/MaquinasAlmacen.html
                             <input type="number" id="edit_plac_maqu" class="form-control">
                             <label>Adquisición</label>
-                            <input type="datetime" id="edit_adqu_maqu" class="form-control">
-=======
-                            <input type="text" id="edit_plac_maqu" class="form-control">
->>>>>>> 0c8bfd6653713f0e8b3eada1dc34efc4434be7ee:src/main/resources/templates/administradores/MaquinasAdmin.html
+                            <input type="date" id="edit_adqu_maqu" class="form-control">
                             <input type="hidden" id="edit_id_maqu">
                             <input type="submit" id='cambios_maqu' class="btn btn-success mt-3" value="Realizar cambios">
                         </form>

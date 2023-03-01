@@ -58,24 +58,24 @@
         <div class="row">
             <div class="col-12 my-5" id="Principal">
                 <img src="../images/Logo-de-SENA-png-verde.png"  style="float: right;" width="70px">
-                <h2 class="mt-2" id="titulo">Solicitud de bienes - Personal CENIGRAF </h2>
+                <h2 class="mt-2" id="titulo">Solicitud de bienes - Personal CENIGRAF </h2><h5>(GIL-F014)</h5>
             </div>
         </div>
-        <form>
+        <form id="solicitud_per">
             <div class="row pb-4">
                 <div class="form-group col-6">
                     <label>Fecha de Solicitud:</label>
-                    <input type="date" class="form-control" id="f_solicitud">
+                    <input class="form-control" id="f_solicitud" readonly>
                     <label class="mt-2">Código Regional:</label>
                     <input type="text" class="form-control" id="cod_regional" value="9217" placeholder="9217" readonly>
                     <label class="mt-2">Código de Costos:</label>
                     <input type="text" class="form-control" id="cod_costos" value="921710" placeholder="921710" readonly>
                     <label class="mt-2">Nombre del jefe de oficina o coordinador del area:</label>
-                    <select class="form-control" name="nom_jefe_coord" id=""></select>
+                    <input type="text" class="form-control" id="nombre_coor" required placeholder="Digite el jefe o coordinador">
                 </div>
                 <div class="form-group col-6">
                     <label>Area:</label>
-                    <input type="text" class="form-control" id="area_solicitud">
+                    <input type="text" class="form-control" id="area_solicitud" required placeholder="Digite el area">
                     <label class="mt-2">Nombre Regional:</label>
                     <input type="text" class="form-control" id="nom_regional" value="Distrito Capital" placeholder="Distrito Capital" readonly>
                     <label class="mt-2">Nombre Regional:</label>
@@ -83,8 +83,8 @@
                 </div>
                 <div class="form-group col-6 pt-0">
                     <label>Tipo de cuentadante:</label>
-                    <select class="form-control" name="t_cuentadante" id="tip_cuentadante">
-                        <option default>Seleccionar</option>
+                    <select class="form-control" id="tip_cuentadante" required>
+                        <option></option>
                         <option value="Unipersonal">Unipersonal</option>
                         <option value="Multiple">Multiple</option>
                     </select>
@@ -93,12 +93,12 @@
                 <div class="tipo_cuenta_nom col-6"></div>
                 <div class="tipo_cuenta_doc col-6"></div>
                 <div class="col-6">
-                    <label>Destino de los bienes:</label>
-                    <select class="form-control" name="des_bienes" id=""></select>
+                    <label class="mt-2">Destino de los bienes:</label>
+                    <input type="text" class="form-control" id="destino" readonly>
                 </div>
                 <div class="col-6">
-                    <label>Codido de grupo o número de ficha:</label>
-                    <select class="form-control" name="ficha" id=""></select>
+                    <label class="mt-2">Código de grupo o número de ficha:</label>
+                    <select class="form-control" name="ficha" id="ficha" required></select>
                 </div>
                 <div class="col-12">
                     <table class="table table-bordered mt-4" id="tabla_ele_per">
@@ -107,7 +107,6 @@
                             <th class="col-3">Descripción</th>
                             <th class="col-1">Und/Medida</th>
                             <th class="col-1">Cantidad(N°)</th>
-                            <th class="col-2">Imagen</th>
                             <th class="col-3">Observación</th>
                         </thead>
                         <tbody id="body_elemento">
@@ -116,7 +115,6 @@
                                 <td><select class="form-control" name="ficha" id=""></select></td>
                                 <td><input class="form-control" type="text" id="" readonly></td>
                                 <td><input class="form-control" type="number" id=""></td>
-                                <td></td>
                                 <td><textarea class="form-control" style="height: 40px;" name="" id=""></textarea></td>
                             </tr>
                         </tbody>
@@ -126,21 +124,22 @@
                 </div>
                 <div class="col-6">
                     <label  class="mt-2">Nombre:</label>
-                    <select class="form-control" name="nombre" id=""></select>
+                    <input type="text" class="form-control" id="nombre" readonly>
                     <label  class="mt-2">Firma</label>
-                    <input class="form-control" type="text" name="" id="">
+                    <input class="form-control" type="text" name="" id="">  
                 </div>
                 <div class="col-6">
                     <label  class="mt-2">Cargo:</label>
-                    <select class="form-control" name="cargo" id=""></select>
+                    <input type="text" class="form-control" id="cargo" required placeholder="Digite el cargo">
                 </div>
                 <div class="col-12 ">
-                    <button class="btn btn-success btn-lg mt-4 float-right">Enviar Informe <i class="bi bi-send"></i></button>
+                    <button class="btn btn-success btn-lg mt-4 float-right" id="enviar">Enviar Informe <i class="bi bi-send"></i></button>
                 </div>
             </div>
         </form>            
     </div>
 </div>
 <script src="../js/Solicitud_periodica.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 </html>

@@ -87,9 +87,9 @@
                         </select>
                         <label>Cantidad:</label>
                         <input type="number" class="form-control" id="reg_inve_cant" placeholder="Ingresar cantidad">
-                        <label>Imagen:</label>
-                        <input type="number" class="form-control" id="reg_inve_esta" placeholder="Ingresar imagen">
-                        <input type="submit" class="btn btn-success mt-3 mb-3" id="reg_inventario" value="Registrar">
+                        <label>Observación:</label>
+                        <textarea class="form-control" id="reg_inve_desc" placeholder="Ingresar observación"></textarea>
+                        <button type="submit" class="btn btn-success mt-3 mb-3" id="reg_inventario" >Registrar</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@
                   <th>Descripción</th>
                   <th>Medida</th>
                   <th>Cantidad</th>
-                  <th>Imagen</th>
+                  <th>Observación</th>
                   <th></th>
                   <th></th>
                 </tr>
@@ -165,6 +165,6 @@
           });
           </script>
           <script src="../js/jquery-3.6.1.min.js"></script>
-          <script src="../js/CRUD_inventario.js"></script>
+          <script src="../js/CRUD_consumibles.js"></script>
     </body>
 </html>

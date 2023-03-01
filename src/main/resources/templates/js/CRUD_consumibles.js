@@ -1,6 +1,6 @@
 app_inve={
     // Se llama la url del controller de intructores 
-    backend: "http://localhost:8080/api/Inventario",
+    backend: "http://localhost:8080/api/ElementosConsumibles",
     // Se DataTable para darle un diseño por defecto de jquery 
     leer_elem: function(){     
         $.ajax({
@@ -12,10 +12,9 @@ app_inve={
                 var valor = '';
                 for (i = 0; i < myItems.length; i++) {
                     valor +='<tr>'+
-                                '<td>'+ myItems[i].idInventario+'</td>'+
-                                '<td>'+ myItems[i].nombreElemento+'</td>'+
-                                '<td>'+ myItems[i].descripcionElemento+'</td>'+
-                                '<td>'+ myItems[i].undMedida+'</td>'+
+                                '<td>'+ myItems[i].codigoSena+'</td>'+
+                                '<td>'+ myItems[i].decripcionBien+'</td>'+
+                                '<td>'+ myItems[i].unidadMedida+'</td>'+
                                 '<td>'+ myItems[i].cantidadAlmacen+'</td>'+
                                 '<td>'+ myItems[i].estado+'</td>'+
                                 '<td>'+'<button class="btn btn-danger" onclick="borrarElemento('+ myItems[i].idInventario+')">Borrar <i class="bi bi-trash3"></i></button>'+'</td>'+
