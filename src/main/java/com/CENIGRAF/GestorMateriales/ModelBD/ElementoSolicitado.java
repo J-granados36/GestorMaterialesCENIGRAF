@@ -2,6 +2,9 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 
+
+//producto duplicada
+//sobra
 @Entity
 public class ElementoSolicitado {
 

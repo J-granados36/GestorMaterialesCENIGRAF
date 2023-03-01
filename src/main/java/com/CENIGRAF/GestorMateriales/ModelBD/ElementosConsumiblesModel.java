@@ -3,6 +3,8 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
+//producto duplicada
 @Entity
 @Table(name = "elementos_consumibles")
 public class ElementosConsumiblesModel implements Serializable {
@@ -16,9 +18,12 @@ public class ElementosConsumiblesModel implements Serializable {
     private Integer cantidadSolicitada;
     private Integer observaciones;
     //Atributo imagen pendiente
+    @ManyToOne
+    @JoinColumn
+    private RepoPeriModel repoPeriModel;
 
 
-    public ElementosConsumiblesModel(Integer idEc, Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones) {
+    public ElementosConsumiblesModel(Integer idEc, Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones,RepoPeriModel repoPeriModel) {
         IdEc = idEc;
         this.codigoSena = codigoSena;
         this.decripcionBien = decripcionBien;
@@ -26,15 +31,17 @@ public class ElementosConsumiblesModel implements Serializable {
         this.existenciaAlmacen = existenciaAlmacen;
         this.cantidadSolicitada = cantidadSolicitada;
         this.observaciones = observaciones;
+        this.repoPeriModel = repoPeriModel;
     }
 
-    public ElementosConsumiblesModel(Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones) {
+    public ElementosConsumiblesModel(Integer codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, Integer observaciones,RepoPeriModel repoPeriModel) {
         this.codigoSena = codigoSena;
         this.decripcionBien = decripcionBien;
         this.unidadMedida = unidadMedida;
         this.existenciaAlmacen = existenciaAlmacen;
         this.cantidadSolicitada = cantidadSolicitada;
         this.observaciones = observaciones;
+        this.repoPeriModel = repoPeriModel;
     }
 
     public ElementosConsumiblesModel() {
@@ -103,6 +110,14 @@ public class ElementosConsumiblesModel implements Serializable {
 
     public void setObservaciones(Integer observaciones) {
         this.observaciones = observaciones;
+    }
+
+    public RepoPeriModel getRepoPeriModel() {
+        return repoPeriModel;
+    }
+
+    public void setRepoPeriModel(RepoPeriModel repoPeriModel) {
+        this.repoPeriModel = repoPeriModel;
     }
 
     private static final long serialVersionUID = 1L;
