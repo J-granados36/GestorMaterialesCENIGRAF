@@ -1,11 +1,4 @@
 $(function () {
-    var on=$('input:radio[name=optradio]:checked').val();
-    
-    n =  new Date();y = n.getFullYear();m = n.getMonth() + 1;d = n.getDate();
-    if(d<10){d='0'+d;}
-    if(m<10){ m='0'+m;}
-    $("#fecha_solicitud").val(d+"/"+m+"/"+y);
-
     $("#imagen_firma").html("<img src='https://mdbootstrap.com/img/Photos/Others/placeholder.jpg' style='width: 200px'/>");
     $("#subir_firma").on("change", function (evt) {
         var files = evt.target.files; 
@@ -29,4 +22,4 @@ $(function () {
             reader.readAsDataURL(f);
         }
     });
-})
+});
