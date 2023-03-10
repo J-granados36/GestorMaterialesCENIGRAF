@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <link rel="stylesheet" href="../CSS/style_coordinador_principal.css">
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <!-- Extenciones Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>SENA-Gestor de Materiales</title>
+</head>
+<!--Barra de navegación-->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 logo_section">
+                <div class="full">
+                    <div class="center-desk">
+                    <div class="logo">
+                            <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-expand">
+                            <li class="nav-link">
+                                <a href="SolicitudPerCoordi.html" id="btn-nav" class="btn btn-lg">Solicitudes</a>
+                            </li>
+                            <li class="nav-link">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                                        Perfil <i class="bi bi-person-circle"></i></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                    <a class="dropdown-item">Coordinador - Jefe</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div> 
+</header>
+    <body>
+        <div class="container" id="cont">
+            <div class="row">
+                <div class="col-12">      
+                    <h1>Solicitud de consumibles - Personal CENIGRAF</h1>             
+                    <table id="sol_consu">
+                        <thead>
+                            <th colspan="3"></th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-success"  data-toggle="modal" data-target="#verdetalles">Ver Detalles <i class="bi bi-file-earmark-ruled"></i></button></td>
+                                <td><button type="button" class="btn btn-danger">Eliminar <i class="bi bi-trash3"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal" id="verdetalles">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h2 class="modal-title px-3 py-3">Detalles Solicitud del Personal</h2>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form id="solicitud_per">
+                            <div class="row p-4">
+                                <div class="form-group col-6">
+                                    <label>Fecha de Solicitud:</label>
+                                    <input class="form-control" id="f_solicitud" readonly>
+                                    <label class="mt-2">Código Regional:</label>
+                                    <input type="text" class="form-control" id="cod_regional" value="9217" placeholder="9217" readonly>
+                                    <label class="mt-2">Código de Costos:</label>
+                                    <input type="text" class="form-control" id="cod_costos" value="921710" placeholder="921710" readonly>
+                                    <label class="mt-2">Nombre del jefe de oficina o coordinador del area:</label>
+                                    <input type="text" class="form-control" id="nombre_coor" readonly>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Area:</label>
+                                    <input type="text" class="form-control" id="area_solicitud" readonly>
+                                    <label class="mt-2">Nombre Regional:</label>
+                                    <input type="text" class="form-control" id="nom_regional" value="Distrito Capital" placeholder="Distrito Capital" readonly>
+                                    <label class="mt-2">Nombre Regional:</label>
+                                    <input type="text" class="form-control" id="nom_centro_costos" value="CENIGRAF" placeholder="CENIGRAF" readonly>
+                                </div>
+                                <div class="form-group col-6 pt-0">
+                                    <label>Tipo de cuentadante:</label>
+                                    <input type="text" class="form-control" id="tipo_cuenta" readonly>
+                                </div>
+                                <div class="form-group col-6 pt-0">
+                                </div>
+                                <div class="col-6">
+                                    <label>Nombre cuentadante 1:</label>
+                                    <input type="text" class="form-control" id="nom_cuenta_uno" readonly>
+                                    <label class="mt-2">Nombre cuentadante 2:</label>
+                                    <input type="text" class="form-control" id="nom_cuenta_dos" readonly>
+                                    <label class="mt-2">Nombre cuentadante 3:</label>
+                                    <input type="text" class="form-control" id="nom_cuenta_tres" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label >Documento cuentadante:</label>
+                                    <input type="number" class="form-control" id="doc_cuenta_uno" readonly>
+                                    <label class="mt-2">Documento cuentadante:</label>
+                                    <input type="number" class="form-control" id="doc_cuenta_dos" readonly>
+                                    <label class="mt-2">Documento cuentadante:</label>
+                                    <input type="number" class="form-control" id="doc_cuenta_tres" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label class="mt-2">Destino de los bienes:</label>
+                                    <input type="text" class="form-control" id="destino" readonly>
+                                </div>
+                                <div class="col-6">
+                                    <label class="mt-2">Código de grupo o número de ficha:</label>
+                                    <input type="text" class="form-control" name="ficha" id="ficha" readonly>
+                                </div>
+                                <div class="col-12">
+                                    <table class="table table-bordered mt-4" id="tabla_ele_per">
+                                        <thead>
+                                            <th class="col-2">Código</th>
+                                            <th class="col-3">Descripción</th>
+                                            <th class="col-1">Und/Medida</th>
+                                            <th class="col-1">Cantidad(N°)</th>
+                                            <th class="col-3">Observación</th>
+                                        </thead>
+                                        <tbody id="body_elemento">
+                                            <tr id="elemento_prin_per">
+                                                <td><input class="form-control" type="text" id="" readonly></td>
+                                                <td><input class="form-control" type="text" id="" readonly></td>
+                                                <td><input class="form-control" type="text" id="" readonly></td>
+                                                <td><input class="form-control" type="number" id=""></td>
+                                                <td><textarea class="form-control" style="height: 40px;" readonly name="" id=""></textarea></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+                                    <label class="mt-2">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Digite el nombre">
+                                </div>
+                                <div class="col-6">
+                                    <label  class="mt-2">Cargo:</label>
+                                    <input type="text" class="form-control" id="cargo" required placeholder="Digite el cargo">
+                                </div>
+                                <div class="col-6">
+                                    <label class="mt-2">Firma:</label><br>
+                                    <div id="imagen_firma"><br></div>
+                                    <label>Suba la firma como imagen <font color="red">*</font></label>
+                                    <div class="btn btn-secondary">
+                                        <label class="form-label text-white m-1" for="subir_firma">Subir firma <i class="bi bi-pen"></i></label>
+                                        <input type="file" class="form-control d-none" accept="image/*" id="subir_firma" onclick="previewImage(event, '#imagen_firma')"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+              
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button class="btn btn-success btn-lg mt-4 float-right" id="enviar">Informe Aprobado <i class="bi bi-send"></i></button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+        </div>
+    </body>
+    <script src="../js/CRUD_coordinador.js"></script>
+</html>

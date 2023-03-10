@@ -63,7 +63,7 @@
                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#infomate" id="infor"><i class="bi bi-box-seam-fill" id="icon-btn"></i><br>Solicitud de materiales</button>                
                 </div>
                 <div class="col-6 mt-5"> 
-                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#infomant" id="infor"><i class="bi bi-wrench-adjustable-circle-fill" id="icon-btn"></i><br>Solicitud de mantenimiento</button>                
+                    <a href="Solicitud_mantenimiento.html"><button type="button" class="btn btn-outline-dark" id="infor"><i class="bi bi-wrench-adjustable-circle-fill" id="icon-btn"></i><br>Solicitud de mantenimiento</button></a>                
                 </div>
             </div>
         </div>
@@ -84,63 +84,6 @@
                             </div>
                             <div class="col-6 " id="btn_principales">
                                 <a href="Solicitud_anual.html"><button type="button" class="btn btn-light" id="solicitudmate"><i class="bi bi-calendar3" id="icon-btn"></i><br>Solicitud Anual</button></a>                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-          
-            </div>
-        </div>
-        <div id="infomant" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-          
-              <!-- Modal Materiales-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <h2>Solicitud de mantenimiento</h2> 
-                        <div class="row">
-                            <div class="col-12">
-                                <label class="mt-2">Seleccione el ambiente de formación:</label>
-                                <select class="form-control mt-2 mb-2"  style="width: 70%" id="amb_man"></select>
-                                <label class="mt-2">Seleccione la maquina o elemento para mantenimiento:</label>
-                                <select class="form-control mt-2 mb-2" style="width: 70%" id="maq_man"></select>
-                                <label class="mt-2">Seleccione el tipo de mantenimiento que desea:</label>
-                                <select class="form-control mt-2 mb-2" style="width: 70%" id="tipo_mante">
-                                    <option default >Seleccionar</option>
-                                    <option value="Preventivo">Preventivo</option>
-                                    <option value="Correctivo">Correctivo</option>
-                                </select>
-                                <label class="mt-2">Seleccione los elementos que necesita para el mantenimiento<i class="fas fa-drum-steelpan"></i>:</label>
-                                <table class="table table-bordered" id="tb_elementom">
-                                    <thead>
-                                        <tr >
-                                            <th class="col-3">Nombre del elemento</th>
-                                            <th class="col-1">U/Medida</th>
-                                            <th class="col-4">Descripción</th>
-                                            <th class="col-2">Cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tb_elementom_body">
-                                        <tr id="fila_prinm">
-                                            <td>
-                                                <select class="js-example-basic" id="elemento_man">
-                                                    <option default>Seleccionar</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="text" class="form-control" id="udmedman" readonly></td>
-                                            <td><textarea style="height: 40px;" class="form-control" id="descman" readonly></textarea></td>
-                                            <td><input type="number" class="form-control" ></td>
-                                        </tr>
-                                    </tbody>                                      
-                                </table>
-                                <button class="btn btn-secondary mb-3" id="suma_elementom">Añadir Artículo <i class="bi bi-journal-plus"></i></button><br>
-                                <button type="button" class="btn btn-danger mb-3" id="eliminar_fila_man">Eliminar Artículo <i class="bi bi-trash"></i></button><br>
-                                <button class="btn btn-success">Enviar Informe</button>
                             </div>
                         </div>
                     </div>

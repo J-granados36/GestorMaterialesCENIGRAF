@@ -53,7 +53,7 @@ $("#tip_cuentadante").on("change", function () {
             );
             $(".tipo_cuenta_doc").html(
                 '<label>Documento cuentadante:</label>'+
-                '<input type="number" class="form-control " id="doc_cuenta_uni" readonly>'
+                '<input type="number" class="form-control " id="doc_cue_uni" readonly>'
             );
             $("#nom_cue_uni").select2({
                 ajax:{
@@ -69,14 +69,14 @@ $("#tip_cuentadante").on("change", function () {
                 }},
                 placeholder: "Seleccionar el cuentadante"
             })
-            $("#nom_cue_uni").on("focus", function () {
+            $("#nom_cue_uni").on("change focus", function () {
                 var cue_uni=$("#nom_cue_uni").val();
                 $.ajax({
                     type: "GET",
                     url: "http://localhost:8080/api/PersonalCenigrafModel/"+cue_uni,
                     dataType: "JSON",
                     success: function (response) {
-                        $("#doc_cuenta_uni").val(response.documento);
+                        $("#doc_cue_uni").val(response.documento);
                     }
                 });
             });
@@ -181,9 +181,6 @@ $("#tip_cuentadante").on("change", function () {
             $(".tipo_cuenta_doc").html(" ");
             break;
     }
-});
-$("#area_solicitud").change(function () { 
-   $("#destino").val($("#area_solicitud").val()); 
 });
 $("#nombre_coor").change(function () { 
     $("#nombre").val($("#nombre_coor").val()); 
