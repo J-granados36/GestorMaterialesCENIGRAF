@@ -2,70 +2,74 @@ package com.CENIGRAF.GestorMateriales.ModelBD;
 
 import javax.persistence.*;
 
-
-//producto duplicada
-//sobra
 @Entity
 public class ElementoSolicitado {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEs;
-
-    private Long codigoSena;
-    private String decripcionBien;
-    private String unidadMedida;
-    private Integer existenciaAlmacen;
-    private Integer cantidadSolicitada;
-    private String observaciones;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private Float cantidad, contador;
+    private String nombre, codigo, unidadMedida, observacion;
     @ManyToOne
     @JoinColumn
-    private RepoPeriModel repoPeriModel;
+    private Reporte reporte;
 
-    public ElementoSolicitado(Long codigoSena, String decripcionBien, String unidadMedida, Integer existenciaAlmacen, Integer cantidadSolicitada, String observaciones, RepoPeriModel repoPeriModel) {
-        this.codigoSena = codigoSena;
-        this.decripcionBien = decripcionBien;
+    //otras tablas relacionadas---
+
+    public ElementoSolicitado(Float cantidad, Float contador, String nombre, String codigo, String unidadMedida, String observacion, Reporte reporte) {
+        this.cantidad = cantidad;
+        this.contador = contador;
+        this.nombre = nombre;
+        this.codigo = codigo;
         this.unidadMedida = unidadMedida;
-        this.existenciaAlmacen = existenciaAlmacen;
-        this.cantidadSolicitada = cantidadSolicitada;
-        this.observaciones = observaciones;
-        this.repoPeriModel = repoPeriModel;
-    }
-
-    public ElementoSolicitado(Integer cantidad, String unidadMedida, Integer cantidadSolicitada, Integer existenciaAlmacen, Integer observaciones, String decripcionBien, Integer codigoSena, RepoPeriModel s) {
+        this.observacion = observacion;
+        this.reporte = reporte;
     }
 
     public ElementoSolicitado() {
-
     }
 
-    public Integer getTotal(){
-        return this.cantidadSolicitada + this.cantidadSolicitada;
+    public Float getTotal() {
+        return this.cantidad ++;
     }
 
-    public Integer getIdEs() {
-        return idEs;
+    public Reporte getVenta() {
+        return reporte;
     }
 
-    public void setIdEs(Integer idEs) {
-        this.idEs = idEs;
+    public void setVenta(Reporte venta) {
+        this.reporte = venta;
     }
 
-    public Long getCodigoSena() {
-        return codigoSena;
+    public Float getContador() {
+        return contador;
     }
 
-    public void setCodigoSena(Long codigoSena) {
-        this.codigoSena = codigoSena;
+    public void setcontador(Float contador) {
+        this.contador = contador;
     }
 
-    public String getDecripcionBien() {
-        return decripcionBien;
+    public Float getCantidad() {
+        return cantidad;
     }
 
-    public void setDecripcionBien(String decripcionBien) {
-        this.decripcionBien = decripcionBien;
+    public void setCantidad(Float cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getUnidadMedida() {
@@ -76,35 +80,19 @@ public class ElementoSolicitado {
         this.unidadMedida = unidadMedida;
     }
 
-    public Integer getExistenciaAlmacen() {
-        return existenciaAlmacen;
+    public String getObservacion() {
+        return observacion;
     }
 
-    public void setExistenciaAlmacen(Integer existenciaAlmacen) {
-        this.existenciaAlmacen = existenciaAlmacen;
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
-    public Integer getCantidadSolicitada() {
-        return cantidadSolicitada;
+    public Reporte getReporte() {
+        return reporte;
     }
 
-    public void setCantidadSolicitada(Integer cantidadSolicitada) {
-        this.cantidadSolicitada = cantidadSolicitada;
-    }
-
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
-    public RepoPeriModel getRepoPeriModel() {
-        return repoPeriModel;
-    }
-
-    public void setRepoPeriModel(RepoPeriModel repoPeriModel) {
-        this.repoPeriModel = repoPeriModel;
+    public void setReporte(Reporte reporte) {
+        this.reporte = reporte;
     }
 }
