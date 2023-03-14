@@ -2,7 +2,7 @@ package com.CENIGRAF.GestorMateriales.Repository;
 
 
 import com.CENIGRAF.GestorMateriales.ModelBD.personalCenigrafModel;
-import com.CENIGRAF.GestorMateriales.Repository.CrudRepository.personalCenigrafCrudRepository;
+import com.CENIGRAF.GestorMateriales.Repository.CrudRepository.PersonalCenigrafCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class personalCenigrafRepository {
 
     @Autowired
-    private personalCenigrafCrudRepository personalCenigrafCrudRepository;
+    private PersonalCenigrafCrudRepository personalCenigrafCrudRepository;
 
     public List<personalCenigrafModel> getAll(){
         return (List<personalCenigrafModel>) personalCenigrafCrudRepository.findAll();

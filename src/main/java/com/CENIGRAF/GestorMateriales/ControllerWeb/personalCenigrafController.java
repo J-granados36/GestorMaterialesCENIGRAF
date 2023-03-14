@@ -16,7 +16,7 @@ import java.util.Optional;
 public class personalCenigrafController {
 
     @Autowired
-    private personalCenigrafService personalCenigrafService;
+    private com.CENIGRAF.GestorMateriales.ServiceCRUD.personalCenigrafService personalCenigrafService;
 
     @GetMapping("/all")
     public List<personalCenigrafModel> getPersonalCenigrafModels(){

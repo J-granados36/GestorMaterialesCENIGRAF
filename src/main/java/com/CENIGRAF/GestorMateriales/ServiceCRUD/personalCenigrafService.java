@@ -12,7 +12,7 @@ import java.util.Optional;
 public class personalCenigrafService {
 
     @Autowired
-    private personalCenigrafRepository personalCenigrafRepository;
+    private com.CENIGRAF.GestorMateriales.Repository.personalCenigrafRepository personalCenigrafRepository;
 
     public List<personalCenigrafModel> getAll(){
         return personalCenigrafRepository.getAll();

@@ -19,12 +19,7 @@ public class ProgramaModel implements Serializable {
 
     private String nombrePrograma;
 
-    @OneToMany(mappedBy = "personalCenigrafModel",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<RepoPeriModel> repoPeriModels;
 
-    public ProgramaModel() {
-        repoPeriModels=new ArrayList<RepoPeriModel>();
-    }
     public Integer getIdPrograma() {
         return idPrograma;
     }
@@ -41,8 +36,5 @@ public class ProgramaModel implements Serializable {
         this.nombrePrograma = nombrePrograma;
     }
 
-    public void addReportPeri(RepoPeriModel repoPeriModel){
-        repoPeriModels.add(repoPeriModel);
-    }
     private static final long serialVersionUID = 1L;
 }
