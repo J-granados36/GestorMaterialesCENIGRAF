@@ -1,64 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
-    <link rel="stylesheet" href="../CSS/style_menu_almacen.css">
-    <!--Icons-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <!-- Extenciones Bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <title>SENA-Gestor de Materiales</title>
-</head>
-<!--Barra de navegación-->
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5 logo_section">
-                <div class="full">
-                    <div class="center-desk">
-                    <div class="logo">
-                            <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+        <link rel="stylesheet" href="../CSS/style_menu_almacen.css">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <!-- Extenciones Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <title>SENA-Gestor de Materiales</title>
+    </head>
+    <!--Barra de navegación-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-5">
-                <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-expand">
-                            <li class="nav-link">
-                                <a href="SolicitudPerAlmacen.html" id="btn-nav" class="btn btn-lg">Solicitudes</a>
-                            </li>
-                            <li class="nav-link">
-                                <a href="PrincipalAlmacen.html" id="btn-nav" class="btn btn-lg">Consumibles</a>
-                            </li>
-                            <li class="nav-link">
-                                <a class="btn btn-lg" href="MaquinasAlmacen.html" id="btn-nav">Máquinas</a>
-                            </li>
-                            <li class="nav-link">
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
-                                        Perfil <i class="bi bi-person-circle"></i></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                    <a class="dropdown-item">Almacen</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                <div class="col-5">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-expand">
+                                <li class="nav-link">
+                                    <a href="SolicitudPerAlmacen.html" id="btn-nav" class="btn btn-lg">Solicitudes</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a href="PrincipalAlmacen.html" id="btn-nav" class="btn btn-lg">Consumibles</a>
+                                </li>
+                                <li class="nav-link">
+                                    <a class="btn btn-lg" href="MaquinasAlmacen.html" id="btn-nav">Máquinas</a>
+                                </li>
+                                <li class="nav-link">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                                            Perfil <i class="bi bi-person-circle"></i></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item">Almacen</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </div> 
-</header>
+        </div> 
+    </header>
     <body>
         <div class="container" id="info">
             <h1>Elementos Consumibles</h1>
@@ -96,39 +96,46 @@
             <input class="form-control" id="buscarel" type="text" placeholder="Buscar articulo">
             <br>
             <table class="table table table-hover">
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Descripción</th>
-                  <th>Medida</th>
-                  <th>Cantidad</th>
-                  <th>Observación</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="body_inve">
-              </tbody>
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Código</th>
+                        <th>Cantidad</th>
+                        <th>Medida</th>
+                        <th>Observación</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.descripcionBien}"></td>
+                        <td th:text="${producto.codigoSena}"></td>
+                        <td th:text="${producto.existenciaAlmacen}"></td>
+                        <td th:text="${producto.unidadMedida}"></td>
+                        <td th:text="${producto.observacion}"></td>
+                    </tr>
+                </tbody>
             </table>    
-          </div>
-          <div id="editarinve" class="modal fade" role="dialog">
+        </div>
+        <div id="editarinve" class="modal fade" role="dialog">
             <div class="modal-dialog">
-          
-              <!-- Modal Programas-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <h3>Completar todos los campos</h3>
-                    <div class="container">
-                        <form id="formulario_act_inv">
-                            <label>Nombre</label>
-                            <input type="text" id="edit_nomb_inve" class="form-control">
-                            <label>Descripcion</label>
-                            <textarea class="form-control" id="edit_desc_inve" placeholder="Ingresar descripción"></textarea>
-                            <label>Medida</label>
-                            <input list="medidas" class="form-control" id="edit_medi_inve">
+
+                <!-- Modal Programas-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Completar todos los campos</h3>
+                        <div class="container">
+                            <form id="formulario_act_inv">
+                                <label>Nombre</label>
+                                <input type="text" id="edit_nomb_inve" class="form-control">
+                                <label>Descripcion</label>
+                                <textarea class="form-control" id="edit_desc_inve" placeholder="Ingresar descripción"></textarea>
+                                <label>Medida</label>
+                                <input list="medidas" class="form-control" id="edit_medi_inve">
                                 <datalist id="medidas">
                                     <option>Unidad</option>
                                     <option>Pliego</option>
@@ -141,30 +148,29 @@
                                     <option>Paquete</option>
                                     <option>Metros</option>
                                 </datalist>
-                            <label>Cantidad</label>
-                            <input type="number" id="edit_cant_inve" class="form-control">
-                            <label>Estado</label>
-                            <input type="number" id="edit_esta_inve" class="form-control">
-                            <input type="hidden" id="edit_id_inve">
-    
-                            <input type="submit" id='cambios_inve' class="btn btn-success mt-3" value="Realizar cambios">
-                        </form>
+                                <label>Cantidad</label>
+                                <input type="number" id="edit_cant_inve" class="form-control">
+                                <label>Estado</label>
+                                <input type="number" id="edit_esta_inve" class="form-control">
+                                <input type="hidden" id="edit_id_inve">
+
+                                <input type="submit" id='cambios_inve' class="btn btn-success mt-3" value="Realizar cambios">
+                            </form>
+                        </div>
                     </div>
-                </div>
-              </div>   
+                </div>   
             </div>
         </div>
-          <script>
-          $(document).ready(function(){
-            $("#buscarel").on("keyup", function() {
-              var value = $(this).val().toLowerCase();
-              $("#body_inve tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
+        <script>
+            $(document).ready(function () {
+                $("#buscarel").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#body_inve tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
             });
-          });
-          </script>
-          <script src="../js/jquery-3.6.1.min.js"></script>
-          <script src="../js/CRUD_consumibles.js"></script>
+        </script>
+        <script src="../js/jquery-3.6.1.min.js"></script>
     </body>
 </html>
