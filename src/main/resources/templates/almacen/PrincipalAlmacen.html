@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
-        <link rel="stylesheet" href="../CSS/style_menu_almacen.css">
+        <link rel="stylesheet" href="/css/style_menu_almacen.css">
         <!--Icons-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
         <!-- Extenciones Bootstrap-->
@@ -22,7 +22,7 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+                                <img src="/images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
                             </div>
                         </div>
                     </div>
@@ -62,39 +62,12 @@
     <body>
         <div class="container" id="info">
             <h1>Elementos Consumibles</h1>
-            <button class="btn btn-secondary mb-3" data-toggle="collapse" data-target="#articulo">Agregar Articulo <i class="bi bi-bookmark-plus"></i></button>
-            <div id="articulo" class="collapse">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Complete todos los campos</h4>
-                        <label>Código:</label>
-                        <input type="text" id="reg_inve_nomb" class="form-control" placeholder="Ingresar código">
-                        <label>Descripción:</label>
-                        <textarea class="form-control" id="reg_inve_desc" placeholder="Ingresar descripción"></textarea>
-                        <label>Medida:</label>
-                        <select class="form-control" id="reg_inve_medi">
-                            <option default hidden>Seleccionar</option>
-                            <option>Unidad</option>
-                            <option>Pliego</option>
-                            <option>1/2 Pliego</option>
-                            <option>Caja</option>
-                            <option>Kilo</option>
-                            <option>Rollo</option>
-                            <option>Lamina</option>
-                            <option>Galón</option>
-                            <option>Paquete</option>
-                            <option>Metros</option>
-                        </select>
-                        <label>Cantidad:</label>
-                        <input type="number" class="form-control" id="reg_inve_cant" placeholder="Ingresar cantidad">
-                        <label>Observación:</label>
-                        <textarea class="form-control" id="reg_inve_desc" placeholder="Ingresar observación"></textarea>
-                        <button type="submit" class="btn btn-success mt-3 mb-3" id="reg_inventario" >Registrar</button>
-                    </div>
-                </div>
+            <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+                 th:text="${mensaje}"
+                 class="alert">
             </div>
+            <a href="/almacen/agregar"><button class="btn btn-secondary mb-3">Agregar Articulo <i class="bi bi-bookmark-plus"></i></button></a>
             <input class="form-control" id="buscarel" type="text" placeholder="Buscar articulo">
-            <br>
             <table class="table table table-hover">
                 <thead>
                     <tr>
@@ -107,13 +80,23 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="body_inve">
                     <tr th:each="producto : ${productos}">
                         <td th:text="${producto.descripcionBien}"></td>
                         <td th:text="${producto.codigoSena}"></td>
                         <td th:text="${producto.existenciaAlmacen}"></td>
                         <td th:text="${producto.unidadMedida}"></td>
                         <td th:text="${producto.observacion}"></td>
+                        <td>
+                            <a class="btn btn-success" th:href="@{/almacen/editar/} + ${producto.id}">Editar <i class="bi bi-pencil"></i></a>
+                        </td>
+                        <td>
+                            <form th:action="@{/almacen/eliminar}" method="post">
+                                <input type="hidden" name="id" th:value="${producto.id}"/>
+                                <button type="submit" class="btn btn-danger">Eliminar <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>    
