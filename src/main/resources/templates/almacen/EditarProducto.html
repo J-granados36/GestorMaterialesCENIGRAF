@@ -28,7 +28,7 @@
     </header>
         <div class="container py-5">
             <h1>Actualizar Productos</h1>
-            <a th:href="@{/almacen/mostrar}" th:value="Regresar" class="btn btn-secondary">Regresar</a>
+            <a th:href="@{/almacen/mostrar}" th:value="Regresar" class="btn btn-secondary my-2">Regresar</a>
             <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
                  th:text="${mensaje}"
                  class="alert">
@@ -85,7 +85,7 @@
                             <div class="invalid-feedback" th:errors="*{observacion}"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success mt-1 mb-3 ml-3">Registrar</button>
+                    <button type="submit" class="btn btn-success mt-1 mb-3 ml-3">Guardar</button>
                 </div>
             </form>
         </div>      
