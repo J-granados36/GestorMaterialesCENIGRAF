@@ -3,26 +3,6 @@ $(function () {
     if(d<10){d='0'+d;}
     if(m<10){ m='0'+m;}
     $("#f_solicitud").val(d+"/"+m+"/"+y);
-
-    $("#eliminar_fila").hide();
-    $("#nuevo_articulo").click(function () { 
-        var html_ele=$("#elemento_prin_per").html();
-        $("#body_elemento").append(
-            "<tr>"+html_ele+"</tr>"
-        );
-        $("#eliminar_fila").show();
-    });
-    $("#eliminar_fila").click(function () { 
-        $("#tabla_ele_per tr:last").remove();
-        var filas=$("#tabla_ele_per tr").length;
-
-        if(filas>=3){
-            $("#eliminar_fila").show();
-        }
-        else{
-            $("#eliminar_fila").hide();
-        }
-    });
     $("#ficha").select2({ 
         ajax:{
             url: "http://localhost:8080/api/FichaModel/all",
@@ -35,7 +15,7 @@ $(function () {
                         })
                 }
         }},
-        placeholder: "Seleccionar la fecha"
+        placeholder: "Seleccionar la ficha"
     });
     $("#tip_cuentadante").select2({
         placeholder: "Seleccionar el tipo"
@@ -181,10 +161,4 @@ $("#tip_cuentadante").on("change", function () {
             $(".tipo_cuenta_doc").html(" ");
             break;
     }
-});
-$("#nombre_coor").change(function () { 
-    $("#nombre").val($("#nombre_coor").val()); 
- });
- $('#solicitud_per').on('submit', function(){
-    var area=$("#area_solicitud").val();
 });

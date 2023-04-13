@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
-@RequestMapping(path = "/vender")
 public class SolicitarController {
     @Autowired
     private ElementosconsumiblesRepository elementosconsumiblesRepository;
@@ -26,14 +25,38 @@ public class SolicitarController {
     @Autowired
     private ElementosSolicitadosRepository elementosSolicitadosRepository;
 
-    @PostMapping(value = "/quitar/{indice}")
+    //Vincula a la interfaz de una nueva solicitud
+    @GetMapping(value = "/periodico")
+    public String interfazVender(Model model, HttpServletRequest request) {
+        model.addAttribute("producto", new ElementoConsumible());
+        //suma de elementos de toda la solicitud
+        float total = 0;
+        ArrayList<ElementoParaSolicitar> carrito = this.obtenerCarrito(request);
+        for (ElementoParaSolicitar p: carrito) total += p.getTotal();
+        model.addAttribute("total", total);
+        return "personal/Elementos_periodica";
+    }
+
+    private ArrayList<ElementoParaSolicitar> obtenerCarrito(HttpServletRequest request) {
+        ArrayList<ElementoParaSolicitar> carrito = (ArrayList<ElementoParaSolicitar>) request.getSession().getAttribute("carrito");
+        if (carrito == null) {
+            carrito = new ArrayList<>();
+        }
+        return carrito;
+    }
+
+    private void guardarCarrito(ArrayList<ElementoParaSolicitar> carrito, HttpServletRequest request) {
+        request.getSession().setAttribute("carrito", carrito);
+    }
+
+    @PostMapping(value = "periodico/quitar/{indice}")
     public String quitarDelCarrito(@PathVariable int indice, HttpServletRequest request) {
         ArrayList<ElementoParaSolicitar> carrito = this.obtenerCarrito(request);
         if (carrito != null && carrito.size() > 0 && carrito.get(indice) != null) {
             carrito.remove(indice);
             this.guardarCarrito(carrito, request);
         }
-        return "redirect:/vender/";
+        return "redirect:/periodico/";
     }
 
     private void limpiarCarrito(HttpServletRequest request) {
@@ -80,46 +103,21 @@ public class SolicitarController {
                 .addFlashAttribute("clase", "success");
         return "redirect:/vender/";
     }
-
-    //http://localhost:8080/vender/----elementos
-    @GetMapping(value = "/")
-    public String interfazVender(Model model, HttpServletRequest request) {
-        model.addAttribute("producto", new ElementoConsumible());
-        //suma de elementos de toda la solicitud
-        float total = 0;
-        ArrayList<ElementoParaSolicitar> carrito = this.obtenerCarrito(request);
-        for (ElementoParaSolicitar p: carrito) total += p.getTotal();
-        model.addAttribute("total", total);
-        return "vender/vender";
-    }
-
-    private ArrayList<ElementoParaSolicitar> obtenerCarrito(HttpServletRequest request) {
-        ArrayList<ElementoParaSolicitar> carrito = (ArrayList<ElementoParaSolicitar>) request.getSession().getAttribute("carrito");
-        if (carrito == null) {
-            carrito = new ArrayList<>();
-        }
-        return carrito;
-    }
-
-    private void guardarCarrito(ArrayList<ElementoParaSolicitar> carrito, HttpServletRequest request) {
-        request.getSession().setAttribute("carrito", carrito);
-    }
-
-    @PostMapping(value = "/agregar")
-    public String agregarAlCarrito(@ModelAttribute ElementoConsumible producto, HttpServletRequest request, RedirectAttributes redirectAttrs) {
+    @PostMapping("/periodico/agregar/{contador}")
+    public String agregarAlCarrito(@ModelAttribute ElementoConsumible producto, HttpServletRequest request, RedirectAttributes redirectAttrs, @PathVariable("contador") String contador) {
         ArrayList<ElementoParaSolicitar> carrito = this.obtenerCarrito(request);
         ElementoConsumible productoBuscadoPorCodigo = elementosconsumiblesRepository.findFirstByCodigoSena(producto.getCodigoSena());
         if (productoBuscadoPorCodigo == null) {
             redirectAttrs
                     .addFlashAttribute("mensaje", "El producto con el código " + producto.getCodigoSena() + " no existe")
                     .addFlashAttribute("clase", "warning");
-            return "redirect:/vender/";
+            return "redirect:/periodico?{contador}";
         }
         if (productoBuscadoPorCodigo.sinExistenciaAlmacen()) {
             redirectAttrs
                     .addFlashAttribute("mensaje", "El producto está agotado")
                     .addFlashAttribute("clase", "warning");
-            return "redirect:/vender/";
+            return "redirect:/periodico?{contador}";
         }
         boolean encontrado = false;
         for (ElementoParaSolicitar productoParaVenderActual : carrito) {
@@ -133,6 +131,6 @@ public class SolicitarController {
             carrito.add(new ElementoParaSolicitar(productoBuscadoPorCodigo.getDescripcionBien(), productoBuscadoPorCodigo.getCodigoSena(),productoBuscadoPorCodigo.getUnidadMedida(), productoBuscadoPorCodigo.getObservacion(), productoBuscadoPorCodigo.getContador(), productoBuscadoPorCodigo.getExistenciaAlmacen(), productoBuscadoPorCodigo.getId(), 1f));
         }
         this.guardarCarrito(carrito, request);
-        return "redirect:/vender/";
+        return "redirect:/periodico?{contador}";
     }
 }
