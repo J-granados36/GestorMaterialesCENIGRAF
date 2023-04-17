@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SENA-Gestor de Materiales</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:fragment="header_almacen">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <img src="/images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-expand">
+                                    <li class="nav-link">
+                                        <a th:href="@{/rolalmacen/solicitud}" id="btn-nav" class="btn btn-lg">Solicitudes</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a th:href="@{/rolalmacen}" id="btn-nav" class="btn btn-lg">Consumibles</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <a class="btn btn-lg" th:href="@{/rolalmacen/maquinas}" id="btn-nav">Máquinas</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                                                Perfil <i class="bi bi-person-circle"></i></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item">Almacen</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div> 
+        </header>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SENA-Gestor de Materiales</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:fragment="header_admin">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-expand">
+                                    <li class="nav-link">
+                                        <a th:href="@{/admin}" id="btn-nav" class="btn btn-lg">Informe</a>
+                                    </li>
+                                    <li class="nav-link">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Formación y Ambientes </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" th:href="@{/admin/programas}" id="btn-nav">Programas</a>
+                                                <a class="dropdown-item" th:href="@{/admin/fichas}" id="btn-nav">Fichas</a>
+                                                <a class="dropdown-item" th:href="@{/admin/ambientes}" id="btn-nav">Ambientes</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-link">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">Personal </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" th:href="@{/admin/personal}" id="btn-nav">Personal CENIGRAF</a>
+                                                <a class="dropdown-item" th:href="@{/admin/usuarios}" id="btn-nav">Usuarios</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-link">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
+                                                Perfil <i class="bi bi-person-circle"></i></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item">Administrador</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div> 
+        </header>
+    </body>
+</html>
