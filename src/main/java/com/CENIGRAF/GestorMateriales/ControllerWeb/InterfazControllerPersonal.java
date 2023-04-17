@@ -20,4 +20,12 @@ public class InterfazControllerPersonal {
         model.addAttribute("contador", reportesRepository.count()+1);
         return "personal/Solicitud_periodica";
     }
+    @GetMapping("/personal/anual")
+    public String anual() {
+        return "personal/Solicitud_anual";
+    }
+    @GetMapping("/personal/mantenimiento")
+    public String mantenimiento() {
+        return "personal/Solicitud_mantenimiento";
+    }
 }

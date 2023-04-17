@@ -63,7 +63,7 @@
                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#infomate" id="infor"><i class="bi bi-box-seam-fill" id="icon-btn"></i><br>Solicitud de materiales</button>                
                 </div>
                 <div class="col-6 mt-5"> 
-                    <a href="Solicitud_mantenimiento.html"><button type="button" class="btn btn-outline-dark" id="infor"><i class="bi bi-wrench-adjustable-circle-fill" id="icon-btn"></i><br>Solicitud de mantenimiento</button></a>                
+                    <a th:href="@{/personal/mantenimiento}"><button type="button" class="btn btn-outline-dark" id="infor"><i class="bi bi-wrench-adjustable-circle-fill" id="icon-btn"></i><br>Solicitud de mantenimiento</button></a>                
                 </div>
             </div>
         </div>
@@ -80,10 +80,10 @@
                         <h3>Seleccionar solicitud</h3>
                         <div class="row justify-content-center ">
                             <div class="col-6 " id="btn_principales">
-                                <a href="/personal/periodico"><button type="button" class="btn btn-light" id="solicitudmate"><i class="bi bi-calendar2-week-fill" id="icon-btn"></i><br>Solicitud Periodica</button></a>                
+                                <a th:href="@{/personal/periodico}"><button type="button" class="btn btn-light" id="solicitudmate"><i class="bi bi-calendar2-week-fill" id="icon-btn"></i><br>Solicitud Periodica</button></a>                
                             </div>
                             <div class="col-6 " id="btn_principales">
-                                <a href="Solicitud_anual.html"><button type="button" class="btn btn-light" id="solicitudmate"><i class="bi bi-calendar3" id="icon-btn"></i><br>Solicitud Anual</button></a>                
+                                <a th:href="@{/personal/anual}"><button type="button" class="btn btn-light" id="solicitudmate"><i class="bi bi-calendar3" id="icon-btn"></i><br>Solicitud Anual</button></a>                
                             </div>
                         </div>
                     </div>
