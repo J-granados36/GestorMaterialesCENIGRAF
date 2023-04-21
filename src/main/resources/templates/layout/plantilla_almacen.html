@@ -40,7 +40,7 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item">Almacen</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                                <a sec:autorize="isAuthenticated()" class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
                                             </div>
                                         </div>
                                     </li>

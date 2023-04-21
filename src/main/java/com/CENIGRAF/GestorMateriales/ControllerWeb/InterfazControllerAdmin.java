@@ -30,9 +30,4 @@ public class InterfazControllerAdmin {
     public String programas(){
         return "/administradores/ProgramasAdmin";
     }
-    
-    @GetMapping("/admin/usuarios")
-    public String usuarios(){
-        return "/administradores/UsuariosAdmin";
-    }
 }

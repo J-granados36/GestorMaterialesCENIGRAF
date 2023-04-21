@@ -67,10 +67,7 @@ app_fich={
                 success: function () {
                     location.reload();
                 }
-            }).fail(function($xhr){
-                var data=$xhr.responseJSON;
             })
-
         });
     },
     actualizar_fich(){

@@ -1,48 +1,35 @@
 package com.CENIGRAF.GestorMateriales.ControllerWeb;
 
 
-import com.CENIGRAF.GestorMateriales.ModelBD.UsuarioModel;
+import com.CENIGRAF.GestorMateriales.Repository.UsuarioDTO;
 import com.CENIGRAF.GestorMateriales.ServiceCRUD.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import org.springframework.stereotype.Controller;
 
-@RestController
-@RequestMapping("/api/UserModel")
-@CrossOrigin(origins = "*" , methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-
+@Controller
+@RequestMapping("/admin/usuarios")
 public class UsuarioController {
+    
+    @Lazy
     @Autowired
     private UsuarioService usuarioService;
-
-    @GetMapping("/all")
-    public List<UsuarioModel> getUsuarioModels(){
-        return usuarioService.getAll();
+    
+    @ModelAttribute("usuario")
+    public UsuarioDTO nuevoUsuarioDTO(){
+        return new UsuarioDTO();
     }
 
-    @GetMapping("/{id}")
-    public Optional<UsuarioModel> getUsuarioModel(@PathVariable("id") int id){
-        return usuarioService.getUsuarioModel(id);
+    @GetMapping
+    public String formularioRegistro(){
+        return "/administradores/UsuariosAdmin";
     }
-
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UsuarioModel save(@RequestBody UsuarioModel usuarioModel){
-        return usuarioService.save(usuarioModel);
-    }
-
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UsuarioModel update(@RequestBody UsuarioModel usuarioModel){
-        return usuarioService.update(usuarioModel);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id")int id){
-        return usuarioService.deleteUsuarioModel(id);
+    
+    @PostMapping("/registro")
+    public String registrarUsuario(@ModelAttribute("usuario") UsuarioDTO registroDTO){
+        usuarioService.save(registroDTO);
+        return "redirect:/admin/usuarios";
     }
 }

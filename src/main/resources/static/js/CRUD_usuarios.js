@@ -1,5 +1,5 @@
 app_usua={
-    // Se llama la url del controller de intructores 
+    // Se llama la url del controller de usuarios
     backend: "http://localhost:8080/api/UserModel",
     leer_usua: function(){     
         $.ajax({
@@ -25,9 +25,11 @@ app_usua={
         $("#reg_usuario").click(function() { 
             var reg_usuario_nomb=$("#reg_usuario_nomb").val();
             var reg_usuario_cont=$("#reg_usuario_cont").val();
+            var reg_usuario_rol=$("#reg_usuario_rol").val();
             var obj_usua={
                 nombre:reg_usuario_nomb,
                 contrasena:reg_usuario_cont,
+                rol:reg_usuario_rol
             }
             $.ajax({
                 type: "POST",
@@ -38,8 +40,6 @@ app_usua={
                 success: function () {
                     location.reload();
                 }
-            }).fail(function($xhr){
-                var data=$xhr.responseJSON;
             })
 
         });

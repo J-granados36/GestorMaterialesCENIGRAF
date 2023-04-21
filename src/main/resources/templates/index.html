@@ -6,6 +6,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
       <!--CSS-->
       <link rel="stylesheet" href="CSS/style_index_admin.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+      
       <!--Icons-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,19 +18,27 @@
     <div class="container">
       <div class="screen">
         <div class="screen__content">
-          <form class="login">
-            <div class="login__field">
-              <i class="login__icon fas fa-user"></i>
-              <input type="text" class="login__input" placeholder="Usuario">
-            </div>
-            <div class="login__field">
-              <i class="login__icon fas fa-lock"></i>
-              <input type="password" class="login__input" placeholder="Contraseña">
-            </div>
-            <button class="button login__submit">
-              <span class="button__text">INICIAR SESIÓN</span>
-              <i class="button__icon fas fa-chevron-right"></i>
-            </button>				
+            <form class="login" th:action="@{/login}" method="POST">
+                <div class="login__field">
+                  <i class="login__icon fas fa-user"></i>
+                  <input type="text" name="username" class="login__input" id="username" placeholder="Usuario">
+                </div>
+                <div class="login__field">
+                  <i class="login__icon fas fa-lock"></i>
+                  <input type="password" name="password" class="login__input" id="password" placeholder="Contraseña">
+                </div>
+                <button class="button login__submit" type="submit">
+                  <span class="button__text">INICIAR SESIÓN</span>
+                  <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+                <div th:if="${param.error}">
+                    <div class="alert alert-secondary p-2 mx-0 mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-patch-exclamation-fill" viewBox="0 0 16 16">
+                                                                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                                                      </svg> Usuario o contraseña inválidos</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-secondary p-2 mx-0 mt-2">Sesión cerrada</div>
+                </div>
           </form>
           <div class="social-login">
             <div class="social-icons">

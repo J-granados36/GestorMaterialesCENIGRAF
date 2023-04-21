@@ -12,7 +12,7 @@ public class InterfazControllerPersonal {
     ReportesRepository reportesRepository; 
     
     @GetMapping("/personal")
-    public String inicio(Model model) {
+    public String inicio() {
         return "personal/PrincipalPersonalCENIGRAF";
     }
     @GetMapping("/personal/periodico")
