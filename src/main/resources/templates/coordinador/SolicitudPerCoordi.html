@@ -18,7 +18,7 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 logo_section">
+            <div class="col-lg-8 logo_section">
                 <div class="full">
                     <div class="center-desk">
                     <div class="logo">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-expand">
@@ -42,7 +42,7 @@
                                     <div class="dropdown-menu">
                                     <a class="dropdown-item">Coordinador - Jefe</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Cerrar Sesion</a>
+                                    <a sec:autorize="isAuthenticated()" class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
                                     </div>
                                 </div>
                             </li>

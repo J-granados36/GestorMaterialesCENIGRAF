@@ -18,41 +18,7 @@
     <title>SENA-Gestor de Materiales</title>
 </head>
     <!--Barra de navegación-->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 logo_section">
-                    <div class="full">
-                        <div class="center-desk">
-                        <div class="logo">
-                                <img src="../images/logo_cenigraf.png" alt="cenigraf logo" width="300px" style="float: left;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <nav class="navigation navbar navbar-expand-md navbar-dark mr-auto">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-expand">
-                                <li class="nav-link">
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown">
-                                            Perfil <i class="bi bi-person-circle"></i></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                        <a class="dropdown-item">Instructor</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Cerrar Sesion</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div> 
-    </header>
+    <header th:replace="layout/plantilla_personal :: header_personal"></header>
     <body>
         <div class="container p-5" id="info">
             <div class="row p-5">
